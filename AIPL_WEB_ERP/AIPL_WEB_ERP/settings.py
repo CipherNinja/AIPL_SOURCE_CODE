@@ -54,7 +54,7 @@ ROOT_URLCONF = 'AIPL_WEB_ERP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r"C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\FrontEnd\Templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
