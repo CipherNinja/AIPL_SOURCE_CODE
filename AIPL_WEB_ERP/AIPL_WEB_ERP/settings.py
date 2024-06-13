@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rjgjg^0p_3u9coi!fyvanvzf%wp-vymu)945^a&knd6lu#n1=)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["erp.agratasinfotech.com"]
 
 
 # Application definition
