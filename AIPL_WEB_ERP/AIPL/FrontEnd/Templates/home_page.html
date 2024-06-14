@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agratas Infotech</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -98,7 +98,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 93vh;
             overflow: hidden;
         }
 
@@ -152,17 +152,16 @@
             padding: 20px;
         }
 
-            .faq-section {
-        background-color: #fff;
-        color: #000;
-        padding: 20px;
-        margin-bottom: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: left;
-        max-width: 100%; /* Ensures FAQ section does not overflow on smaller screens */
-    }
-
+        .faq-section {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 100%; /* Ensures FAQ section does not overflow on smaller screens */
+        }
 
         @media (max-width: 768px) {
             .nav-links {
@@ -186,7 +185,7 @@
                 padding: 10px;
                 text-align: center;
                 border-bottom: 1px solid #fff;
-                width: 65vw;
+                width: 100%;
             }
 
             .menu-button {
@@ -216,73 +215,84 @@
         }
 
         @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400&display=swap");
-:root {
-  --accordion-font-color: white;
-  --accordion-font-size: 18px;
-  --accordion-bg-color: #505050; /* Dark grey */
-  --accordion-bg-color-active: #757575; /* Medium grey */
-  --accordion-bg-color-hover: #999999; /* Light grey */
-  --accordion-border-color: #333333; /* Darker grey */
-  --accordion-content-bg-color: white; /* Medium-dark grey */
-}
-.parent-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-.accordion-inner-content {
-  background: var(--accordion-content-bg-color);
-  padding: 30px;
-  color: #111;
-}
-.accordion-menu {
-  font-weight: 600;
-  font-size: var(--accordion-font-size);
-  border-top: 1.5px solid var(--accordion-border-color);
-  border-bottom: 1.5px solid var(--accordion-border-color);
-  background-color: var(--accordion-bg-color);
-  color: var(--accordion-font-color);
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 35px;
-  transition: ease 0.4s;
-  letter-spacing: 1.5px;
-} /* Hover state */
-.accordion-menu:hover {
-  background: var(--accordion-bg-color-hover);
-} /* Active state */
-.accordion-menu.active {
-  background-color: var(--accordion-bg-color-active);
-  opacity: 0.9;
-}
-.accordion-content {
-    height: 0;
-    overflow: hidden;
-    max-height: 90vh;
-    overflow-y: scroll;
-}
+        :root {
+            --accordion-font-color: white;
+            --accordion-font-size: 18px;
+            --accordion-bg-color: #505050; /* Dark grey */
+            --accordion-bg-color-active: #757575; /* Medium grey */
+            --accordion-bg-color-hover: #999999; /* Light grey */
+            --accordion-border-color: #333333; /* Darker grey */
+            --accordion-content-bg-color: white; /* Medium-dark grey */
+        }
 
-.accordion-content.expanded {
-    height: auto;
-}
-.accordion-plus,
-.accordion-minus {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.accordion-content p {
-  font-size: 18px;
-}
-.accordion-content img {
-  max-width: 190px;
-  margin: 0 auto;
-  padding: 40px;
-}
+        .parent-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .accordion-inner-content {
+            background: var(--accordion-content-bg-color);
+            padding: 30px;
+            color: #111;
+        }
+
+        .accordion-menu {
+            font-weight: 600;
+            font-size: var(--accordion-font-size);
+            border-top: 1.5px solid var(--accordion-border-color);
+            border-bottom: 1.5px solid var(--accordion-border-color);
+            background-color: var(--accordion-bg-color);
+            color: var(--accordion-font-color);
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 35px;
+            transition: ease 0.4s;
+            letter-spacing: 1.5px;
+        }
+
+        /* Hover state */
+        .accordion-menu:hover {
+            background: var(--accordion-bg-color-hover);
+        }
+
+        /* Active state */
+        .accordion-menu.active {
+            background-color: var(--accordion-bg-color-active);
+            opacity: 0.9;
+        }
+
+        .accordion-content {
+            height: 0;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: scroll;
+        }
+
+        .accordion-content.expanded {
+            height: auto;
+        }
+
+        .accordion-plus,
+        .accordion-minus {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .accordion-content p {
+            font-size: 18px;
+        }
+
+        .accordion-content img {
+            max-width: 190px;
+            margin: 0 auto;
+            padding: 40px;
+        }
     </style>
 </head>
 <body>
@@ -368,8 +378,8 @@
         <!-- BEGIN ACCORDION SECTION -->
         <div class="accordion">
             <div class="accordion-group">
-                <div class="accordion-menu">What services does Agratas Infotech® provide? <div class="accordion-plus">+</div>
-                    
+                <div class="accordion-menu">What services does Agratas Infotech® provide? 
+                    <div class="accordion-plus">+</div>
                 </div>
                 <div class="accordion-content">
                     <div class="accordion-inner-content">
@@ -380,8 +390,8 @@
             <!-- BEGIN ACCORDION SECTION -->
             <div class="accordion">
                 <div class="accordion-group">
-                    <div class="accordion-menu">How long does a typical project take? <div class="accordion-plus">+</div>
-                        
+                    <div class="accordion-menu">How long does a typical project take? 
+                        <div class="accordion-plus">+</div>
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-inner-content">
@@ -392,8 +402,8 @@
                 <!-- BEGIN ACCORDION SECTION -->
                 <div class="accordion">
                     <div class="accordion-group">
-                        <div class="accordion-menu">How much does it cost to work with Agratas Infotech®?  <div class="accordion-plus">+</div>
-                            
+                        <div class="accordion-menu">How much does it cost to work with Agratas Infotech®?  
+                            <div class="accordion-plus">+</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-inner-content">
@@ -403,8 +413,8 @@
                     </div> <!-- END ACCORDION SECTION -->
                 <div class="accordion">
                     <div class="accordion-group">
-                        <div class="accordion-menu">Can I see examples of your previous work? <div class="accordion-plus">+</div>
-                            
+                        <div class="accordion-menu">Can I see examples of your previous work? 
+                            <div class="accordion-plus">+</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-inner-content">
@@ -415,16 +425,12 @@
                                         <ul>
                                             <li>Developed ERP of Sharda University</li>
                                             <li>Developed Website of Benette University</li>
-
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div> <!-- END ACCORDION SECTION -->
-                    <!-- BEGIN ACCORDION SECTION -->
-                    
-                    </div>
                 </div>
             </div>
         </div>
@@ -456,33 +462,29 @@
             navLinks.classList.toggle('active');
         }
 
-
-
         function gsapAccordion() {
-    let menus = document.querySelectorAll(".accordion-menu");
+            let menus = document.querySelectorAll(".accordion-menu");
 
-    menus.forEach(menu => {
-        menu.addEventListener("click", () => {
-            let content = menu.nextElementSibling;
-            content.classList.toggle("expanded");
+            menus.forEach(menu => {
+                menu.addEventListener("click", () => {
+                    let content = menu.nextElementSibling;
+                    content.classList.toggle("expanded");
 
-            // Close other accordions
-            let allContents = document.querySelectorAll(".accordion-content");
-            allContents.forEach(item => {
-                if (item !== content && item.classList.contains("expanded")) {
-                    item.classList.remove("expanded");
-                }
+                    // Close other accordions
+                    let allContents = document.querySelectorAll(".accordion-content");
+                    allContents.forEach(item => {
+                        if (item !== content && item.classList.contains("expanded")) {
+                            item.classList.remove("expanded");
+                        }
+                    });
+
+                    // Toggle active class on menu
+                    menu.classList.toggle("active");
+                });
             });
+        }
 
-            // Toggle active class on menu
-            menu.classList.toggle("active");
-        });
-    });
-}
-
-gsapAccordion();
-
+        gsapAccordion();
     </script>
-
 </body>
 </html>
