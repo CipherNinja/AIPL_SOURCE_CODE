@@ -1,0 +1,228 @@
+<style>
+$main-color:  rgba(0, 146, 227, 1);
+$second-color: #99d3ec;
+$body-color:  rgba(0, 146, 227, 0.1);
+$dark-color: #333a4d;
+$blue: #003a79;
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+h1 {
+  text-align: center;
+  color: #545454;
+  padding: 0;
+  margin: 0;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+  color: $blue;
+}
+
+/*Tabs*/
+.tab__container {
+  background: #fafafa;
+  width: 75vw;
+  margin: auto;
+  border-radius: 5px;
+  padding: 30px 30px 120px;
+  max-width: 1200px;
+}
+
+.tab__title {
+  margin: 25px 0 0;
+  
+    .tab__button:first-of-type {
+      margin:0;
+  }
+  
+  .tab__button {
+    padding: 15px;
+    color: #545454;
+    border: 1px solid #e5e5e5;
+    background: #f5f5f5;
+    outline: none;
+    margin: 0 -5px;
+    cursor: pointer;
+    width: 25%;
+
+    img {
+      height: 25px;
+      display: block;
+      margin: 0px auto 5px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+  }
+  
+  .tab_button-active {
+    border-bottom: none;
+    background: #fafafa;
+    color: $blue;
+    
+    img {
+      filter: none;
+    }
+  }
+}
+
+.tab__inside {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  visibility: hidden; 
+  opacity: 0;
+  height: 0;
+  transform: translateY(10px);
+  transition: transform .3s ease-in;
+  
+  .tab__inside-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+  img {
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+  }
+  
+  .tab__inside-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+    p {
+      color: #545454;
+      font-size: 14px;
+      font-weight: 100;
+    }
+    
+    button {
+      border-radius: 30px;
+      text-transform: uppercase;
+      padding: 10px;
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.1);
+      border: none;
+      cursor: pointer;
+      background: $blue;
+      color: #fff;
+      transition: all 0.3s ease;
+      width: 100px;
+      
+      &:hover {
+        background: #fff;
+        color: $blue;
+        
+      }
+    }
+  }
+}
+
+.tab__inside-active {
+  visibility: visible; 
+  opacity: 1;
+  height: 100%;
+	transform: translateY(0);
+	transition: transform .3s ease-out 0.1s, opacity .3s ease-out 0.1s;
+}
+    
+</style>
+
+<main>
+    <section class="tab__container">
+      <h1>Heading</h1>
+      <div class="tab__title">
+        <button class="tab__button tab_button-active" onclick="openTab('one')"><img src="https://www.desertfinancial.com/-/media/caf282de9d344eb7a25365fa69ea6fd5.ashx">Tab Btn</button>
+        <button class="tab__button" onclick="openTab('two')"><img src="https://www.desertfinancial.com/-/media/cc54f257b5f64e1e97b8f9d4576fae12.ashx">Tab Btn</button>
+        <button class="tab__button" onclick="openTab('three')"><img src="https://www.desertfinancial.com/-/media/37d31d8e202b4fe0876ec00adc142c45.ashx">Tab Btn</button>
+        <button class="tab__button" onclick="openTab('four')"><img src="https://www.desertfinancial.com/-/media/c7cd8a3005104e3abea89f1d1348e157.ashx">Tab Btn</button>
+  
+      </div>
+      <!---- Start tab ---->
+        <div id="one" class="tab__inside tab__inside-active">
+          <div class="tab__inside-img">
+            <img src="https://www.desertfinancial.com/-/media/caf282de9d344eb7a25365fa69ea6fd5.ashx">
+          </div>
+          <div class="tab__inside-text">
+          <h3>Tab One</h3>
+          <p>Ne aliquam vulputate sadipscing mea. Ea possim explicari vel. Vim ad falli tincidunt neglegentur, et quas noster nec. Iusto legere omnesque mea an, per vidit equidem ea. Elitr iuvaret erroribus ex vis.</p>
+          <button>button</button>
+          </div>
+          
+        </div>
+       <!---- End tab ---->
+      
+          <!---- Start tab ---->
+        <div id="two" class="tab__inside">
+       <div class="tab__inside-img">
+            <img src="https://www.desertfinancial.com/-/media/cc54f257b5f64e1e97b8f9d4576fae12.ashx">
+          </div>
+          <div class="tab__inside-text">
+          <h3>Tab Two</h3>
+          <p>Ne velit labitur vim, sit natum cotidieque cu. Ei consulatu consequuntur mel, sale illum salutatus vix te. Ne tollit vocibus mel. Tamquam recteque maiestatis mei eu. Qui et duis detracto argumentum.
+  </p>
+          <button>button</button>
+          </div>
+        </div>
+       <!---- End tab ---->
+      
+      <!---- Start tab ---->
+      <div id="three" class="tab__inside">
+    <div class="tab__inside-img">
+         <img src="https://www.desertfinancial.com/-/media/37d31d8e202b4fe0876ec00adc142c45.ashx">
+          </div>
+          <div class="tab__inside-text">
+          <h3>Tab Three</h3>
+          <p>Id dicit torquatos nec. Falli erant necessitatibus ea eam, eu erat viris commodo sit. Qui dicit civibus ad, nam velit graeco neglegentur te, ne nemore legimus vim. No duo augue vocent. Clita intellegebat ex duo, duo te tota quaeque instructior. Et sit tale sint accumsan.
+  </p>
+          <button>button</button>
+          </div>
+      </div>
+      <!---- End tab ---->
+      
+         <!---- Start tab ---->
+      <div id="four" class="tab__inside">
+       <div class="tab__inside-img">
+            <img src="https://www.desertfinancial.com/-/media/c7cd8a3005104e3abea89f1d1348e157.ashx">
+          </div>
+          <div class="tab__inside-text">
+          <h3>Tab Four</h3>
+          <p>Lorem ipsum dolor sit amet, sit mundi quidam voluptua et. Et atqui tation nec. An clita semper pri. Vero tractatos consequat sed ex, per mazim nominavi dissentiunt te.
+  </p>
+          <button>button</button>
+          </div>
+      </div>
+      <!---- End tab ---->
+    </section>
+  </main>
+
+  <script>
+    function openTab(tabNumber) {
+  var i;
+  var x = document.getElementsByClassName("tab__inside");
+  
+  /*Add or Remove Active class to buttons*/
+  $('.tab__button').removeClass('tab_button-active');
+  $('.tab__button').click(function() {
+    $(this).addClass('tab_button-active');
+  })
+
+  /*Add active or remove class to tab contents*/
+  for (i = 0; i < x.length; i++) {
+    x[i].classList.remove("tab__inside-active");
+ 
+  }
+  document.getElementById(tabNumber).classList.add("tab__inside-active");
+
+}
+
+  </script>

@@ -132,13 +132,32 @@
 
         .content .feature-item {
             display: inline-block;
-            width: 30%;
-            margin: 1%;
+            width: 45%;
+            margin: 2.5%;
             padding: 20px;
             background-color: #f1f1f1;
             border-radius: 10px;
             transition: transform 0.3s;
             color: #000;
+            position: relative;
+        }
+
+        .content .feature-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .content .feature-item .feature-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            text-align: center;
         }
 
         .content .feature-item:hover {
@@ -179,13 +198,14 @@
 
             .nav-item {
                 margin: 0;
+                top: 30px;
             }
 
             .nav-item a {
                 padding: 10px;
                 text-align: center;
                 border-bottom: 1px solid #fff;
-                width: 100%;
+                width: 65vw;
             }
 
             .menu-button {
@@ -293,6 +313,121 @@
             margin: 0 auto;
             padding: 40px;
         }
+
+
+        /* CSS OF BLOGS IS BELOW THERE  */
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #000, #45c8f1);
+
+}
+
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-family: cursive;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+.tag-brown {
+  background: #D1913C;
+background: linear-gradient(to bottom, #FFD194, #D1913C);
+  color: #fafafa;
+}
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.user {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image {
+  border-radius: 50%;
+}
+
+.user__info > small {
+  color: #666;
+}
+
+
+/* footer */
+
+
+
+.col-6 {
+    width:50%;
+    display: inline-table;
+}
+
     </style>
 </head>
 <body>
@@ -374,6 +509,66 @@
         <h2>AIPL Welcomes You</h2>
     </div>
 
+    <div class="container">
+        <div class="card">
+          <div class="card__header">
+            <img src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="card__image" class="card__image" width="600">
+          </div>
+          <div class="card__body">
+            <span class="tag tag-blue">Technology</span>
+            <h4>What's new in 2022 Tech</h4>
+            <p>Our company delivers cutting-edge technology solutions, enhancing services with innovative tools, efficient systems, and robust support. We streamline operations, boost productivity, and ensure seamless integration, empowering businesses to thrive in a digital world.</p>
+          </div>
+          <div class="card__footer">
+            <div class="user">
+              <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+              <div class="user__info">
+                <h5>Mr. Arun Kr.</h5>
+                <small>Co-Founder</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="card__image" class="card__image" width="600">
+          </div>
+          <div class="card__body">
+            <span class="tag tag-brown">Research</span>
+            <h4>Research and Data-Driven Insights</h4>
+            <p>Our company excels in delivering top-tier research, driving innovation through cutting-edge methodologies, comprehensive data analysis, and expert insights. We empower clients with actionable intelligence, fostering informed decision-making and advancing industry standards in technology and services.</p>
+          </div>
+          <div class="card__footer">
+            <div class="user">
+              <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
+              <div class="user__info">
+                <h5>Dr. Sandeep Singh</h5>
+                <small>Founder & CEO</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card__header">
+            <img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="card__image" class="card__image" width="600">
+          </div>
+          <div class="card__body">
+            <span class="tag tag-red">AI</span>
+            <h4>Race to your heart content</h4>
+            <p>Leading in artificial intelligence innovation, our company leverages advanced algorithms, machine learning, and deep learning techniques. We deliver intelligent solutions that automate processes, enhance decision-making, and drive efficiency, transforming industries and unlocking new potential.</p>
+          </div>
+          <div class="card__footer">
+            <div class="user">
+              <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
+              <div class="user__info">
+                <h5>Mr. Prashant Dwivedi</h5>
+                <small>Director</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <div class="parent-container">
         <!-- BEGIN ACCORDION SECTION -->
         <div class="accordion">
@@ -435,41 +630,23 @@
             </div>
         </div>
     </div>
-    
-    <div class="content">
-        <h2>Explore Opportunities</h2>
-        <div class="feature-item">
-            <h3>Engineering</h3>
-            <p>Innovate and develop cutting-edge solutions.</p>
-        </div>
-        <div class="feature-item">
-            <h3>Marketing</h3>
-            <p>Drive growth and engagement through creative strategies.</p>
-        </div>
-        <div class="feature-item">
-            <h3>Support</h3>
-            <p>Provide exceptional customer service and support.</p>
-        </div>
-    </div>
 
-    <footer>
-        <p>&copy; 2024 Agratas Infotech Private Limited. All rights reserved.</p>
-    </footer>
-
+    {% include "side_arrester.html" %}
+    {% include "footer.html" %}
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
-
+    
         function gsapAccordion() {
             let menus = document.querySelectorAll(".accordion-menu");
-
+    
             menus.forEach(menu => {
                 menu.addEventListener("click", () => {
                     let content = menu.nextElementSibling;
                     content.classList.toggle("expanded");
-
+    
                     // Close other accordions
                     let allContents = document.querySelectorAll(".accordion-content");
                     allContents.forEach(item => {
@@ -477,14 +654,28 @@
                             item.classList.remove("expanded");
                         }
                     });
-
-                    // Toggle active class on menu
-                    menu.classList.toggle("active");
+    
+                    // Toggle plus/minus icon
+                    let plusMinus = menu.querySelector(".accordion-plus");
+                    plusMinus.textContent = content.classList.contains("expanded") ? "-" : "+";
+    
+                    // Smooth scroll to expanded content
+                    if (content.classList.contains("expanded")) {
+                        gsap.to(window, {
+                            duration: 1,
+                            scrollTo: {
+                                y: content.offsetTop - 50,
+                                autoKill: true
+                            }
+                        });
+                    }
                 });
             });
         }
-
+    
+        // Run GSAP accordion function on page load
         gsapAccordion();
     </script>
+    
 </body>
 </html>
