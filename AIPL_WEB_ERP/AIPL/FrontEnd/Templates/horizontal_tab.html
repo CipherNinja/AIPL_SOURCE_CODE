@@ -1,228 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
 <style>
-$main-color:  rgba(0, 146, 227, 1);
-$second-color: #99d3ec;
-$body-color:  rgba(0, 146, 227, 0.1);
-$dark-color: #333a4d;
-$blue: #003a79;
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-}
-h1 {
-  text-align: center;
-  color: #545454;
-  padding: 0;
-  margin: 0;
-}
-h3 {
-  padding: 0;
-  margin: 0;
-  color: $blue;
-}
-
-/*Tabs*/
-.tab__container {
-  background: #fafafa;
-  width: 75vw;
-  margin: auto;
-  border-radius: 5px;
-  padding: 30px 30px 120px;
-  max-width: 1200px;
-}
-
-.tab__title {
-  margin: 25px 0 0;
-  
-    .tab__button:first-of-type {
-      margin:0;
-  }
-  
-  .tab__button {
-    padding: 15px;
-    color: #545454;
-    border: 1px solid #e5e5e5;
-    background: #f5f5f5;
-    outline: none;
-    margin: 0 -5px;
-    cursor: pointer;
-    width: 25%;
-
-    img {
-      height: 25px;
-      display: block;
-      margin: 0px auto 5px;
-      -webkit-filter: grayscale(100%);
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
     }
-  }
-  
-  .tab_button-active {
-    border-bottom: none;
-    background: #fafafa;
-    color: $blue;
-    
-    img {
-      filter: none;
-    }
-  }
-}
 
-.tab__inside {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  visibility: hidden; 
-  opacity: 0;
-  height: 0;
-  transform: translateY(10px);
-  transition: transform .3s ease-in;
-  
-  .tab__inside-img {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    
-  img {
-    height: 150px;
-    display: block;
-    margin: 0 auto;
-  }
-  }
-  
-  .tab__inside-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    
-    p {
-      color: #545454;
-      font-size: 14px;
-      font-weight: 100;
+    h1 {
+        text-align: center;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+        font-size: 2em;
     }
-    
-    button {
-      border-radius: 30px;
-      text-transform: uppercase;
-      padding: 10px;
-      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.1);
-      border: none;
-      cursor: pointer;
-      background: $blue;
-      color: #fff;
-      transition: all 0.3s ease;
-      width: 100px;
-      
-      &:hover {
-        background: #fff;
-        color: $blue;
-        
-      }
-    }
-  }
-}
 
-.tab__inside-active {
-  visibility: visible; 
-  opacity: 1;
-  height: 100%;
-	transform: translateY(0);
-	transition: transform .3s ease-out 0.1s, opacity .3s ease-out 0.1s;
-}
-    
+    h3 {
+        padding: 0;
+        margin: 0;
+        color: #00AEEF;
+    }
+
+    .tab__container {
+        background: #1c1c1c;
+        width: 90vw;
+        margin: auto;
+        border-radius: 5px;
+        padding: 30px 20px;
+        max-width: 1200px;
+    }
+
+    .tab__title {
+        margin: 25px 0 0;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .tab__button {
+        padding: 15px;
+        color: #bbb;
+        border: none;
+        background: #333;
+        outline: none;
+        cursor: pointer;
+        flex: 1 1 25%;
+        text-align: center;
+        transition: background 0.3s ease, color 0.3s ease;
+        max-width: 200px;
+    }
+
+    .tab__button img {
+        height: 25px;
+        display: block;
+        margin: 0px auto 5px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+    }
+
+    .tab_button-active {
+        border-bottom: 2px solid #00AEEF;
+        background: #444;
+        color: #00AEEF;
+    }
+
+    .tab_button-active img {
+        filter: none;
+    }
+
+    .tab__inside {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+        transform: translateY(10px);
+        transition: transform .3s ease-in;
+    }
+
+    .tab__inside-active {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+        transform: translateY(0);
+        transition: transform .3s ease-out 0.1s, opacity .3s ease-out 0.1s;
+    }
+
+    .tab__inside-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tab__inside-img img {
+        height: 150px;
+        width: 100%;
+        border-radius: 20px;
+        border-color: #00AEEF;
+        display: block;
+        margin-top: 10px;
+
+    }
+
+    .tab__inside-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .tab__inside-text p {
+        color: #bbb;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    .tab__inside-text button {
+        border-radius: 30px;
+        text-transform: uppercase;
+        padding: 10px;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+        border: none;
+        cursor: pointer;
+        background: #00AEEF;
+        color: #fff;
+        transition: all 0.3s ease;
+        width: 100px;
+    }
+
+    .tab__inside-text button:hover {
+        background: #0078a5;
+    }
+
+    @media (max-width: 768px) {
+        .tab__inside {
+            grid-template-columns: 1fr;
+        }
+
+        .tab__button {
+            flex: 1 1 45%;
+            max-width: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .tab__button {
+            flex: 1 1 100%;
+        }
+    }
 </style>
 
 <main>
     <section class="tab__container">
-      <h1>Heading</h1>
-      <div class="tab__title">
-        <button class="tab__button tab_button-active" onclick="openTab('one')"><img src="https://www.desertfinancial.com/-/media/caf282de9d344eb7a25365fa69ea6fd5.ashx">Tab Btn</button>
-        <button class="tab__button" onclick="openTab('two')"><img src="https://www.desertfinancial.com/-/media/cc54f257b5f64e1e97b8f9d4576fae12.ashx">Tab Btn</button>
-        <button class="tab__button" onclick="openTab('three')"><img src="https://www.desertfinancial.com/-/media/37d31d8e202b4fe0876ec00adc142c45.ashx">Tab Btn</button>
-        <button class="tab__button" onclick="openTab('four')"><img src="https://www.desertfinancial.com/-/media/c7cd8a3005104e3abea89f1d1348e157.ashx">Tab Btn</button>
-  
-      </div>
-      <!---- Start tab ---->
+        <h1>Why AIPL</h1>
+        <div class="tab__title">
+          <button class="tab__button tab_button-active" onclick="openTab('one', this)">
+            <i class="fas fa-bullseye"></i>
+            Impact
+        </button>
+        <button class="tab__button" onclick="openTab('two', this)">
+            <i class="fas fa-graduation-cap"></i>
+            Development
+        </button>
+        <button class="tab__button" onclick="openTab('three', this)">
+            <i class="fas fa-hands-helping"></i>
+            Support
+        </button>
+        <button class="tab__button" onclick="openTab('four', this)">
+            <i class="fas fa-chart-line"></i>
+            Progress
+        </button>
+        </div>
+        <!---- Start tab ---->
         <div id="one" class="tab__inside tab__inside-active">
-          <div class="tab__inside-img">
-            <img src="https://www.desertfinancial.com/-/media/caf282de9d344eb7a25365fa69ea6fd5.ashx">
-          </div>
-          <div class="tab__inside-text">
-          <h3>Tab One</h3>
-          <p>Ne aliquam vulputate sadipscing mea. Ea possim explicari vel. Vim ad falli tincidunt neglegentur, et quas noster nec. Iusto legere omnesque mea an, per vidit equidem ea. Elitr iuvaret erroribus ex vis.</p>
-          <button>button</button>
-          </div>
-          
+            <div class="tab__inside-img">
+                <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Impact">
+            </div>
+            <div class="tab__inside-text">
+                <h3>Leading with purpose</h3>
+                <p>Through the application of innovation and our contextual knowledge, we give associates the opportunity to deliver transformative outcomes that benefit society at large and prove that anything is possible.</p>
+            </div>
         </div>
-       <!---- End tab ---->
-      
-          <!---- Start tab ---->
+        <!---- End tab ---->
+
+        <!---- Start tab ---->
         <div id="two" class="tab__inside">
-       <div class="tab__inside-img">
-            <img src="https://www.desertfinancial.com/-/media/cc54f257b5f64e1e97b8f9d4576fae12.ashx">
-          </div>
-          <div class="tab__inside-text">
-          <h3>Tab Two</h3>
-          <p>Ne velit labitur vim, sit natum cotidieque cu. Ei consulatu consequuntur mel, sale illum salutatus vix te. Ne tollit vocibus mel. Tamquam recteque maiestatis mei eu. Qui et duis detracto argumentum.
-  </p>
-          <button>button</button>
-          </div>
+            <div class="tab__inside-img">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1772&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Development">
+            </div>
+            <div class="tab__inside-text">
+                <h3>Continuous learning</h3>
+                <p>We equip our associates to deliver innovative solutions, by providing them with opportunities to access and learn from the vast collective experience that exists within AIPL. We ensure they remain at the cutting edge of change.</p>
+            </div>
         </div>
-       <!---- End tab ---->
-      
-      <!---- Start tab ---->
-      <div id="three" class="tab__inside">
-    <div class="tab__inside-img">
-         <img src="https://www.desertfinancial.com/-/media/37d31d8e202b4fe0876ec00adc142c45.ashx">
-          </div>
-          <div class="tab__inside-text">
-          <h3>Tab Three</h3>
-          <p>Id dicit torquatos nec. Falli erant necessitatibus ea eam, eu erat viris commodo sit. Qui dicit civibus ad, nam velit graeco neglegentur te, ne nemore legimus vim. No duo augue vocent. Clita intellegebat ex duo, duo te tota quaeque instructior. Et sit tale sint accumsan.
-  </p>
-          <button>button</button>
-          </div>
-      </div>
-      <!---- End tab ---->
-      
-         <!---- Start tab ---->
-      <div id="four" class="tab__inside">
-       <div class="tab__inside-img">
-            <img src="https://www.desertfinancial.com/-/media/c7cd8a3005104e3abea89f1d1348e157.ashx">
-          </div>
-          <div class="tab__inside-text">
-          <h3>Tab Four</h3>
-          <p>Lorem ipsum dolor sit amet, sit mundi quidam voluptua et. Et atqui tation nec. An clita semper pri. Vero tractatos consequat sed ex, per mazim nominavi dissentiunt te.
-  </p>
-          <button>button</button>
-          </div>
-      </div>
-      <!---- End tab ---->
+        <!---- End tab ---->
+
+        <!---- Start tab ---->
+        <div id="three" class="tab__inside">
+            <div class="tab__inside-img">
+                <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Support">
+            </div>
+            <div class="tab__inside-text">
+                <h3>Support</h3>
+                <p>Through upskilling and reskilling, and with opportunities to move across the business, our people, regardless of age or stage of their career, are supported to discover and become the professionals they were meant to be.</p>
+            </div>
+        </div>
+        <!---- End tab ---->
+
+        <!---- Start tab ---->
+        <div id="four" class="tab__inside">
+            <div class="tab__inside-img">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Progress">
+            </div>
+            <div class="tab__inside-text">
+                <h3>Progress</h3>
+                <p>We see our people as long-term relationships that we build together and from which we all grow. We invest in them across the duration of their career and encourage them to strive for perpetual progress.</p>
+            </div>
+        </div>
+        <!---- End tab ---->
     </section>
-  </main>
+</main>
+<script>
+    function openTab(tabNumber, element) {
+        var i;
+        var x = document.getElementsByClassName("tab__inside");
 
-  <script>
-    function openTab(tabNumber) {
-  var i;
-  var x = document.getElementsByClassName("tab__inside");
-  
-  /*Add or Remove Active class to buttons*/
-  $('.tab__button').removeClass('tab_button-active');
-  $('.tab__button').click(function() {
-    $(this).addClass('tab_button-active');
-  })
+        // Remove active class from all tabs
+        for (i = 0; i < x.length; i++) {
+            x[i].classList.remove("tab__inside-active");
+        }
 
-  /*Add active or remove class to tab contents*/
-  for (i = 0; i < x.length; i++) {
-    x[i].classList.remove("tab__inside-active");
- 
-  }
-  document.getElementById(tabNumber).classList.add("tab__inside-active");
+        // Add active class to the selected tab
+        document.getElementById(tabNumber).classList.add("tab__inside-active");
 
-}
+        // Remove active class from all buttons
+        var buttons = document.getElementsByClassName("tab__button");
+        for (i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("tab_button-active");
+        }
 
-  </script>
+        // Add active class to the clicked button
+        element.classList.add("tab_button-active");
+    }
+</script>
