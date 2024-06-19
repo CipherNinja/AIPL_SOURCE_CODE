@@ -1,0 +1,151 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+    color: #00AEEF;
+}
+
+.tab__container {
+    background: #1c1c1c;
+    width: 90vw;
+    margin: auto;
+    border-radius: 5px;
+    padding: 30px 20px;
+    max-width: 1200px;
+}
+
+.tab__title {
+    margin: 25px 0 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.tab__button {
+    padding: 15px;
+    color: #bbb;
+    border: none;
+    background: #333;
+    outline: none;
+    cursor: pointer;
+    flex: 1 1 25%;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+    max-width: 200px;
+}
+
+.tab__button img {
+    height: 25px;
+    display: block;
+    margin: 0px auto 5px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.tab_button-active {
+    border-bottom: 2px solid #00AEEF;
+    background: #444;
+    color: #00AEEF;
+}
+
+.tab_button-active img {
+    filter: none;
+}
+
+.tab__inside {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transform: translateY(10px);
+    transition: transform .3s ease-in;
+}
+
+.tab__inside-active {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+    transition: transform .3s ease-out 0.1s, opacity .3s ease-out 0.1s;
+}
+
+.tab__inside-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab__inside-img img {
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    border-color: #00AEEF;
+    display: block;
+    margin-top: 10px;
+
+}
+
+.tab__inside-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.tab__inside-text p {
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.tab__inside-text button {
+    border-radius: 30px;
+    text-transform: uppercase;
+    padding: 10px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    background: #00AEEF;
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 100px;
+}
+
+.tab__inside-text button:hover {
+    background: #0078a5;
+}
+
+@media (max-width: 768px) {
+    .tab__inside {
+        grid-template-columns: 1fr;
+    }
+
+    .tab__button {
+        flex: 1 1 45%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab__button {
+        flex: 1 1 100%;
+    }
+}

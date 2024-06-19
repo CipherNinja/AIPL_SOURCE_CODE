@@ -1,0 +1,74 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<header>
+    <div class="logo">
+        <img src="http://www.agratasinfotech.com/img/agarats-logo.png" alt="Logo">
+    </div>
+    <div class="menu-button" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links">
+        <div class="close-button" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="nav-item">
+            <a href="#">What we do</a>
+            <div class="dropdown-content">
+                <a href="#">Service 1</a>
+                <a href="#">Service 2</a>
+                <a href="#">Service 3</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Who we are</a>
+            <div class="dropdown-content">
+                <a href="#">About us</a>
+                <a href="#">Our team</a>
+                <a href="#">Our values</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Insights</a>
+            <div class="dropdown-content">
+                <a href="#">Blog</a>
+                <a href="#">Whitepapers</a>
+                <a href="#">Case Studies</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Careers</a>
+            <div class="dropdown-content">
+                <a href="#">Open positions</a>
+                <a href="#">Internships</a>
+                <a href="#">Life at Agratas</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Newsroom</a>
+            <div class="dropdown-content">
+                <a href="#">Press releases</a>
+                <a href="#">Media contacts</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Investors</a>
+            <div class="dropdown-content">
+                <a href="#">Financials</a>
+                <a href="#">Reports</a>
+                <a href="#">Shareholders</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Contact us</a>
+        </div>
+        <div class="nav-item">
+            <a href="#">AIPL Worldwide</a>
+        </div>
+        <div class="search-icon">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+</header>
+
+<script src="{% static 'js/nav.js' %}"></script>

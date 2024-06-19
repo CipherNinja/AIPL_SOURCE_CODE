@@ -1,0 +1,109 @@
+
+  /* Contact icon styles */
+  .contact-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #0078d4; /* TCS brand color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+  
+  .contact-icon:hover {
+    background-color: #005a9e; /* Darker TCS brand color for hover effect */
+  }
+  
+  /* Social media icons container */
+  .social-icons {
+    position: fixed;
+    bottom: 140px; /* Adjust position above the contact icon */
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Display icons in a column */
+    gap: 10px;
+  }
+
+  .social-icons a {
+    background-color: #0078d4; /* TCS brand color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .social-icons a:hover {
+    background-color: #005a9e; /* Darker TCS brand color for hover effect */
+  }
+  
+  /* Contact form container (hidden by default) */
+  .contact-form-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 2000; /* Above everything else */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contact form styles */
+  .contact-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%; /* Full width by default */
+    max-width: 400px; /* Maximum width of the form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    position: relative; /* Position for close button */
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%; /* Full width input fields */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+  }
+
+  .contact-form button {
+    width: 100%; /* Full width button */
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #0078d4; /* TCS brand color */
+    color: white;
+    cursor: pointer;
+    margin-top: 10px; /* Add space between fields and button */
+  }
+
+  /* Close button styles */
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #999;
+    cursor: pointer;
+  }
+
+  .close-icon:hover {
+    color: #666;
+  }
