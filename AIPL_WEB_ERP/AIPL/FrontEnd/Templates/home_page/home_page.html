@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+</head>
+<body>
+    <!-- Navbar Code is available in navbar.html -->
+    {% include 'base/navbar.html' %}
+    <div class="hero">
+        <video playsinline autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/18069473/18069473-hd_1080_1920_24fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-text top-left">
+            <h2>AIPL Welcomes You </h2>
+        </div>
+        
+        <div class="hero-text center">
+            <h2>Build a future you believe in</h2>
+            <p>Project Management</p>
+            <p>Consulting</p>
+            <p>Outsourcing</p>
+            <p>Education/Training</p>
+        </div>
+        <div class="hero-buttons bottom-left">
+            <a href="/signup" class="btn signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+            <a href="/signin" class="btn signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        </div>
+    </div>
+
+
+    <!-- 
+    From: Priyesh Pandey
+    To: Dear Frontend Developer !
+
+    Please leave a comment if you have made any changes
+    USING DJANGO FILE ARCHITECTURE:
+    
+    ** base folder consist of those files which are commonly used in other main pages ** 
+    base folder -- navbar, footer  
+    home_page folder -- consists of only home page component like FAQ, Blog etc
+
+    
+    -->
+
+
+    <!-- Blog Section Code is available in blog_section.html -->
+    {% include 'home_page/blog_section.html' %}
+    <!-- FAQ Code is available in faq.html -->
+    {% include 'home_page/faq.html' %}
+    <!-- Side Bar and social media panel along with contact us form is available in side_arrester.html -->
+    {% include "home_page/side_arrester.html" %}
+    <!-- Horizontal Tab is available in horizontal_tab.html -->
+    {% include "home_page/horizontal_tab.html" %}
+    <!-- footer Code is Available in footer.html -->
+    {% include "base/footer.html" %}
+    
+</body>
+</html>
