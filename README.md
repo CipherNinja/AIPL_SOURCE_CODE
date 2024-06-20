@@ -1,3 +1,4 @@
+```markdown
 # AIPL_SOURCE_CODE
 # Agratas Infotech Private Limited ERP
 
@@ -89,6 +90,12 @@ DATABASE_URL=postgres://user:password@localhost:5432/erp
 
 Replace `your_secret_key` with a secure, random key. Adjust the `DATABASE_URL` to match your database configuration.
 
+## Development and Deployment Testing
+
+We are currently testing the development and deployment on the following link:
+
+[https://erp.agratasinfotech.com/](https://erp.agratasinfotech.com/)
+
 ## Contributing
 
 We welcome contributions from our team of developers. If you are part of the development team, please follow these guidelines:
@@ -114,7 +121,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 Special thanks to the dedicated team of developers who make this project possible:
 
 - Priyesh Pandey (Backend Developer)
-- Sandeep Singh (Ai Engineer)
+- Sandeep Singh (AI Engineer)
 - Prashant Jha (Frontend Developer)
 - Arun Kumar (Data Analyst)
 - ... and many more!
@@ -124,3 +131,4 @@ Special thanks to the dedicated team of developers who make this project possibl
 For any questions or concerns, please contact our project manager at [info@agratasinfotech.com](mailto:info@agratasinfotech.com).
 
 ---
+```
