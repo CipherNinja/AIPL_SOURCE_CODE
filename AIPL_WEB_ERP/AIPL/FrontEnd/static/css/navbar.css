@@ -301,6 +301,7 @@
     .option.active,
     .optionSecond.active {
       right: 0;
+      z-index: 100;
     }
   
     .option ul,
