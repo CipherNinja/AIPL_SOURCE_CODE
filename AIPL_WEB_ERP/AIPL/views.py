@@ -9,3 +9,17 @@ def home_page_view(request):
         "home_page/home_page.html",
         {"response":response}
     )
+
+def signin_page_view(request):
+    return render(
+        request,
+        "Signin_page/signin.html",
+        {}
+    )
+
+def signup_page_view(request):
+    return render(
+        request,
+        "Signup_page/signup.html",
+        {}
+    )
