@@ -1,4 +1,4 @@
-# AIPL_SOURCE_CODE
+# AIPL ACCESS LINK : https://erp.agratasinfotech.com/
 # Agratas Infotech Private Limited ERP
 
 Welcome to the Agratas Infotech Private Limited ERP project! This web-based ERP system leverages modern AI integrated features to streamline and enhance business processes for Agratas Infotech. Our team of 224 dedicated developers is working diligently to create a robust, scalable, and user-friendly ERP solution.
