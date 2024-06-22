@@ -125,9 +125,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
-    BASE_DIR / 'AIPL' / 'FrontEnd' / 'static',  
+    BASE_DIR / 'AIPL' / 'FrontEnd' / 'static',
 ]
 
 MEDIA_URL = '/media/'
