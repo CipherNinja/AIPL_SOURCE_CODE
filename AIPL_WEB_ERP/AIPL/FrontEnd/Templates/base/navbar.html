@@ -1,197 +1,95 @@
-<!-- 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-<header>
-    <div class="logo">
-        <img src="http://www.agratasinfotech.com/img/agarats-logo.png" alt="Logo">
-    </div>
-    <div class="menu-button" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
-    <div class="nav-links">
-        <div class="close-button" onclick="toggleMenu()">
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="nav-item">
-            <a href="#">What we do</a>
-            <div class="dropdown-content">
-                <a href="#">Service 1</a>
-                <a href="#">Service 2</a>
-                <a href="#">Service 3</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Who we are</a>
-            <div class="dropdown-content">
-                <a href="#">About us</a>
-                <a href="#">Our team</a>
-                <a href="#">Our values</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Insights</a>
-            <div class="dropdown-content">
-                <a href="#">Blog</a>
-                <a href="#">Whitepapers</a>
-                <a href="#">Case Studies</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Careers</a>
-            <div class="dropdown-content">
-                <a href="#">Open positions</a>
-                <a href="#">Internships</a>
-                <a href="#">Life at Agratas</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Newsroom</a>
-            <div class="dropdown-content">
-                <a href="#">Press releases</a>
-                <a href="#">Media contacts</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Investors</a>
-            <div class="dropdown-content">
-                <a href="#">Financials</a>
-                <a href="#">Reports</a>
-                <a href="#">Shareholders</a>
-            </div>
-        </div>
-        <div class="nav-item">
-            <a href="#">Contact us</a>
-        </div>
-        <div class="nav-item">
-            <a href="#">AIPL Worldwide</a>
-        </div>
-        <div class="search-icon">
-            <i class="fas fa-search"></i>
-        </div>
-    </div>
-</header>
-
-<script src="{% static 'js/nav.js' %}"></script> -->
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar</title>
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-  </head>
-  <body>
     <nav>
-      <div class="logo">
-        <img src="{% static 'img/agratas-main-logo.png' %}" alt="logo" />
-      </div>
-
-      <div class="option">
-        <ul class="nav-links">
-          <li>
-            <a href="">What we do <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active">
-                <a href="#"
-                  >Overview
-                  <span class="tcs-hover"
-                    >TCS is here to make a difference through technology.</span
-                  >
-                  <span class="tcs-hover-details"
-                    >Leading the way in innovation for over 55 years, we build
-                    greater futures for businesses across multiple industries
-                    and 55 countries.</span
-                  >
-                </a>
-              </li>
-              <li><a href="#">Industries</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Product and Platforms</a></li>
-              <li><a href="#">Search and Innovations</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Who are we <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active"><a href="#">Overview</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Leadership</a></li>
-              <li><a href="#">Events</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Insights <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active"><a href="#">Overview</a></li>
-              <li><a href="#">Customer Stories</a></li>
-              <li><a href="#">Perspectives</a></li>
-              <li><a href="#">Global studies</a></li>
-              <li><a href="#">Topics</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Carrers <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active"><a href="#">Overview</a></li>
-              <li><a href="#">India</a></li>
-              <li><a href="#">Americas</a></li>
-              <li><a href="#">Asia Pacific</a></li>
-              <li><a href="#">Europe and UK</a></li>
-              <li><a href="#">Middle East and Africa</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Newsroom <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active"><a href="#">Overview</a></li>
-              <li><a href="#">Press release</a></li>
-              <li><a href="#">News alerts</a></li>
-              <li><a href="#">Asia Pacific</a></li>
-              <li><a href="#">Analyst recoginition</a></li>
-              <li><a href="#">Media kit</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Investors <span class="arrow">&and;</span></a>
-            <ul class="submenu">
-              <li id="active"><a href="#">Overview</a></li>
-              <li><a href="#">Manage Commentary</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">News and Events</a></li>
-              <li><a href="#">ESG</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">TCS worldwide</a></li>
-        </ul>
-      </div>
-
-      <!--------------- Searchbar --------------------->
-      <div class="searchbar">
-        <img src="{% static 'img/Search-icon.png' %}" />
-      </div>
-      <div class="address-bar-container" id="address-bar-container">
-        <div class="address-bar">
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Search here..."
-          />
-          <button class="close-btn" id="close-btn">X</button>
+        <div class="logo">
+            <img src="{% static 'img/agratas-main-logo.png' %}" alt="logo" />
         </div>
-      </div>
-
-      <!---------------- Hamburger -------------->
-      <div class="hamburger" id="hamburger">
-        <div class="line line-1"></div>
-        <div class="line line-2"></div>
-        <div class="line line-3"></div>
-      </div>
+        <div class="option">
+            <ul class="nav-links">
+                <li>
+                    <a href="#">What we do <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active">
+                            <a href="#">Overview
+                                <span class="tcs-hover">TCS is here to make a difference through technology.</span>
+                                <span class="tcs-hover-details">Leading the way in innovation for over 55 years, we build greater futures for businesses across multiple industries and 55 countries.</span>
+                            </a>
+                        </li>
+                        <li><a href="#">Industries</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Product and Platforms</a></li>
+                        <li><a href="#">Search and Innovations</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Who are we <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active"><a href="#">Overview</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Insights <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active"><a href="#">Overview</a></li>
+                        <li><a href="#">Customer Stories</a></li>
+                        <li><a href="#">Perspectives</a></li>
+                        <li><a href="#">Global studies</a></li>
+                        <li><a href="#">Topics</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Careers <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active"><a href="#">Overview</a></li>
+                        <li><a href="#">India</a></li>
+                        <li><a href="#">Americas</a></li>
+                        <li><a href="#">Asia Pacific</a></li>
+                        <li><a href="#">Europe and UK</a></li>
+                        <li><a href="#">Middle East and Africa</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Newsroom <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active"><a href="#">Overview</a></li>
+                        <li><a href="#">Press release</a></li>
+                        <li><a href="#">News alerts</a></li>
+                        <li><a href="#">Analyst recognition</a></li>
+                        <li><a href="#">Media kit</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Investors <span class="arrow fa fa-angle-down"></span></a>
+                    <ul class="submenu">
+                        <li id="active"><a href="#">Overview</a></li>
+                        <li><a href="#">Manage Commentary</a></li>
+                        <li><a href="#">Financials</a></li>
+                        <li><a href="#">News and Events</a></li>
+                        <li><a href="#">ESG</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">TCS worldwide</a></li>
+            </ul>
+        </div>
+        <div class="searchbar">
+            <img src="{% static 'img/Search-icon.png' %}" alt="Search Icon" />
+        </div>
+        <div class="address-bar-container" id="address-bar-container">
+            <div class="address-bar">
+                <input type="text" class="search-input" placeholder="Search here..." />
+                <button class="close-btn" id="close-btn">X</button>
+            </div>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
     </nav>
+    <script src="{% static 'js/nav.js' %}"></script>
 
-    <script src="{% static 'js/nav.js' %}" defer></script>
-  </body>
-</html>
