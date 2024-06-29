@@ -5,7 +5,7 @@
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    background-color: #0078d4; /* TCS brand color */
+    background: linear-gradient(to right, #000, #45c8f1); /* TCS brand color */
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -33,7 +33,7 @@
   }
 
   .social-icons a {
-    background-color: #0078d4; /* TCS brand color */
+    background: linear-gradient(to right, #000, #45c8f1);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -89,7 +89,7 @@
     padding: 10px;
     border-radius: 5px;
     border: none;
-    background-color: #0078d4; /* TCS brand color */
+    background: linear-gradient(to right, #000, #45c8f1); /* TCS brand color */
     color: white;
     cursor: pointer;
     margin-top: 10px; /* Add space between fields and button */
