@@ -19,6 +19,13 @@ margin-block: 2rem;
 gap: 2rem;
 }
 
+/* Adjust margin for larger screens */
+@media (min-width: 768px) {
+    .container {
+      margin-left: 8%;
+    }
+  }
+
 img {
 max-width: 100%;
 display: block;
