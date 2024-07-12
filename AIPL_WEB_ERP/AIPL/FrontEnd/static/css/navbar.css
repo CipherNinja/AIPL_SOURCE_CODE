@@ -1,16 +1,11 @@
-/* Navbar css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Base styles */
 
 nav {
   background-color: #000;
   display: flex;
   align-items: center;
   padding: 0 20px;
-  height: auto;
+  height: 12vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -20,6 +15,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 1000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 nav.scrolled {
@@ -75,7 +71,8 @@ nav.scrolled {
   line-height: 24px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+
+  justify-content: space-between;
 }
 
 .arrow {
@@ -92,14 +89,14 @@ nav.scrolled {
   display: none;
   position: absolute;
   background-color: #212529;
-  padding: 40% 50%;
+  padding: 0% 50% 95% 50%;
   z-index: 1;
   width: 100vw;
   top: 55px;
   transition: top 0.9s ease-in-out;
 }
 
-.submenu li:hover {
+.submenu #active:hover {
   background-color: black;
   color: #fff;
 }
@@ -110,9 +107,9 @@ nav.scrolled {
 
 .submenu li {
   list-style: none;
-  padding: 3% 0% 1% 0%;
+  padding: 2% 0% 1% 0%;
   border-bottom: 1px solid white;
-  width: 20vw;
+  width: 18vw;
   text-align: left;
 }
 
@@ -120,30 +117,91 @@ nav.scrolled {
   display: block;
 }
 
-.optionSecond {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+/* Menu of submenu */
+.tcs-hover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 120%;
+  padding: 0.5rem;
+  width: 100vw;
+  font-size: 2rem;
+  color: #fff;
+  height: auto;
 }
 
-.optionSecond ul {
-  display: flex;
+#active:hover .tcs-hover {
+  display: inline-block;
+}
+
+.tcs-hover-details {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 120%;
+  padding: 0.5rem;
+  width: 80vw;
+  height: auto;
+}
+
+#active:hover .tcs-hover-details {
+  display: block;
+}
+
+.inner-submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 110%;
+  background-color: #212529;
   list-style: none;
+  padding: 0% 0% 0% 0%;
+  z-index: 1000;
+  width: auto;
 }
 
-.optionSecond li {
-  margin-left: 20px;
-  cursor: pointer;
+#inner-submenu-one {
+  margin-top: -18%;
 }
 
-.optionSecond a {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #9e9fa3;
-  text-decoration: none;
-  font-family: Basis-bold;
-  letter-spacing: 0.15rem;
-  font-size: 0.75rem;
+#inner-submenu-two {
+  margin-top: -40%;
+}
+
+#inner-submenu-three {
+  margin-top: -62%;
+}
+
+#inner-submenu-four {
+  margin-top: -83%;
+}
+
+.inner-submenu li {
+  border: none;
+  color: none;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inner-submenu li:hover {
+  background-color: none;
+  border-bottom: 1px solid white;
+  width: fit-content;
+}
+
+.submenu li:hover > .inner-submenu,
+.submenu li:focus > .inner-submenu li {
+  display: block;
+}
+
+.inner-submenu li:hover > ul {
+  display: block;
+}
+
+.arrow-right {
+  margin-right: auto;
 }
 
 /* Searchbar css */
@@ -151,8 +209,8 @@ nav.scrolled {
   margin-right: 20px;
 }
 
-.searchbar img {
-  height: 4vh;
+.searchbar i {
+  height: auto;
   width: auto;
   cursor: pointer;
   margin: auto;
@@ -162,13 +220,13 @@ nav.scrolled {
 .address-bar-container {
   position: fixed;
   left: 0;
-  top: 100%;
+  top: 0%;
   width: 100vw;
   height: 12vh;
   background-color: #212529;
-  transition: top 0.9s ease-in-out;
+  transition: top 0.2s ease-in-out;
   z-index: 1000;
-  display: none; /* Hide the container initially */
+  display: none;
 }
 
 .address-bar {
@@ -237,137 +295,131 @@ nav.scrolled {
   transform: rotate(-45deg) translate(5px, -10px);
 }
 
-.tcs-hover {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 120%;
-  padding: 0.5rem;
-  width: 100vw;
-  font-size: 2rem;
-  color: #fff;
-  height: auto;
-}
-
-#active:hover .tcs-hover {
-  display: inline-block;
-}
-
-.tcs-hover-details {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 120%;
-  padding: 0.5rem;
-  width: 80vw;
-  height: auto;
-}
-
-#active:hover .tcs-hover-details {
-  display: block;
-}
-
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
   .logo img {
-      width: 40vw;
+    width: 40vw;
   }
 
   .address-bar-container {
-      height: 12vh;
+    height: 12vh;
   }
 
   .hamburger {
-      display: flex;
+    display: flex;
   }
 
-  .option, .optionSecond {
-      display: block;
-      flex-direction: column;
-      position: fixed;
-      top: 55px;
-      right: -100%;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      transition: right 0.8s ease-in-out;
+  .option {
+    display: block;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    transition: right 0.8s ease-in-out;
   }
 
   .option.scrolled {
-      right: -100%;
-      background-color: #212529;
-      transition: 0.8s ease;
+    right: -100%;
+    background-color: #212529;
+    transition: 0.8s ease;
   }
 
-  .option.active, .optionSecond.active {
-      right: 0;
-      z-index: 100;
+  .option.active {
+    right: 0;
+    z-index: 100;
   }
 
-  .option ul, .optionSecond ul {
-      flex-direction: column;
-      margin-top: 20px;
-      text-align: left;
+  .option ul {
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: left;
   }
 
-  .option li, .optionSecond li {
-      margin: 10px 20px;
+  .option li {
+    margin: 10px 20px;
   }
 
   .option ul li {
-      border-bottom: 1px solid white;
-      width: auto;
+    border-bottom: 1px solid white;
+    width: auto;
   }
 
   .arrow {
-      margin-left: auto;
+    margin-left: auto;
   }
 
   .searchbar {
-      margin: 10px 20px;
+    margin: 10px 20px;
   }
 
-  .searchbar img {
-      height: 3vh;
-      position: absolute;
-      top: 34px;
-      right: 68px;
+  .searchbar i {
+    height: 3vh;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
   }
 
   .submenu {
-      left: 0;
-      position: relative;
-      width: auto;
+    left: 0;
+    position: relative;
+    width: auto;
+  }
+
+  .submenu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: flex-start;
   }
 
   .submenu li {
-      left: 0;
-      width: 100%;
+    left: 0;
+    width: 100%;
   }
 
   .submenu a {
-      width: 100%;
-      padding-left: 0;
+    width: 100%;
+    padding-left: 0;
   }
 
   .submenu.show {
-      height: auto;
-      width: auto;
-      left: auto;
-      background-color: #000;
+    height: auto;
+    width: fit-content;
+    left: 0;
+    top: 0;
+    padding-right: 0;
+    /* max-height: 60vh;
+    overflow-y: auto; */
+  }
+  .inner-submenu {
+    display: none; /* Ensure inner submenus are not visible by default */
+  }
+
+  .inner-submenu.show {
+    display: block; /* Display inner submenu when class 'show' is added */
+  }
+  #inner-submenu-one,
+  #inner-submenu-two,
+  #inner-submenu-three,
+  #inner-submenu-four {
+    margin-top: 0;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   nav {
-      padding: 0 10px;
+    padding: 0 10px;
   }
 
-  .option li, .optionSecond li {
-      margin-left: 10px;
+  .option li,
+  .optionSecond li {
+    margin-left: 10px;
   }
 
   .searchbar {
-      margin-left: 10px;
+    margin-left: 10px;
   }
 }

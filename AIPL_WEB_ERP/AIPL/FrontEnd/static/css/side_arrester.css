@@ -24,7 +24,7 @@
   /* Social media icons container */
   .social-icons {
     position: fixed;
-    bottom: 140px; /* Adjust position above the contact icon */
+    bottom: 80px; /* Adjust position above the contact icon */
     right: 20px;
     z-index: 1000;
     display: flex;
