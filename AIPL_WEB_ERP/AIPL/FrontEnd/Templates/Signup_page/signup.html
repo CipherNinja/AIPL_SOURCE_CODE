@@ -21,11 +21,11 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="confirm-password" placeholder="Confirm Password" required>
                 <button type="submit">Register</button>
-                <p> Already have an account? </p>
+                <a href="{% url 'signin' %}"><p> Already have an account? </p></a>
                 <button type="submit">Login</button>
             </form>
         </div>
     </div>
-    <script src="{% static 'js/nav_configure_for_signup.js' %}"></script>
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
 </body>
 </html>
