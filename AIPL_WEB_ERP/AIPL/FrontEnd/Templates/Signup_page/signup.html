@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signupstyles.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/navbar_sign.css' %}"> -->
+    <script src="{% static 'js/navbar_sign.js' %}" defer></script>
 </head>
 <body>
-    <h1>UNDER DEVELOPMENT</h1>
+    {% include 'base/navbar.html' %}
+    <div class="container">
+        <div class="welcome-box">
+            <h1>Welcome</h1>
+            <p>We are glad to see you back with us</p>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email or phone number" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+                <p> Already have an account? </p>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
