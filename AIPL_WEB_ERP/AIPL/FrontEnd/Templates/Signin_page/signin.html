@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Login Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signin_styles.css' %}">
+    <script src="{% static 'js/navbar_sign.js' %}" defer></script>
 </head>
 <body>
-    <h1>UNDER DEVELOPMENT</h1>
+    {% include 'base/navbar.html' %}
+    <div class="container">
+        <div class="login-box">
+            <h1>Welcome</h1>
+            <p>We are glad to see you back with us</p>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button>Next</button>
+            <p class="login-others"><span>Login with Others</span></p>
+            <div class="social-login">
+                <button class="google"><img src="{% static 'img/google_logo.png' %}" alt="Google" class="social-icon">Login with Google</button>
+                <button class="facebook"><img src="{% static 'img/facebook_logo.png' %}" alt="Facebook" class="social-icon">Login with Facebook</button>
+                <button class="twitter"><img src="{% static 'img/twitter_logo.png' %}" alt="Twitter" class="social-icon">Login with Twitter</button>
+            </div>
+        </div>
+    </div>
 </body>
  
 </html>
