@@ -195,7 +195,11 @@
         <h1>Customer Dashboard</h1>
         <div class="right-section">
             <button class="notification-button"><i class="fas fa-bell"></i> Notifications</button>
-            <button class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            <form class="logout" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </form>
+            <script src="{% static 'js/logout_config.js' %}"></script>
         </div>
     </header>
 

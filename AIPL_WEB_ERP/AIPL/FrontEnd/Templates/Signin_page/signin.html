@@ -13,9 +13,12 @@
         <div class="login-box">
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button>Next</button>
+            <form action="{% url 'signin' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Next</button>
+            </form>
             <a class="goto-register" href="{% url 'signup' %}"><p class="login-others"><span>Register here</span></p></a>
             <div class="social-login">
                 <button class="google"><img src="{% static 'img/google_logo.png' %}" alt="Google" class="social-icon">Login with Google</button>

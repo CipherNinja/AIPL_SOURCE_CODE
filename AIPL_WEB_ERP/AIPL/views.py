@@ -13,6 +13,19 @@ def home_page_view(request):
     )
 
 def signin_page_view(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            uname = user.get_username()
+            login(request,user)
+            messages.success(request,f" Welcome back {uname}")
+            return redirect('dashboard')
+        else:
+            messages.error(request," Wrong Credentials !")
+            return redirect('home')
+    
     return render(
         request,
         "Signin_page/signin.html",
@@ -61,6 +74,12 @@ def signup_page_view(request):
         {}
     )
 
+def logout_user(request):
+    logout(request)
+    messages.success(request," Logged out ")
+    return redirect("home")
+
+# CUTOMER DASHBOARD
 def dashboard_panel_view(request):
     if request.user.is_authenticated:
         return render(
