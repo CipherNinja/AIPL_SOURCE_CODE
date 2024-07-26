@@ -192,7 +192,7 @@
 <body>
     <script src="{% static 'js/nav_configuration.js' %}"></script>
     <header>
-        <h1>Customer Dashboard</h1>
+        <h1>Customer Window</h1>
         <div class="right-section">
             <button class="notification-button"><i class="fas fa-bell"></i> Notifications</button>
             <form class="logout" action="{% url 'logout' %}" method="post">
@@ -202,7 +202,8 @@
             <script src="{% static 'js/logout_config.js' %}"></script>
         </div>
     </header>
-
+{% include 'base/alert_msg.html' %}
+<script src="{% static 'js/msgbox_configure.js' %}"></script>
     <main>
         <div class="container">
             <h2>Our Infographics</h2>
@@ -211,11 +212,15 @@
 
         <div class="container">
             <h2>Request for Data Deletion</h2>
-            <form id="deletionForm">
+            <form method="post" action="{% url 'dashboard' %}" id="deletionForm">
+                {% csrf_token %}
                 <label for="deletionReason">Reason for Deletion:</label>
                 <select id="deletionReason" name="deletionReason" required>
                     <option value="Privacy Concern">Privacy Concern</option>
+                    <option value="Security Concerns">Security Concerns</option>
                     <option value="No Longer Needed">No Longer Needed</option>
+                    <option value="No Longer Using Services">No Longer Using Services</option>
+                    <option value="Regulatory Request (e.g. GDPR/CCPA)">Regulatory Request (e.g. GDPR/CCPA)</option>
                     <option value="Other">Other</option>
                 </select>
 
@@ -277,48 +282,6 @@
     </div>
 
     <script>
-        document.getElementById('meetingForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-
-            fetch('https://your-backend-api-url/meetings/', {
-                method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData)),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Meeting booked successfully!');
-                event.target.reset();
-                loadResponses();
-            })
-            .catch(error => {
-                console.error('Error booking meeting:', error);
-            });
-        });
-
-        document.getElementById('deletionForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-
-            fetch('https://your-backend-api-url/deletions/', {
-                method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData)),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Deletion request submitted successfully!');
-                event.target.reset();
-            })
-            .catch(error => {
-                console.error('Error submitting deletion request:', error);
-            });
-        });
 
         function loadResponses() {
             // Fetch real responses from your backend API

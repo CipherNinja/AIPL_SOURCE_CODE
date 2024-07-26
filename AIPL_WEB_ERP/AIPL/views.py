@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from .models import *
 # Create your views here.
 
 def home_page_view(request):
@@ -80,8 +81,28 @@ def logout_user(request):
     return redirect("home")
 
 # CUTOMER DASHBOARD
-def dashboard_panel_view(request):
+def customer_dashboard_view(request):
+    
+    # If user is authenticated then he will be redirected to the customer dashboard
     if request.user.is_authenticated:
+        # If user is making making POST request on dashboard
+        if request.method == "POST":
+            """
+            user can make two types of post request 
+            1. request for data deletion
+            2. request for meeting with agratas
+
+            """
+            # handling data deletion requests
+            if 'deletionReason' in request.POST:
+                deletion_reason = request.POST.get("deletionReason")
+                additional_details = request.POST.get("additionalDetails")
+                register_deletion_request = dataDeletionModel.objects.create(user=request.user,reason=deletion_reason,additional_info=f"Reason = {deletion_reason}\nMessage:\n{additional_details}")
+                register_deletion_request.save()
+                messages.success(request,"Your Response has been registered! Checkout Your Email")
+                #Additional feature we need to add [user can request again only after fews days if he recently submit a respnse]
+                pass
+
         return render(
             request,
             "customer_dashboard/customer_panel.html"
