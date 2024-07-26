@@ -1,22 +1,11 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/alert_msg.css' %}">
-<!-- <div class="info">Info message</div> -->
 {% if messages %}
 {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         {% if message.tags == 'success' %}
             <div class="success">{{ message }}</div>
         {% elif message.tags == 'error' %}
             <div class="error">{{ message }}</div>
         {% endif %}
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
 {% endfor %}
 {% endif %}
-
-	<!-- <div class="warning">Warning message</div>
-	
-	<div class="validation">Validation message 1<br>Validation message 2</div> -->

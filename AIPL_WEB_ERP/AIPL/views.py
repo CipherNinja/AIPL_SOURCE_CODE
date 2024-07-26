@@ -24,7 +24,7 @@ def signin_page_view(request):
             return redirect('dashboard')
         else:
             messages.error(request," Wrong Credentials !")
-            return redirect('home')
+            return redirect('signin')
     
     return render(
         request,
