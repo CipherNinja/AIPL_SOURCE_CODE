@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.utils import timezone
+from datetime import timedelta
 from .models import *
 # Create your views here.
 
@@ -82,10 +84,9 @@ def logout_user(request):
 
 # CUTOMER DASHBOARD
 def customer_dashboard_view(request):
-    
     # If user is authenticated then he will be redirected to the customer dashboard
     if request.user.is_authenticated:
-        # If user is making making POST request on dashboard
+        # If user is making POST request on dashboard
         if request.method == "POST":
             """
             user can make two types of post request 
@@ -97,16 +98,34 @@ def customer_dashboard_view(request):
             if 'deletionReason' in request.POST:
                 deletion_reason = request.POST.get("deletionReason")
                 additional_details = request.POST.get("additionalDetails")
-                register_deletion_request = dataDeletionModel.objects.create(user=request.user,reason=deletion_reason,additional_info=f"Reason = {deletion_reason}\nMessage:\n{additional_details}")
-                register_deletion_request.save()
-                messages.success(request,"Your Response has been registered! Checkout Your Email")
-                #Additional feature we need to add [user can request again only after fews days if he recently submit a respnse]
-                pass
+
+                try:
+                    # Check if the user has submitted any requests before
+                    last_request = dataDeletionModel.objects.filter(user=request.user).order_by('-timestamp').first()
+
+                    if last_request:
+                        # If a request exists, check the time since the last submission
+                        time_since_last_request = timezone.now() - last_request.timestamp
+                        if time_since_last_request < timedelta(hours=24):
+                            messages.error(request, "You can only submit a request once every 24 hours.")
+                            return redirect('dashboard')
+
+                    # Create the deletion request if no recent request was made
+                    dataDeletionModel.objects.create(
+                        user=request.user,
+                        reason=deletion_reason,
+                        additional_info=f"Reason = {deletion_reason}\nMessage:\n{additional_details}"
+                    )
+                    messages.success(request, "Your Response has been registered! Check your email.")
+                except Exception as e:
+                    messages.error(request, "An error occurred while processing your request. Please try again later.")
+                    # Optionally log the exception
+                    print(f"Error processing deletion request: {e}")
 
         return render(
             request,
             "customer_dashboard/customer_panel.html"
         )
     else:
-        messages.success(request,"you are not authorised to see this content")
+        messages.error(request, "You are not authorized to see this content.")
         return redirect("home")

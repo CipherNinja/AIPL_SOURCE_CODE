@@ -5,4 +5,4 @@ from .models import *
 
 @admin.register(dataDeletionModel)
 class DocumentModelAdmin(admin.ModelAdmin):
-    list_display = ["id","user","reason","additional_info"]
+    list_display = ["id","user","reason","additional_info","timestamp"]

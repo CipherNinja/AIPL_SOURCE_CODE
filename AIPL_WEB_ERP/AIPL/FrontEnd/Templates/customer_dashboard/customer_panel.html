@@ -215,14 +215,14 @@
             <form method="post" action="{% url 'dashboard' %}" id="deletionForm">
                 {% csrf_token %}
                 <label for="deletionReason">Reason for Deletion:</label>
-                <select id="deletionReason" name="deletionReason" required>
-                    <option value="Privacy Concern">Privacy Concern</option>
-                    <option value="Security Concerns">Security Concerns</option>
-                    <option value="No Longer Needed">No Longer Needed</option>
-                    <option value="No Longer Using Services">No Longer Using Services</option>
-                    <option value="Regulatory Request (e.g. GDPR/CCPA)">Regulatory Request (e.g. GDPR/CCPA)</option>
-                    <option value="Other">Other</option>
+                <select id="deletionReason" name="deletionReason">
+                    <option value="privacy concern">Privacy Concern</option>
+                    <option value="security concern">Security Concern</option>
+                    <option value="no longer needed">No Longer Needed</option>
+                    <option value="regulatory request (e.g. gdpr/ccpa)">Regulatory Request (e.g. GDPR/CCPA)</option>
+                    <option value="other">Other</option>
                 </select>
+                
 
                 <label for="additionalDetails">Additional Details:</label>
                 <textarea id="additionalDetails" name="additionalDetails" required></textarea>
