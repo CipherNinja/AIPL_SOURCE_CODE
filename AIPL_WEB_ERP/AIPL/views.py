@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.utils import timezone
-from datetime import timedelta
+from datetime import timedelta, datetime
+from zoneinfo import ZoneInfo
 from .models import *
 # Create your views here.
 
@@ -122,6 +123,52 @@ def customer_dashboard_view(request):
                     # Optionally log the exception
                     print(f"Error processing deletion request: {e}")
 
+            
+            # Checking if meeting form is filled and submitted a POST request
+            # Key Considerations -
+            # 1. User can select the time zone (UTC/IST,etc) as per his convinience
+            # 2. Any international time zone must be converted into Indian Standard Time Zone
+            # 3. Meeting form filled once within 24 Hrs.
+            
+            elif "date" in request.POST:
+                date = request.POST.get("date")
+                time = request.POST.get("time")
+                tz = request.POST.get("timezone")
+                location = request.POST.get("location")
+                reason = request.POST.get("reason")
+                description = request.POST.get("description")
+                try:
+                    # Check if the user has submitted any requests before
+                    last_request = Meeting.objects.filter(user=request.user).order_by('-created_at').first()
+
+                    if last_request:
+                        # If a request exists, check the time since the last submission
+                        time_since_last_request = timezone.now() - last_request.created_at
+                        if time_since_last_request < timedelta(hours=24):
+                            messages.error(request, "You can only submit a request once every 24 hours.")
+                            return redirect('dashboard')
+
+                    # timezone conversion to IST
+
+                    anyTimeZoneWorld = ZoneInfo(tz)
+                    istTimeZone = ZoneInfo("Asia/Kolkata")
+                    today = datetime.now().date()
+                    anyTimeZone = datetime.strptime(f'{today} {time+":00"}',"%Y-%m-%d %H:%M:%S")
+                    anyTimeZone = anyTimeZone.replace(tzinfo=anyTimeZoneWorld)
+                    istTime = anyTimeZone.astimezone(istTimeZone)
+                    istTimeTime,istTimeDate = istTime.strftime("%H:%M:%S"),istTime.strftime("%Y-%m-%d")
+                    
+                    Meeting.objects.create(
+                        user=request.user,date=istTimeDate,
+                        time=istTimeTime,timezone=tz,
+                        location=location,reason=reason,
+                        description=description
+                    )
+                    messages.success(request,f"We recieved your meeting schedule")
+                except Exception as e:
+                    messages.error(request, "An error occurred while processing your request. Please try again later.")
+                    # Optionally log the exception
+                    print(f"Error processing Meeting request: {e}")
         return render(
             request,
             "customer_dashboard/customer_panel.html"

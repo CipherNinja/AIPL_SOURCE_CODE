@@ -53,5 +53,5 @@ class Meeting(models.Model):
 
     class Meta:
         ordering = ['date', 'time']
-        verbose_name = "Meeting"
-        verbose_name_plural = "Meetings"
+        verbose_name = "Meeting Schedule"
+        verbose_name_plural = "Meeting Schedule"

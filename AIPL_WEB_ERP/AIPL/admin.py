@@ -9,4 +9,4 @@ class DocumentModelAdmin(admin.ModelAdmin):
 
 @admin.register(Meeting)
 class DocumentModelAdmin(admin.ModelAdmin):
-    list_display = ["id","user","date","time","timezone","location","reason","description","created_at"]
+    list_display = ["id","user","date","time","location","reason","description"]
