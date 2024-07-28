@@ -6,7 +6,8 @@
     <title>Login Page</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/signin_styles.css' %}">
-    <script src="{% static 'js/navbar_sign.js' %}" defer></script>
+    <script src="{% static 'js/nav.js' %}" defer></script>
+    <script src="{% static 'js/signin.js' %}" defer></script>
 </head>
 <body>
     {% include 'base/navbar.html' %}
@@ -14,9 +15,11 @@
         <div class="login-box">
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button>Next</button>
+            <form method="post" action="#">
+                <input type="text" id ="Username" name = "Username" placeholder="Username" required >
+                <input type="password" id = "Password" name="Password"  placeholder="Password" required>
+                <button type = "submit">Next</button>
+            </form>
             <p class="login-others"><span>Login with Others</span></p>
             <div class="social-login">
                 <button class="google"><img src="{% static 'img/google_logo.png' %}" alt="Google" class="social-icon">Login with Google</button>
