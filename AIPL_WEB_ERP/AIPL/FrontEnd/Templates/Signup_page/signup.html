@@ -6,8 +6,8 @@
     <title>Sign Up</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/signupstyles.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/navbar_sign.css' %}"> -->
-    <script src="{% static 'js/navbar_sign.js' %}" defer></script>
+    <script src="{% static 'js/nav.js' %}" defer></script>
+    <script src="{% static 'js/signup.js' %}" defer></script>
 </head>
 <body>
     {% include 'base/navbar.html' %}
@@ -15,13 +15,13 @@
         <div class="welcome-box">
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
-            <form action="#" method="post">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email or phone number" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+            <form id="signupForm" action="#" method="post">
+                <input type="text" id="name" name="name" placeholder="Name" required autocomplete="off">
+                <input type="email" id="email" name="email" placeholder="Email or phone number" required autocomplete="off">
+                <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+                <input type="password" id="confirmPassword" name="confirm-password" placeholder="Confirm Password" required>
                 <button type="submit">Register</button>
-                <p> Already have an account? </p>
+                <p>Already have an account?</p>
                 <button type="submit">Login</button>
             </form>
         </div>
