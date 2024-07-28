@@ -114,7 +114,7 @@ def customer_dashboard_view(request):
                     dataDeletionModel.objects.create(
                         user=request.user,
                         reason=deletion_reason,
-                        additional_info=f"Reason = {deletion_reason}\nMessage:\n{additional_details}"
+                        additional_info=additional_details
                     )
                     messages.success(request, "Your Response has been registered! Check your email.")
                 except Exception as e:

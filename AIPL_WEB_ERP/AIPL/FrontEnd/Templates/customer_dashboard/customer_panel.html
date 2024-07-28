@@ -203,7 +203,6 @@
         </div>
     </header>
 {% include 'base/alert_msg.html' %}
-<script src="{% static 'js/msgbox_configure.js' %}"></script>
     <main>
         <div class="container">
             <h2>Our Infographics</h2>
@@ -231,32 +230,45 @@
             </form>
         </div>
 
-        <form id="meetingForm">
+        <form id="meetingForm" method="post" action="{% url 'dashboard' %}">
+            {% csrf_token %}
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
-
+            <input type="date" id="date" name="date" required min="{{ today }}">
+        
             <label for="time">Time:</label>
             <input type="time" id="time" name="time" required>
-
+        
             <label for="timezone">Time Zone:</label>
-            <input type="text" id="timezone" name="timezone" required>
-
+            <select id="timezone" name="timezone" required>
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">America/New_York</option>
+                <option value="Europe/London">Europe/London</option>
+                <option value="Asia/Tokyo">Asia/Tokyo</option>
+                <!-- Add more time zones as needed -->
+            </select>
+        
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" required>
-
+        
             <label for="reason">Reason:</label>
             <select id="reason" name="reason" required>
                 <option value="Consultation">Consultation</option>
                 <option value="Support">Support</option>
                 <option value="Demo">Demo</option>
+                <option value="Product Demonstration">Product Demonstration</option>
+                <option value="Business Development">Business Development</option>
+                <option value="Strategic Planning">Strategic Planning</option>
+                <option value="Project Kickoff">Project Kickoff</option>
                 <option value="Other">Other</option>
             </select>
-
+        
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
-
+        
             <button type="submit">Book Meeting with Agratas</button>
         </form>
+        
+        <script src="js/datetime_validator.js"></script>
     </main>
 
     {% include "base/footer.html" %}
