@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-import pytz
+# import pytz
 
 # Create your models here.
 
@@ -55,3 +55,26 @@ class Meeting(models.Model):
         ordering = ['date', 'time']
         verbose_name = "Meeting Schedule"
         verbose_name_plural = "Meeting Schedule"
+
+
+'''
+WE ARE USING SAME MODEL FOR CUSTOMER VIEW,DEVELOPER VIEW (Global)
+FOR SENDING RESPONSE AS A NOTIFICATION
+[.] FUTURE UPDATE (PENDING): Integrate the model with smtp protocol and send the notification
+                                on Email of customer/staff.
+'''
+# model for sending the notification to the customer/staff
+class Notification(models.Model):
+    sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE)
+    recipient = models.ManyToManyField(User, related_name='received_notifications',)
+    message = models.TextField()
+    meeting_link = models.URLField(blank=True, null=True)  # Optional field
+    timestamp = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False) # we can use a cross/cancel button with GET method to set is_read = False | (hide or delete the notification)
+
+    def __str__(self):
+        recipient_names = ", ".join(user.username for user in self.recipient.all())
+        return f'Notification from {self.sender.username} to {recipient_names} at {self.timestamp}'
+
+    def get_recipient_names(self):
+        return ", ".join(user.username for user in self.recipient.all())

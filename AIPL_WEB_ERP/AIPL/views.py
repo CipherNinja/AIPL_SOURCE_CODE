@@ -169,9 +169,14 @@ def customer_dashboard_view(request):
                     messages.error(request, "An error occurred while processing your request. Please try again later.")
                     # Optionally log the exception
                     print(f"Error processing Meeting request: {e}")
+        try:
+            notifications = Notification.objects.filter(recipient=request.user)
+        except Notification.DoesNotExist as e:
+            pass
         return render(
             request,
-            "customer_dashboard/customer_panel.html"
+            "customer_dashboard/customer_panel.html",
+            {'notifications': notifications},
         )
     else:
         messages.error(request, "You are not authorized to see this content.")
