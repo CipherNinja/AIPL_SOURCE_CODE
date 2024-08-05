@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <nav>
   <div class="logo">
-    <img src="{% static 'img/agratas-main-logo.png' %}" alt="logo" />
+    <a href="{% url 'home' %}"><img src="{% static 'img/agratas-main-logo.png' %}" alt="logo" /></a>
   </div>
   <div class="option">
     <ul class="nav-links">
@@ -161,4 +161,5 @@
     <div class="line line-3"></div>
   </div>
 </nav>
+{% include 'base/alert_msg.html' %}
 <script src="{% static 'js/nav.js' %}"></script>
