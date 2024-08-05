@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/alert_msg.css' %}">
+{% if messages %}
+{% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="success">{{ message }}</div>
+        {% elif message.tags == 'error' %}
+            <div class="error">{{ message }}</div>
+        {% endif %}
+{% endfor %}
+{% endif %}
+<script src="{% static 'js/msgbox_configure.js' %}"></script>

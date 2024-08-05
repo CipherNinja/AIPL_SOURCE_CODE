@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #1e1e1e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header .right-section {
+            display: flex;
+            align-items: center;
+        }
+
+        header .notification-button, .logout-button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        header .notification-button {
+            background-color: #ffc107;
+        }
+
+        header .notification-button i, .logout-button i {
+            margin-right: 8px;
+        }
+
+        
+    </style>
+</head>
+{% load static %}
+<body>
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    <header>
+        <h1>Customer Window</h1>
+        <div class="right-section">
+            <button class="notification-button"><i class="fas fa-bell"></i> Notifications</button>
+            <form class="logout" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </form>
+            <script src="{% static 'js/logout_config.js' %}"></script>
+        </div>
+    </header>
+{% include 'base/alert_msg.html' %}
+<!-- Called customer support panel-->
+ {% include 'customer_dashboard/support_panel.html' %}
+<!-- Called Notification Panel -->
+    {% include "customer_dashboard/notification_panel.html" %}
+<!-- Called Footer from base directory -->
+    {% include "base/footer.html" %}
+
+</body>
+</html>

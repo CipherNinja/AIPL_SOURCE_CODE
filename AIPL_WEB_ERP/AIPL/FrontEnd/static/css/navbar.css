@@ -1,5 +1,3 @@
-/* Base styles */
-
 nav {
   background-color: #000;
   display: flex;
@@ -18,9 +16,9 @@ nav {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Example CSS */
 nav.scrolled {
   background-color: #212529;
-  transition: 0.3s ease;
 }
 
 .logo {
@@ -34,6 +32,9 @@ nav.scrolled {
 .logo img {
   height: 10vh;
   width: 15vw;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Option css */
@@ -92,8 +93,9 @@ nav.scrolled {
   padding: 0% 50% 95% 50%;
   z-index: 1;
   width: 100vw;
-  top: 55px;
-  transition: top 0.9s ease-in-out;
+  top: 66px;
+  transition: top 0.9s ease-in;
+  left: 0;
 }
 
 .submenu #active:hover {
@@ -103,6 +105,8 @@ nav.scrolled {
 
 .submenu.show {
   display: block;
+  left: 0;
+  width: 100vw;
 }
 
 .submenu li {
@@ -319,6 +323,7 @@ nav.scrolled {
     height: 100%;
     background-color: #000;
     transition: right 0.8s ease-in-out;
+    overflow-y: auto;
   }
 
   .option.scrolled {
@@ -351,6 +356,11 @@ nav.scrolled {
     margin-left: auto;
   }
 
+  .arrow.down {
+    transform: rotate(180deg);
+    transition: 0.1s ease;
+  }
+
   .searchbar {
     margin: 10px 20px;
   }
@@ -361,11 +371,15 @@ nav.scrolled {
     top: 50%;
     bottom: 50%;
   }
-
   .submenu {
     left: 0;
     position: relative;
     width: auto;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
   }
 
   .submenu ul {
@@ -380,32 +394,53 @@ nav.scrolled {
     width: 100%;
   }
 
-  .submenu a {
-    width: 100%;
+  .submenu #active {
+    width: auto;
     padding-left: 0;
+    margin-left: 0;
   }
 
   .submenu.show {
-    height: auto;
-    width: fit-content;
-    left: 0;
+    max-height: auto;
+    opacity: 1;
     top: 0;
-    padding-right: 0;
-    /* max-height: 60vh;
-    overflow-y: auto; */
+    border-bottom: 1px solid white;
+    width: fit-content;
+    overflow-y: auto;
+    transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
   }
+
   .inner-submenu {
-    display: none; /* Ensure inner submenus are not visible by default */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #212529;
+    width: auto;
+    z-index: 100;
+    overflow-y: auto;
+    max-height: fit-content;
   }
 
   .inner-submenu.show {
-    display: block; /* Display inner submenu when class 'show' is added */
+    display: block;
+  }
+
+  .submenu > li {
+    position: relative;
   }
   #inner-submenu-one,
   #inner-submenu-two,
   #inner-submenu-three,
   #inner-submenu-four {
     margin-top: 0;
+  }
+
+  .icon {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 16px;
   }
 }
 
