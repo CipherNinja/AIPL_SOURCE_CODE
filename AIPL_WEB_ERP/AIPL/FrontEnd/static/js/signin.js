@@ -7,10 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(event) {
             // Username validation
             var username = usernameInput.value;
-            if (username.length <= 7 || /[^a-zA-Z0-9]/.test(username)) {
-                alert("Username must be at least 8 characters long and contain only alphanumeric characters.");
-                event.preventDefault();
-                return;
+            if (username.includes('@')) {
+                if (!validateEmail(username)) {
+                    alert("Please enter a valid email address.");
+                    event.preventDefault();
+                    return;
+                }
+            } else {
+                if (username.length <= 7 || /[^a-zA-Z0-9]/.test(username)) {
+                    alert("Username must be at least 8 characters long and contain only alphanumeric characters.");
+                    event.preventDefault();
+                    return;
+                }
             }
 
             // Password validation
@@ -29,6 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("One or more input fields are missing from the form.");
     }
 });
+
+// Function to validate email format
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
 
 // Function to sanitize input to prevent XSS
 function sanitizeInput(input) {
