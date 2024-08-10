@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.utils import timezone
 from datetime import timedelta, datetime
 from zoneinfo import ZoneInfo
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+import re
+
 from .models import *
 # Create your views here.
 
@@ -36,47 +40,68 @@ def signin_page_view(request):
         {}
     )
 
+def validate_username(username):
+    # Allow only alphanumeric characters and underscores
+    if not re.match(r'^[\w]+$', username):
+        raise ValidationError(_('Username contains invalid characters'))
+
+def validate_password(password):
+    # Minimum 8 characters, at least 1 letter and 1 number
+    if len(password) < 8:
+        raise ValidationError(_('Password must be at least 8 characters long'))
+    if not re.search(r'[A-Za-z]', password) or not re.search(r'[0-9]', password):
+        raise ValidationError(_('Password must contain both letters and numbers'))
+
 def signup_page_view(request):
     if request.method == "POST":
-        username = request.POST["set_username"]
-        email_id = request.POST["set_email"] 
-        set_password = request.POST["set_password"]
-        cnf_password = request.POST["cnf_password"]
-        try:
-            if len(username) < 6:
-                messages.success(request,f"Username is too short")
-                redirect("signup")
-            if set_password != cnf_password:
-                messages.success(request,"Create password and Confirm password must be same")
-                redirect("signup")
-            elif len(set_password)<8:
-                messages.success(request,"Password is too short try with minimum 8 characters")
-                redirect("signup")
-            # elif set_password.isalnum() == False:
-            #     messages.success(request,"Password must be Alpha Numeric")
-            #     redirect("signup")
-            elif User.objects.filter(username=username):
-                messages.success(request,f"{username} is not available as username")
-                redirect("signup")
-            elif User.objects.filter(email=email_id):
-                messages.success(request,f"A username already exist on your email")
-                redirect("signup")
-            else:
-                newuser = User.objects.create_user(username=username,email=email_id,password=cnf_password)
-                newuser.save()
-                myuser = authenticate(request,username=username,password=set_password)
-                login(request,myuser)
-                messages.success(request,f"Welcome {myuser.get_username()}, Thanks for joining us 🙏")
-                return redirect("dashboard")
-        except Exception as e:
-            print(e)
+        username = request.POST.get("set_username")
+        email_id = request.POST.get("set_email")
+        set_password = request.POST.get("set_password")
+        cnf_password = request.POST.get("cnf_password")
         
-        pass
-    return render(
-        request,
-        "Signup_page/signup.html",
-        {}
-    )
+        try:
+            # Validate username
+            validate_username(username)
+            
+            # Validate password
+            if set_password != cnf_password:
+                messages.error(request, "Create password and Confirm password must be the same")
+                return redirect("signup")
+            
+            validate_password(set_password)
+            
+            # Check if username or email already exists
+            if User.objects.filter(username=username).exists():
+                messages.error(request, f"Username '{username}' is not available")
+                return redirect("signup")
+            
+            if User.objects.filter(email=email_id).exists():
+                messages.error(request, f"An account with this email already exists")
+                return redirect("signup")
+            
+            # Create new user
+            newuser = User.objects.create_user(username=username, email=email_id, password=set_password)
+            newuser.save()
+            
+            # Authenticate and log in user
+            myuser = authenticate(request, username=username, password=set_password)
+            if myuser is not None:
+                login(request, myuser)
+                messages.success(request, f"Welcome {myuser.get_username()}, Thanks for joining us 🙏")
+                return redirect("dashboard")
+            else:
+                messages.error(request, "Authentication failed")
+                return redirect("signup")
+        
+        except ValidationError as e:
+            messages.error(request, str(e))
+            return redirect("signup")
+        except Exception as e:
+            messages.error(request, "An error occurred. Please try again later.")
+            print(e)
+            return redirect("signup")
+    
+    return render(request, "Signup_page/signup.html", {})
 
 def logout_user(request):
     logout(request)
