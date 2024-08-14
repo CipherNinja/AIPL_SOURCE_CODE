@@ -7,10 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (nameInput && emailInput && passwordInput && confirmPasswordInput) {
         form.addEventListener('submit', function(event) {
-            // Name validation
+            // Name validation using regex
             var name = nameInput.value;
-            if (name.length <= 7 || /[^a-zA-Z0-9]/.test(name)) {
+            var nameRegex = /^[a-zA-Z0-9]{8,}$/;
+            if (!nameRegex.test(name)) {
                 alert("Name must be greater than 7 characters and contain only alphanumeric characters.");
+                event.preventDefault();
+                return;
+            }
+
+            // Email validation using regex
+            var email = emailInput.value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
                 event.preventDefault();
                 return;
             }
@@ -97,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     passwordMessageItems[3].classList.add("invalid"); 
                 } 
             }
-        }       else {
-                console.error("Password criteria message elements are missing.");
+        } else {
+            console.error("Password criteria message elements are missing.");
         }
     } else {
         console.error("One or more input fields are missing from the form.");

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/signupstyles.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/navbar_sign.css' %}"> -->
     <script src="{% static 'js/nav.js' %}" defer></script>
+    <script src="{% static 'js/signup.js' %}" defer></script>
 </head>
 <body>
     {% include 'base/navbar.html' %}
@@ -16,17 +17,18 @@
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
             <form action="#" method="post">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email or phone number" required>
-                <input type="password" name="password" placeholder="Password" required>
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Set Username" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="password" name="password" placeholder="Create Password" required>
                 <input type="password" name="confirm-password" placeholder="Confirm Password" required>
                 <button type="submit">Register</button>
                 <p> Already have an account? </p>
-                <button type="submit">Login</button>
+                <!-- <button type="submit">Login</button> -->
             </form>
         </div>
     </div>
-    {% include "base/side_arrester.html" %}
     <script src="{% static 'js/nav_configuration.js' %}"></script>
+    {% include "base/side_arrester.html" %}
 </body>
 </html>
