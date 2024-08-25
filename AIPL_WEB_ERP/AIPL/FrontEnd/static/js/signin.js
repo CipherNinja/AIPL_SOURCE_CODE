@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.querySelector("form"); // Assuming the form tag is added to your HTML
+    var form = document.querySelector("form");
     var usernameInput = document.getElementById("Username");
     var passwordInput = document.getElementById("Password");
 
     if (usernameInput && passwordInput) {
         form.addEventListener('submit', function(event) {
-            // Username validation
+            // Username validation using regex
             var username = usernameInput.value;
-            if (username.includes('@')) {
-                if (!validateEmail(username)) {
-                    alert("Please enter a valid email address.");
-                    event.preventDefault();
-                    return;
-                }
-            } else {
-                if (username.length <= 7 || /[^a-zA-Z0-9]/.test(username)) {
-                    alert("Username must be at least 8 characters long and contain only alphanumeric characters.");
-                    event.preventDefault();
-                    return;
-                }
+
+            // Regex to allow only alphanumeric characters and limit the length to 8-20 characters
+            var usernameRegex = /^[a-zA-Z0-9]{8,20}$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username must be between 8 to 20 characters long and contain only alphanumeric characters.");
+                event.preventDefault();
+                return;
             }
 
             // Password validation
