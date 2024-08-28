@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.db.models.signals import post_save 
+from django.dispatch import receiver
 # import pytz
 
 # Create your models here.
@@ -78,3 +81,44 @@ class Notification(models.Model):
 
     def get_recipient_names(self):
         return ", ".join(user.username for user in self.recipient.all())
+
+
+# We dont collect the other data only email for sending bussiness email
+# this is the only Optimum way without creating the user
+class subscribers(models.Model):
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+class newsArticle(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    # Automatically sends the message if any news article is saved
+    def send_news_update(self):
+        subscriber = subscribers.objects.all()  # Fetch all subscribers
+        print(subscribers)
+        recipient_list = [subscriber.email for subscriber in subscriber]  # Corrected variable name
+
+        subject = f"News Update: {self.title}"
+        message = f"{self.title}\n\n{self.content}"
+
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email="droppersconnect@gmail.com",
+            recipient_list=recipient_list,
+            fail_silently=False,
+        )
+
+# Signal to send email after a news article is saved
+@receiver(post_save, sender=newsArticle)
+def send_mail_on_article_save(sender, instance, created, **kwargs):
+    if created:  # Only send email when a new article is created
+        instance.send_news_update()

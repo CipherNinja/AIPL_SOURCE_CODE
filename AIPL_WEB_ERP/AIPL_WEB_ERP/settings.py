@@ -68,6 +68,15 @@ TEMPLATES = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "droppersconnect@gmail.com"
+EMAIL_HOST_PASSWORD = "blna yvhl aljg oolj"
+DEFAULT_HOST_EMAIL = "droppersconnect@gmail.com"
+
+
 WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
 
 

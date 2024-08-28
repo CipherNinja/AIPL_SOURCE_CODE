@@ -206,3 +206,25 @@ def customer_dashboard_view(request):
     else:
         messages.error(request, "You are not authorized to see this content.")
         return redirect("home")
+
+def subscribe_by_footer(request):
+    if request.method == "POST":
+        try:
+            email_id = request.POST.get("subscribe")
+            if subscribers.objects.filter(email=email_id).exists():
+                messages.error(request,"Email already exists !")
+                return redirect("home")
+            else:
+                subscribers.objects.create(email=email_id).save()
+                messages.success(request,"You have Subscribed Agratas Infotech, Successfully!")
+                return redirect("home")
+        except subscribers.DoesNotExist as e:
+            pass
+    return redirect("home")
+
+def admin_controller_view(request):
+    return render(
+        request,
+        "Admin_Control/admin_main_page.html",
+        {}
+    )

@@ -20,4 +20,6 @@ class NotificationAdmin(admin.ModelAdmin):
         return obj.get_recipient_names()
     get_recipient_names.short_description = 'Recipients'
 
+admin.site.register(subscribers)
+admin.site.register(newsArticle)
 admin.site.register(Notification, NotificationAdmin)
