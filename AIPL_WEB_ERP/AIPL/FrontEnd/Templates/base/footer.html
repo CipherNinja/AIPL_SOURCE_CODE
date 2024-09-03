@@ -45,7 +45,17 @@
           <li><a href="#">Internet of Things</a></li>
         </ul>
         <ul class="box input-box">
-            <form action="{% url 'subscribe' %}" method="post">
+            <form 
+            style="
+              background: transparent;
+              padding: 0px;
+              border-radius: 0px;
+              box-shadow: 0 0 0px transparent;
+              width: auto;
+              max-width: unset;
+              box-sizing: unset;
+            "
+            class="footer-form" action="{% url 'subscribe' %}" method="post">
               {% csrf_token %}
               <li class="link_name">Subscribe</li>
               <li><input type="email" name="subscribe" placeholder="Enter your email"></li>

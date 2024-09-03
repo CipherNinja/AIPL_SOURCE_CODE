@@ -7,6 +7,7 @@ from datetime import timedelta, datetime
 from zoneinfo import ZoneInfo
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponseRedirect
 import re
 
 from .models import *
@@ -212,18 +213,18 @@ def subscribe_by_footer(request):
         try:
             email_id = request.POST.get("subscribe")
             if subscribers.objects.filter(email=email_id).exists():
-                messages.error(request,"Email already exists !")
-                return redirect("home")
+                messages.error(request, "Email already exists!")
             else:
                 subscribers.objects.create(email=email_id).save()
-                messages.success(request,"You have Subscribed Agratas Infotech, Successfully!")
-                return redirect("home")
+                messages.success(request, "You have Subscribed to Agratas Infotech, Successfully!")
         except subscribers.DoesNotExist as e:
             pass
-    return redirect("home")
+        # Redirect to the current page
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def admin_controller_view(request):
-    return render(
+    return render( 
         request,
         "Admin_Control/admin_main_page.html",
         {}
