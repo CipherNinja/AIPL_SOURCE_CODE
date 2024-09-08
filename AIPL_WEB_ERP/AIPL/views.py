@@ -9,7 +9,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponseRedirect
 import re
-
 from .models import *
 # Create your views here.
 
@@ -29,8 +28,12 @@ def signin_page_view(request):
         if user is not None:
             uname = user.get_username()
             login(request,user)
-            messages.success(request,f" Welcome back {uname}")
-            return redirect('dashboard')
+            # Check if the user has staff status
+            if user.is_staff:
+                return redirect("developer")
+            else:
+                messages.success(request,f" Welcome back {uname}")
+                return redirect('developer')
         else:
             messages.error(request," Wrong Credentials !")
             return redirect('signin')
@@ -59,16 +62,20 @@ def signup_page_view(request):
         email_id = request.POST.get("set_email")
         set_password = request.POST.get("set_password")
         cnf_password = request.POST.get("cnf_password")
-        
+
         try:
             # Validate username
-            validate_username(username)
-            
-            # Validate password
+            if not isinstance(username, str):
+                raise ValidationError("Invalid username format.")
+            if not isinstance(email_id, str):
+                raise ValidationError("Invalid email format.")
+
+            # Validate password match
             if set_password != cnf_password:
                 messages.error(request, "Create password and Confirm password must be the same")
                 return redirect("signup")
             
+            # Validate password (Django's validate_password will handle string checks)
             validate_password(set_password)
             
             # Check if username or email already exists
@@ -99,7 +106,7 @@ def signup_page_view(request):
             return redirect("signup")
         except Exception as e:
             messages.error(request, "An error occurred. Please try again later.")
-            print(e)
+            print(e)  # This will help you track the exact exception
             return redirect("signup")
     
     return render(request, "Signup_page/signup.html", {})
@@ -223,9 +230,29 @@ def subscribe_by_footer(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+def news_and_article_page_controller(request):
+    return render(
+        request,
+        "News&Articles/common_page.html"
+    )
+
 def admin_controller_view(request):
     return render( 
         request,
         "Admin_Control/admin_main_page.html",
         {}
     )
+
+def developers_dashboard_view(request):
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            return render(
+                request,
+                "developer_dashboard/Dev_dashboard.html"
+            )
+        else:
+            messages.error(request, "You do not have the necessary permissions to access this page.")
+            return redirect('home')  # Redirect to a different page if the user is not a staff member
+    else:
+        messages.error(request, "You must be logged in to access this page.")
+        return redirect('signin')  # Redirect to signin page if the user is not authenticated

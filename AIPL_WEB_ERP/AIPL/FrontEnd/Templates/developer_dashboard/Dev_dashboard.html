@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Dev_dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'img/images/logo.jpg' %}" alt="Agratas Infotech">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><img src="{% static 'img/images/ControlPanel.png' %}" alt="Dashboard"> &ensp; Dashboard</a></li>
+                    <li><a href="#"><img src="{% static 'img/images/Conference.png' %}" alt="Leaderboard"> &ensp; Leader Board</a></li>
+                    <li><a href="#"><img src="{% static 'img/images/People.png' %}" alt="Group"> &ensp; Groups</a></li>
+                    <li><a href="#"><img src="{% static 'img/images/EventAccepted.png' %}" alt="Events"> &ensp; Events</a></li>
+                    <li><a href="#"><img src="{% static 'img/images/ChatRoom.png' %}" alt="Messages"> &ensp; Messages <span class="notification-dot"></span></a></li>
+                    <li><a href="#"><img src="{% static 'img/images/Phone.png' %}" alt="Call Meeting"> &ensp; Call Meeting</a></li>
+                    <li><a href="#" id="toggle-mode"><img src="{% static 'img/images/LightOn.png' %}" alt="Light Mode"> &ensp; Light Mode</a></li>
+                </ul>
+            </nav>
+            <div class="upgrade-section">
+                <p>Upgrade to PRO for more features</p>
+                <button>Upgrade</button>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">    
+         
+            <!-- Navbar -->
+            <header>
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <input type="text" placeholder="&#xF002; Search">
+                </div>
+                <div class="header-right">
+                    <i class="fas fa-bell"></i>
+                    <div class="user-profile">
+                        <span>{{user.first_name}}</span>
+                        <img src="{% static 'img/images/Default_M.png' %}" alt="User Icon">
+                    </div>
+                </div>
+            </header>
+        
+            <!-- Leaderboard Section -->
+            <section class="content-section" id="leaderboard">
+                <h2>Leader Board</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>    </th>
+                            <th>Name</th>
+                            <th>Progress</th>
+                            <th>Points</th>
+                            <th>Target Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar"></td>
+                            <td> <div id="name">Manish Kumar</div>Professional</td>
+                            <td> 50% Pending<div class="progress-bar"><span style="width: 50%;"></span></div></td>
+                            <td>1890 Points</td>
+                            <td>Until 9 July, 2024</td>
+                        </tr>
+                        <tr>
+                            <img src="{% static 'img/images/Default_F.png' %}" alt="Avatar 1" class="avatar">
+                            <td><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar"></td>
+                            <td><div id="name">Manish Kumar</div>Professional</td>
+                            <td> 69% Pending<div class="progress-bar"><span style="width: 69%;"></span></div></td>
+                            <td>2080 Points</td>
+                            <td>Until 9 July, 2024</td>
+                        </tr>
+                        <tr>
+                            <img src="{% static 'img/images/Default_F.png' %}" alt="Avatar 1" class="avatar">
+                            <td><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar"></td>
+                            <td> <div id="name">Manish Kumar</div>Professional</td>
+                            <td> 85% Pending<div class="progress-bar"><span style="width: 85%;"></span> </div></td>
+                            <td>2840 Points</td>
+                            <td>Until 9 July, 2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="content-section" id="stats">
+                <div class="box">Rank: 1475</div>
+                <div class="box">Points Earned: 3k</div>
+                <div class="box">Prize Pool: 40k INR</div>
+            </section>
+
+            <!-- Task and Project Sections -->
+            <div class="task-project-sections">
+                <!-- First Row of Task Boxes -->
+                <div class="task-row">
+                    <div class="task-box" id>
+                        <h3>Active Task:</h3>
+                        <p >Completed <span class="priority">• Medium Priority</span></p><hr>
+                        <div class="avatar-group">
+                            <img src="{% static 'img/images/Default_F.png' %}" alt="Avatar 1" class="avatar">
+                            <img src="{% static 'img/images/Default_M.png' %}" alt="Avatar 2" class="avatar">
+                            <img src="{% static 'img/images/Default_F.png' %}" alt="Avatar 3" class="avatar">
+                            <img src="{% static 'img/images/Default_M.png' %}" alt="Avatar 4" class="avatar">
+                        </div>
+                        <p>Task Done: 35/45</p>
+                        <div class="task-progress-bar"><span style="width: 85%;"></span> </div>
+                        <p><div class="due-date">Due Date: 25 Aug</div></p>
+                    </div>
+                    <div class="task-box" id="deadlines">
+                        <h3>Upcoming Deadlines:</h3>
+                        <ul>
+                            
+                            <li class="task-item">
+                                <img src="{% static 'img/images/Start-1.png' %}" alt="Start-1">
+                                <span class="task-name">Create Wireframes</span>
+                                <span class="task-time">30:21</span>
+                            </li>
+                            <li class="task-item">
+                                <img src="{% static 'img/images/Start-1.png' %}" alt="Start-1">
+                                <span class="task-name">Logo Design</span>
+                                <span class="task-time">20:01</span>
+                            </li>
+                            <li class="task-item">
+                                <img src="{% static 'img/images/Start.png' %}" alt="Start">
+                                <span class="task-name">Dashboard Design</span>
+                                <span class="task-time">40:51</span>
+                            </li>
+                            <li class="task-item">
+                                <img src="{% static 'img/images/Start.png' %}" alt="Start">
+                                <span class="task-name">Leaderboard Design</span>
+                                <span class="task-time">40:51</span>
+                            </li>
+                            <li class="task-item">
+                                <img src="{% static 'img/images/Start.png' %}" alt="Start">
+                                <span class="task-name">Landing Page</span>
+                                <span class="task-time">40:51</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="task-box">
+                        <h3>Project Name:</h3>
+                        <p>In Progress • High Priority</p><hr>
+                        <div class="avatar-group">
+                            <img src="{% static 'img/images/Default_M.png' %}" alt="Avatar 1" class="avatar">
+                            <img src="{% static 'img/images/Default_M.png' %}" alt="Avatar 2" class="avatar">
+                            <img src="{% static 'img/images/Default_F.png' %}" alt="Avatar 3" class="avatar">
+                            <img src="{% static 'img/images/Default_M.png' %}" alt="Avatar 4" class="avatar">
+                        </div>
+                        <p>Task Done: 35/45</p>
+                        <div class="task-progress-bar"><span style="width: 85%;"></span> </div>
+                        <p><div class="due-date">Due Date: 25 Aug</div></p>
+                    </div>
+                </div>
+
+                <!-- Second Row of Task Boxes -->
+                <div class="task-row">
+                    <div class="task-box" id="available">
+                        <h3>Available Task:</h3>
+                        <ul>
+                            <div class="task-item">
+                            <li><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar">
+                                <span class="task-name">Create Leaderboard</span>
+                            </li>
+                            </div>
+                            <div class="task-item">
+                            <li><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar">
+                                <span class="task-name">Website Footer</span>
+                            </li>
+                            </div>
+                            <div class="task-item">
+                            <li><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar">
+                                <span class="task-name">Redesign Nav bar</span>
+                            </li>
+                            </div>
+                            <div class="task-item">
+                            <li><img src="{% static 'img/images/Default_M.png' %}" alt="Manish Kumar" class="avatar">
+                                <span class="task-name">Landing page</span>
+                            </li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="task-box" id="task">
+                        <h3>Recent Task:</h3>
+                        <ul>
+                            <li><img src="{% static 'img/images/FullStop.png' %}" alt="Green_dot">Task 1</li><hr>
+                            <li><img src="{% static 'img/images/FullStop.png' %}" alt="Green_dot">Task 2</li><hr>
+                            <li><img src="{% static 'img/images/FilledCircle.png' %}" alt="Empty_dot">Task 3</li><hr>
+                            <li><img src="{% static 'img/images/FilledCircle.png' %}" alt="Empty_dot">Task 4</li><hr>
+                            <li><img src="{% static 'img/images/FilledCircle.png' %}" alt="Empty_dot">Task 5</li><hr>
+                        </ul>
+                    </div>
+                    <div class="task-box">
+                        <h3>Performance:</h3>
+                        <div class="performance-metrics">
+                            <div>Task Completed: 50 Days</div>
+                            <div class="vl"></div>
+                            <div>Average Completion time: 2 Days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-content">
+            <!-- Recent Activity -->
+            <section class="content-section" id="recent-activity">
+                <h2>Recent Activity</h2>
+                <nav>
+                <ul>
+                     <li>
+                        <img src="{% static 'img/images/Moleskine.png' %}" alt="Submission">&ensp;
+                        <div class="activity-info">
+                        <p class="title">Submission Program</p>
+                        <p class="date">04 July 2024, 11.30 Am</p>
+                        </div>
+                     </li>
+                     <li>
+                        <img src="{% static 'img/images/Checkmark.png' %}" alt="Outcome">&ensp;
+                        <div class="activity-info">
+                          <p class="title">Outcome Administration</p>
+                          <p class="date">06 July 2024, 11.30 Am</p>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="{% static 'img/images/HealthBook.png' %}" alt="Plane">&ensp;
+                        <div class="activity-info">
+                          <p class="title">Plane Discussion</p>
+                          <p class="date">10 July 2024, 11.30 Am</p>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="{% static 'img/images/Moleskine.png' %}" alt="Submission">&ensp;
+                        <div class="activity-info">
+                          <p class="title">Submission Program</p>
+                          <p class="date">04 July 2024, 11.30 Am</p>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="{% static 'img/images/Moleskine.png' %}" alt="Submission">&ensp;
+                        <div class="activity-info">
+                          <p class="title">Submission Program</p>
+                          <p class="date">04 July 2024, 11.30 Am</p>
+                        </div>
+                      </li>
+
+                    <!--<li><img src="images/Moleskine.png" alt="Submission">&ensp;<p> <b>Submission Program</b> <br> 04 July 2024, 11:30 AM</li></p></li>
+                    <li><img src="images/Checkmark.png" alt="Outcome">&ensp;<p><b> Outcome Administration</b><br>  06 July 2024, 11:30 AM</p></li>
+                    <li><img src="images/Health Book.png" alt="Pplane">&ensp; <p><b>Plane Discussion</b><br> 10 July 2024, 11:30 AM</p></li>
+                    <li><img src="images/Moleskine.png" alt="Submission">&ensp; <p><b>Submission Program</b><br> 04 July 2024, 11:30 AM</p></li>-->
+                </ul>
+            </nav>
+            </section>
+
+            <!-- Team Section -->
+            <section class="content-section" id="team">
+                <h2>Team</h2>
+                <ul>
+                    <li><img src="{% static 'img/images/Default_F.png' %}" alt="Neha Tomar"> Neha Tomar - Frontend Developer</li>
+                    <li><img src="{% static 'img/images/Default_M.png' %}" alt="Shivam Kumar"> Shivam Kumar - Backend Developer</li>
+                    <li><img src="{% static 'img/images/Default_F.png' %}" alt="Preeti Gupta"> Preeti Gupta - Backend Developer</li>
+                    <li><img src="{% static 'img/images/Default_M.png' %}" alt="Aakash Kumar"> Aakash Kumar - Backend Developer</li>
+                    <li><img src="{% static 'img/images/Default_M.png' %}" alt="Manish"> Manish - Backend Developer</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="{% static 'js/Developer_Dashboard/dashboard.js' %}"></script>
+</body>
+</html>
