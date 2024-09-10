@@ -230,11 +230,18 @@ def subscribe_by_footer(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-def news_and_article_page_controller(request):
-    return render(
-        request,
-        "News&Articles/common_page.html"
-    )
+def news_and_article_page_controller(request,page_name):
+    
+    __PAGES__ = {
+        'artificialintelligence': "ArtificialIntelIigence.html",
+        # Add more pages here
+    }
+    __link__ = __PAGES__.get(page_name, "common_page.html")
+    
+    # Ensure the correct template path
+    return render(request, f"News&Articles/{__link__}")
+
+
 
 def admin_controller_view(request):
     return render( 

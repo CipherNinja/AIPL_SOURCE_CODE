@@ -33,13 +33,13 @@
         <ul class="box">
           <li class="link_name">Opportunities</li>
           <li><a href="#">ID Verification</a></li>
-          <li><a href="{% url 'articles' %}">Apply for Jobs</a></li>
-          <li><a href="{% url 'articles' %}">Explore Hackathons</a></li>
+          <li><a href="{% url 'articles' '#' %}">Apply for Jobs</a></li>
+          <li><a href="{% url 'articles' '#' %}">Explore Hackathons</a></li>
           <li><a href="#">Our R&D Team</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Specialized</li>
-          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="{% url 'articles' 'artificialintelligence' %}">Artificial Intelligence</a></li>
           <li><a href="#">Machine Learning</a></li>
           <li><a href="#">Digital Marketing</a></li>
           <li><a href="#">Internet of Things</a></li>
