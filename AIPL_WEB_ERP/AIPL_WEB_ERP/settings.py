@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os.path  
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +27,7 @@ SECRET_KEY = 'django-insecure-rjgjg^0p_3u9coi!fyvanvzf%wp-vymu)945^a&knd6lu#n1=)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*","erp.agratasinfotech.com"]
-
+ALLOWED_HOSTS = ["*", "agratasinfotech.com"]
 
 # Application definition
 
@@ -37,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AIPL'
+    'AIPL',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -100,6 +102,38 @@ DATABASES = {
 # 		'PORT':'3306',
 # 	}
 # }
+import os
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',  # Logs only error and above level messages
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django_error.log'),  # Log file path
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',  # Capture only errors and critical logs
+            'propagate': True,
+        },
+    },
+}
 
 
 # Password validation
@@ -133,15 +167,19 @@ USE_I18N = True
 USE_TZ = True
 
 
-import os.path  
-import sys
-
-PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# production setting to handle the staticfiles
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'AIPL' / 'FrontEnd' / 'static',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 

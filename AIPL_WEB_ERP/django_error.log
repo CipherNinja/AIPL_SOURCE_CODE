@@ -1,0 +1,493 @@
+ERROR 2024-09-11 11:51:38,969 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 17, in home_page_view
+    return render(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 166, in url
+    return self._url(self.stored_name, name, force)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 145, in _url
+    hashed_name = hashed_name_func(*args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 465, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'css/home_page.css'
+ERROR 2024-09-11 11:51:38,972 basehttp "GET / HTTP/1.1" 500 145
+ERROR 2024-09-11 11:58:21,074 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 17, in home_page_view
+    return render(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 166, in url
+    return self._url(self.stored_name, name, force)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 145, in _url
+    hashed_name = hashed_name_func(*args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 465, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'css/home_page.css'
+ERROR 2024-09-11 11:58:21,082 basehttp "GET / HTTP/1.1" 500 145
+ERROR 2024-09-11 11:58:23,274 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 17, in home_page_view
+    return render(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 166, in url
+    return self._url(self.stored_name, name, force)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 145, in _url
+    hashed_name = hashed_name_func(*args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 465, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'css/home_page.css'
+ERROR 2024-09-11 11:58:23,277 basehttp "GET / HTTP/1.1" 500 145
+ERROR 2024-09-11 11:59:33,098 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 17, in home_page_view
+    return render(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 166, in url
+    return self._url(self.stored_name, name, force)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 145, in _url
+    hashed_name = hashed_name_func(*args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 465, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'static/css/home_page.css'
+ERROR 2024-09-11 11:59:33,098 basehttp "GET / HTTP/1.1" 500 145
+ERROR 2024-09-11 12:04:55,562 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 17, in home_page_view
+    return render(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 166, in url
+    return self._url(self.stored_name, name, force)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 145, in _url
+    hashed_name = hashed_name_func(*args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\staticfiles\storage.py", line 465, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'css/home_page.css'
+ERROR 2024-09-11 12:04:55,562 basehttp "GET / HTTP/1.1" 500 145
+ERROR 2024-09-12 15:57:09,832 log Internal Server Error: /admin/AIPL/addtaskdetail/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: AIPL_addtaskdetail.accepted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: AIPL_addtaskdetail.accepted_by_id
+ERROR 2024-09-12 15:57:09,834 basehttp "GET /admin/AIPL/addtaskdetail/ HTTP/1.1" 500 160813
+ERROR 2024-09-12 16:04:19,636 log Internal Server Error: /admin/AIPL/addtaskdetail/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+ERROR 2024-09-12 16:04:19,652 basehttp "POST /admin/AIPL/addtaskdetail/add/ HTTP/1.1" 500 195902
+ERROR 2024-09-12 16:04:52,576 log Internal Server Error: /admin/AIPL/addtaskdetail/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+ERROR 2024-09-12 16:04:52,592 basehttp "POST /admin/AIPL/addtaskdetail/add/ HTTP/1.1" 500 195902
+ERROR 2024-09-12 16:07:20,905 log Internal Server Error: /admin/AIPL/addtaskdetail/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: AIPL_addtaskdetail.accepted_by_id
+ERROR 2024-09-12 16:07:20,905 basehttp "POST /admin/AIPL/addtaskdetail/add/ HTTP/1.1" 500 195902
+ERROR 2024-09-12 19:44:42,930 log Internal Server Error: /articles/internetofthings/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 244, in news_and_article_page_controller
+    return render(request, f"News&Articles/{__link__}")
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: News&Articles/InternetOfThings
+ERROR 2024-09-12 19:44:42,930 basehttp "GET /articles/internetofthings/ HTTP/1.1" 500 85265
+ERROR 2024-09-12 19:44:59,143 log Internal Server Error: /articles/internetofthings/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\views.py", line 244, in news_and_article_page_controller
+    return render(request, f"News&Articles/{__link__}")
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 568, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 4: 'static'. Did you forget to register or load this tag?
+ERROR 2024-09-12 19:44:59,143 basehttp "GET /articles/internetofthings/ HTTP/1.1" 500 143056

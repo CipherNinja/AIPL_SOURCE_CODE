@@ -22,4 +22,14 @@ class NotificationAdmin(admin.ModelAdmin):
 
 admin.site.register(subscribers)
 admin.site.register(newsArticle)
+class DocumentModelAdmin(admin.ModelAdmin):
+    list_display = ["title","content"]
 admin.site.register(Notification, NotificationAdmin)
+
+@admin.register(developer_profile)
+class DocumentModelAdmin(admin.ModelAdmin):
+    list_display = ["id","developer","job_role","points","rank"]
+
+admin.site.register(AddTaskDetail)
+class TaskDetailsView(admin.ModelAdmin):
+    list_display = ["id","title","detail","created_at"]

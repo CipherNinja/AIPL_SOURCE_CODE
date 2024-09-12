@@ -234,6 +234,8 @@ def news_and_article_page_controller(request,page_name):
     
     __PAGES__ = {
         'artificialintelligence': "ArtificialIntelIigence.html",
+        'digitalmarketing': "DigitalMarketing.html",
+        'internetofthings': "InternetOfThings.html",
         # Add more pages here
     }
     __link__ = __PAGES__.get(page_name, "common_page.html")
@@ -242,13 +244,6 @@ def news_and_article_page_controller(request,page_name):
     return render(request, f"News&Articles/{__link__}")
 
 
-
-def admin_controller_view(request):
-    return render( 
-        request,
-        "Admin_Control/admin_main_page.html",
-        {}
-    )
 
 def developers_dashboard_view(request):
     if request.user.is_authenticated:

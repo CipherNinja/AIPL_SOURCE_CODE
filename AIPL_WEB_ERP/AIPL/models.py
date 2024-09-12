@@ -56,8 +56,8 @@ class Meeting(models.Model):
 
     class Meta:
         ordering = ['date', 'time']
-        verbose_name = "Meeting Schedule"
-        verbose_name_plural = "Meeting Schedule"
+        verbose_name = "Available Meeting"
+        verbose_name_plural = "Available Meeting"
 
 
 '''
@@ -81,6 +81,10 @@ class Notification(models.Model):
 
     def get_recipient_names(self):
         return ", ".join(user.username for user in self.recipient.all())
+    
+    class Meta:
+        verbose_name = "Notify/Update Sender 📧"
+        verbose_name_plural = "Notify/Update Sender 📧"
 
 
 # We dont collect the other data only email for sending bussiness email
@@ -91,6 +95,10 @@ class subscribers(models.Model):
 
     def __str__(self):
         return self.email
+    class Meta:
+        verbose_name = "View Subscriber's Email 👤"
+        verbose_name_plural = "View Subscriber's Email 👤"
+
 
 class newsArticle(models.Model):
     title = models.CharField(max_length=200)
@@ -116,9 +124,56 @@ class newsArticle(models.Model):
             recipient_list=recipient_list,
             fail_silently=False,
         )
+    class Meta:
+        verbose_name = "Email Sender (Limited to Subscribers) 📧"
+        verbose_name_plural = "Email Sender (Limited to Subscribers) 📧"
 
 # Signal to send email after a news article is saved
 @receiver(post_save, sender=newsArticle)
 def send_mail_on_article_save(sender, instance, created, **kwargs):
     if created:  # Only send email when a new article is created
         instance.send_news_update()
+
+
+class developer_profile(models.Model):
+    developer_role = [
+        ('Frontend Dev', "Frontend Dev"),
+        ('Backend Dev', "Backend Dev"),
+        ('DevOps Eng', "DevOps Eng"),
+        ('Fullstack Dev', "Fullstack Dev"),
+        ('AA Dev', "AA Dev"),
+        ('IOS Dev', "IOS Dev"),
+        ('Software Dev', "Software Dev"),
+        ("AI/ML Eng", "AI/ML Eng"),
+        ("Data Analyst", "Data Analyst"),
+        ("DB Admin", "DB Admin"),
+        ("Cloud Dev", "Cloud Dev"),
+        ("Blockchain Dev","Blockchain Dev"),
+        ("AR/VR Dev","AR/VR Dev"),
+        ("Test Automation","Test Automation"),
+    ]
+    developer = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name="Employee ID")
+    job_role = models.CharField(choices=developer_role,max_length=50)
+    points = models.IntegerField(default=0)
+    rank = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.developer.first_name} {self.developer.last_name} | {self.job_role}"
+    
+    class Meta:
+        verbose_name = "AIPL's Employee 🧑‍🔬"
+        verbose_name_plural = "AIPL's Employee 🧑‍🔬"
+
+class AddTaskDetail(models.Model):
+    title = models.CharField(max_length=80)
+    detail = models.TextField(max_length=800)
+    created_at = models.DateTimeField(auto_now=True)
+    accepted_by = models.OneToOneField(User,on_delete=models.CASCADE,default=1)
+
+
+    def __str__(self):
+        return f"{self.title}"
+    class Meta:
+        verbose_name = "Task Assign Tool 🧑‍🔬"
+        verbose_name_plural = "Task Assign Tool 🧑‍🔬"
+    

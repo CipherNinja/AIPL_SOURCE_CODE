@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #121212;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  font-family: monospace;
+  z-index: 0;
+}
+
+.hero video {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.hero-text {
+  position: absolute;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.hero-text.top-left {
+  top: 160px;
+  left: 30px;
+}
+
+.hero-text.center {
+  text-align: left;
+  z-index: 1;
+  left: 30px;
+  top: 40vh;
+}
+
+.hero-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-buttons .btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #c0392b;
+}
+
+.hero h2 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.content {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.content .feature-item {
+  display: inline-block;
+  width: 45%;
+  margin: 2.5%;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  color: #000;
+  position: relative;
+}
+
+.content .feature-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.content .feature-item .feature-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.content .feature-item:hover {
+  transform: translateY(-10px);
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}

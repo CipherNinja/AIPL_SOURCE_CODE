@@ -1,0 +1,90 @@
+/* MANUALLY CREATED CSS FILE FOR SIGNUP PAGE  */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("../img/signup.408435b71f7e.png");
+    background-size: cover;
+    background-attachment: fixed; /* Ensures the background stays fixed while content scrolls */
+    background-position: center; /* Centers the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Hides any overflow */
+}
+
+.container {
+    background: none;
+    padding-top: 80px;  /* Adjust according to the navbar height */
+    box-sizing: border-box;
+    height: calc(100vh - 80px);  /* Adjust according to the navbar height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-box {
+    background: none;
+    padding: 1em;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.welcome-box h1 {
+    margin-top: 1em;
+    margin-bottom: 0.5em; 
+    font-size: 2em;
+    color: white;
+    text-decoration: underline; 
+}
+
+.welcome-box p {
+    margin-bottom: 1em;
+    font-size: 1em;
+    color: white;
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+form button {
+    padding: 0.75em;
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+p {
+    margin-top: 25px;
+}
