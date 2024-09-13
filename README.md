@@ -114,9 +114,20 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 Special thanks to the dedicated team of developers who make this project possible:
 
 - Priyesh Pandey (Backend Developer)
-- Sandeep Singh (Ai Engineer)
-- Prashant Jha (Frontend Developer)
-- Arun Kumar (Data Analyst)
+- Manan Tyagi (Data Analyst)
+- Abhiroop Gosh (ERP Admin)
+- Prashant Dwivedi (Data Analyst)
+- Sandeep Singh (CEO & Ex- AI Engineer)
+- Prashant Jha (Frontend Developer Intern)
+- Vishal Soni (Frontend Developer Intern)
+- Bhavishya Chaturvedi (Frontend Developer Intern)
+- Bhavya Jethi (Frontend Developer Intern)
+- Abhishek Khatana (UI-UX Developer Intern)
+- S. A. Dhanuka (Devops Engg. Intern)
+- Mohak Verma (Content Writer | SEO)
+- Ankit Gupta (Content Writer | SEO)
+- Khusi Mishra (Content Writer | SEO)
+- Sahil Chaubey (SEM Manager)
 - ... and many more!
 
 ## Contact
