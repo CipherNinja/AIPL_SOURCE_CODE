@@ -5,14 +5,22 @@ Welcome to the Agratas Infotech Private Limited ERP project! This web-based ERP 
 
 ## Features
 
-- **AI-Powered Insights:** Gain actionable insights through advanced AI algorithms.
-- **User Management:** Efficiently manage users, roles, and permissions.
-- **Inventory Management:** Track and manage inventory levels, orders, sales, and deliveries.
-- **Financial Management:** Comprehensive financial management tools to handle accounting, billing, and payments.
-- **Customer Relationship Management (CRM):** Manage customer interactions, sales, and service.
-- **Human Resources:** Streamline HR processes including payroll, recruitment, and employee management.
-- **Reporting and Analytics:** Generate detailed reports and analytics to drive data-informed decisions.
-- **Customizable Dashboards:** Create and customize dashboards to fit your specific needs.
+- **AI-Powered Task Distribution:** HR, Business Analysts, and Admins can control task flow and visualize distribution via heatmaps, utilizing AI-powered dashboards.
+  
+- **AI-Generated Email Templates:** GenAI creates email templates for mass outreach. Easily manage and send CSV-based bulk emails to clients.
+
+- **Data Analytics for AI/ML Models:** Advanced Excel prompts allow Data Analysts to efficiently handle data, apply formulas, and query databases. Predict product completion, measure workforce performance, and analyze team productivity.
+
+- **Automated Internship Enrollment System:** Simplifies handling of internship programs and event enrollments with automatic responses.
+
+- **Razor Pay Integration:** Provides seamless payment handling through Razor Pay integration.
+
+- **Virtual Try-On:** Allows customers to experience a virtual try-on of software solutions via the customer dashboard.
+
+- **AI-Driven Task Automation:** Automates task distribution for product managers by prioritizing and allocating tasks based on AI-driven insights.
+
+- **Customer Data Control:** Customers can delete their data and receive AI-generated confirmation emails within minutes, ensuring complete data removal.
+
 
 ## Getting Started
 
