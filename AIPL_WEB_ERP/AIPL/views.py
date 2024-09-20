@@ -276,9 +276,9 @@ def privacy_static_render(request):
         'base/privacy.html'
     )
 
-def refund_policy_static_render(request):
+def term_condition_static_render(request):
     __JSON__ = {}
     return render(
         request,
-        'base/Refund_policy.html'
+        'base/Terms_and_Conditions.html'
     )

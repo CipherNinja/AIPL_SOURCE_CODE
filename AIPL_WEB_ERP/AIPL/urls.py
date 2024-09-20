@@ -11,6 +11,6 @@ urlpatterns = [
     path("articles/<str:page_name>/", views.news_and_article_page_controller, name="articles"),
     path("AgratAsiaHack/",views.AgratasiaHackView,name="AgratAsiaHack24"),
     path("privacy/",views.privacy_static_render,name="privacy"),
-    path("refundpolicy/",views.refund_policy_static_render,name="refund"),
+    path("refundpolicy/",views.term_condition_static_render,name="t&c"),
 
 ]
