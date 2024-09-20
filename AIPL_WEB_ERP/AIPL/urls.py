@@ -9,5 +9,8 @@ urlpatterns = [
     path("panel/",views.customer_dashboard_view,name="dashboard"),
     path("developer/",views.developers_dashboard_view,name="developer"),
     path("articles/<str:page_name>/", views.news_and_article_page_controller, name="articles"),
+    path("AgratAsiaHack/",views.AgratasiaHackView,name="AgratAsiaHack24"),
+    path("privacy/",views.privacy_static_render,name="privacy"),
+    path("refundpolicy/",views.refund_policy_static_render,name="refund"),
 
 ]

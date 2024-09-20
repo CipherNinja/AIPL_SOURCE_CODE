@@ -33,7 +33,7 @@ def signin_page_view(request):
                 return redirect("developer")
             else:
                 messages.success(request,f" Welcome back {uname}")
-                return redirect('developer')
+                return redirect('dashboard')
         else:
             messages.error(request," Wrong Credentials !")
             return redirect('signin')
@@ -258,3 +258,27 @@ def developers_dashboard_view(request):
     else:
         messages.error(request, "You must be logged in to access this page.")
         return redirect('signin')  # Redirect to signin page if the user is not authenticated
+    
+
+def AgratasiaHackView(request):
+    __JSON__ = {}
+    return render(
+        request,
+        "Hackathon/AgratasiaHackForm.html",
+        __JSON__
+    )
+
+
+def privacy_static_render(request):
+    __JSON__ = {}
+    return render(
+        request,
+        'base/privacy.html'
+    )
+
+def refund_policy_static_render(request):
+    __JSON__ = {}
+    return render(
+        request,
+        'base/Refund_policy.html'
+    )

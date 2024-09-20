@@ -132,3 +132,28 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
+/* New Styles for the Registration Button */
+.registration-button {
+  margin-top: 20px;
+  text-align: left;
+
+}
+
+.registration-button .btn.register {
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.registration-button .btn.register:hover {
+  background-color: #218838;
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}

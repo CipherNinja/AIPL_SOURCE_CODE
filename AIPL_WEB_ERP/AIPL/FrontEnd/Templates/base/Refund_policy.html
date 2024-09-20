@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - Agratas Infotech Pvt Ltd</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Refund_policy.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    {% include 'base/navbar.html' %}
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="refund-sidebar">
+            <h4 style="font-weight:bold; font-size:smaller;">Refund Policy</h4>
+            <ul>
+                <li><a href="#">Event Registration Fees</a></li>
+                <li><a href="#">Membership Fees</a></li>
+                <li><a href="#">Application fees</a></li>
+                <li><a href="#">Sponsorship Fees</a></li>
+            </ul>
+        </div>
+
+        <div class="refund-content">
+            <div class="content">
+                <h2>Refund Policy</h2>
+                <ul>
+                    <li><strong>Event Registration Fees:</strong> The registration fees for any event are non-refundable. Please ensure all details are correct before making the payment. No requests for refunds or exceptions will be considered by our team.</li>
+                    <li><strong>Membership Fees:</strong> All membership fees are non-refundable.</li>
+                    <li><strong>Application Fees:</strong> Application fees are non-refundable.</li>
+                    <li><strong>Sponsorship Fees:</strong> Sponsorship fees are non-refundable.</li>
+                </ul>
+            </div>
+    </div>
+
+    <script src="{% static 'js/refund_policy.js' %}"></script>
+    {% include 'base/footer.html' %}
+</body>
+</html>

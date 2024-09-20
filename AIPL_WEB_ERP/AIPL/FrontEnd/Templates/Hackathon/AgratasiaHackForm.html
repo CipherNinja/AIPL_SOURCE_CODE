@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/AgratasiaHackForm.css' %}">
+    <title>Hackathon Registration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include 'base/navbar.html' %}
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    <div class="hackathon-details">
+        <img src="https://static.vecteezy.com/system/resources/previews/003/582/701/non_2x/coming-soon-background-illustration-template-design-free-vector.jpg" alt="Hackathon Banner" class="hackathon-banner">
+    
+        <div class="hackathon-info">
+            <p><i class="fas fa-calendar-alt"></i> Date: 25th October 2024</p>
+            <p><i class="fas fa-map-marker-alt"></i> Venue: Agratas Infotech HQ, Delhi</p>
+            <p><i class="fas fa-clock"></i> Time: 9:00 AM to 6:00 PM</p>
+            <p><i class="fas fa-trophy"></i> Prize Pool: ₹1,00,000 INR</p>
+            <p><i class="fas fa-briefcase"></i> PPO and Internship Opportunities</p>
+            <p><i class="fas fa-star"></i> Showcase your skills and innovation</p>
+        </div>
+    </div>
+    
+    
+
+    <h2 class="form-title">Register Your Team Here</h2>
+
+    <form class="agratas-team-form">
+        <div class="agratas-row">
+            <div class="agratas-form-group">
+                <label for="teamName" class="agratas-label">Team Name:</label>
+                <input type="text" id="teamName" name="teamName" class="agratas-input-field" placeholder="Enter your team name">
+            </div>
+            <div class="agratas-form-group">
+                <label for="numOfMembers" class="agratas-label">Number of Team Members:</label>
+                <select id="numOfMembers" name="numOfMembers" class="agratas-select-field" required>
+                    <option value="">Select number of team members</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="teamLeaderForm" class="agratas-team-member-form">
+            <h3 class="agratas-member-title">Team Leader</h3>
+
+            <div class="agratas-row">
+                <div class="agratas-form-group">
+                    <label for="leaderName" class="agratas-label">Name:</label>
+                    <input type="text" id="leaderName" name="leaderName" class="agratas-input-field" required placeholder="Leader's Name">
+                </div>
+                <div class="agratas-form-group">
+                    <label for="leaderEmail" class="agratas-label">Email:</label>
+                    <input type="email" id="leaderEmail" name="leaderEmail" class="agratas-input-field" required placeholder="Leader's Email">
+                </div>
+            </div>
+
+            <div class="agratas-row">
+                <div class="agratas-form-group">
+                    <label for="leaderPhone" class="agratas-label">Phone Number:</label>
+                    <input type="tel" id="leaderPhone" name="leaderPhone" class="agratas-input-field" required placeholder="Leader's Phone Number">
+                </div>
+                <div class="agratas-form-group">
+                    <label for="leaderLinkedIn" class="agratas-label">LinkedIn ID:</label>
+                    <input type="url" id="leaderLinkedIn" name="leaderLinkedIn" class="agratas-input-field" placeholder="LinkedIn URL">
+                </div>
+            </div>
+
+            <div class="agratas-row">
+                <div class="agratas-form-group">
+                    <label for="leaderGithub" class="agratas-label">GitHub Link:</label>
+                    <input type="url" id="leaderGithub" name="leaderGithub" class="agratas-input-field" placeholder="GitHub URL">
+                </div>
+            </div>
+        </div>
+
+        <div id="teamMembers"></div>
+
+        <button type="submit" class="agratas-submit-btn">Submit</button>
+    </form>
+
+    <script>
+        const numOfMembers = document.getElementById('numOfMembers');
+        const teamMembersDiv = document.getElementById('teamMembers');
+
+        numOfMembers.addEventListener('change', function () {
+            const selectedValue = parseInt(this.value);
+            teamMembersDiv.innerHTML = ''; // Clear previous forms
+
+            for (let i = 1; i < selectedValue; i++) {
+                const memberForm = document.createElement('div');
+                memberForm.classList.add('agratas-team-member-form');
+                memberForm.innerHTML = `
+                    <h3 class="agratas-member-title">Team Member ${i}</h3>
+                    <div class="agratas-row">
+                        <div class="agratas-form-group">
+                            <label for="member${i}Name" class="agratas-label">Name:</label>
+                            <input type="text" id="member${i}Name" name="member${i}Name" class="agratas-input-field" required placeholder="Member's Name">
+                        </div>
+                        <div class="agratas-form-group">
+                            <label for="member${i}Email" class="agratas-label">Email:</label>
+                            <input type="email" id="member${i}Email" name="member${i}Email" class="agratas-input-field" required placeholder="Member's Email">
+                        </div>
+                    </div>
+                    <div class="agratas-row">
+                        <div class="agratas-form-group">
+                            <label for="member${i}Phone" class="agratas-label">Phone Number:</label>
+                            <input type="tel" id="member${i}Phone" name="member${i}Phone" class="agratas-input-field" required placeholder="Member's Phone Number">
+                        </div>
+                        <div class="agratas-form-group">
+                            <label for="member${i}LinkedIn" class="agratas-label">LinkedIn ID:</label>
+                            <input type="url" id="member${i}LinkedIn" name="member${i}LinkedIn" class="agratas-input-field" placeholder="LinkedIn URL">
+                        </div>
+                    </div>
+                    <div class="agratas-row">
+                        <div class="agratas-form-group">
+                            <label for="member${i}Github" class="agratas-label">GitHub Link:</label>
+                            <input type="url" id="member${i}Github" name="member${i}Github" class="agratas-input-field" placeholder="GitHub URL">
+                        </div>
+                    </div>
+                `;
+                teamMembersDiv.appendChild(memberForm);
+            }
+        });
+    </script>
+
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    {% include 'base/side_arrester.html' %}
+    {% include 'base/footer.html' %}
+</body>
+</html>
