@@ -33,3 +33,14 @@ class DocumentModelAdmin(admin.ModelAdmin):
 admin.site.register(AddTaskDetail)
 class TaskDetailsView(admin.ModelAdmin):
     list_display = ["id","title","detail","created_at"]
+
+
+# Custom admin for TeamMember model
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'phone_number', 'is_leader', 'team', 'institution', 'institution_id', 'linkedin_url', 'github_url']
+    list_filter = ['team', 'is_leader']  # Filter by team and leader status
+    search_fields = ['name', 'email', 'phone_number', 'team__team_name']  # Enable search on name, email, phone number, and team name
+    ordering = ['team', '-is_leader', 'name']  # Sort by team, leaders first, then alphabetically by name
+
+# Register the TeamMember model
+admin.site.register(TeamMember, TeamMemberAdmin)

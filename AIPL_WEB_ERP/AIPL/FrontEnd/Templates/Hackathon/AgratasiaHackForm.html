@@ -29,7 +29,8 @@
 
     <h2 class="form-title">Register Your Team Here</h2>
 
-    <form class="agratas-team-form">
+    <form class="agratas-team-form" method="post" action="{% url 'AgratAsiaHack24' %}">
+        {% csrf_token %}
         <div class="agratas-row">
             <div class="agratas-form-group">
                 <label for="teamName" class="agratas-label">Team Name:</label>
@@ -38,7 +39,7 @@
             <div class="agratas-form-group">
                 <label for="numOfMembers" class="agratas-label">Number of Team Members:</label>
                 <select id="numOfMembers" name="numOfMembers" class="agratas-select-field" required>
-                    <option value="">Select number of team members</option>
+                    <option value="0">Select number of team members</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

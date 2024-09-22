@@ -261,24 +261,85 @@ def developers_dashboard_view(request):
     
 
 def AgratasiaHackView(request):
-    __JSON__ = {}
+    context = {"user": request.user}
+
+    if request.method == "POST":
+        # Extract team information
+        team_name = request.POST.get('teamName')
+        num_of_members = int(request.POST.get('numOfMembers', 0))
+
+        # Extract leader information
+        leader_name = request.POST.get('leaderName')
+        leader_email = request.POST.get('leaderEmail')
+        leader_phone = request.POST.get('leaderPhone')
+        leader_linkedin = request.POST.get('leaderLinkedIn')
+        leader_github = request.POST.get('leaderGithub')
+
+        # Validate number of members
+        if num_of_members < 1 or num_of_members > 4:
+            messages.error(request, "Please select a valid number of team members (1-4).")
+            return redirect('AgratAsiaHack24')
+
+        # Check if the team name already exists
+        if Team.objects.filter(team_name=team_name).exists():
+            messages.error(request, "A team with this name already exists. Please choose a different team name.")
+            return redirect('AgratAsiaHack24')
+
+        # Create the team if the name is unique
+        team = Team.objects.create(team_name=team_name)
+
+        # Create the leader entry
+        TeamMember.objects.create(
+            team=team,
+            is_leader=True,
+            name=leader_name,
+            email=leader_email,
+            phone_number=leader_phone,
+            linkedin_url=leader_linkedin,
+            github_url=leader_github
+        )
+
+        # Add additional team members
+        for i in range(1, num_of_members):
+            member_name = request.POST.get(f'member{i}Name')
+            member_email = request.POST.get(f'member{i}Email')
+            member_phone = request.POST.get(f'member{i}Phone')
+            member_linkedin = request.POST.get(f'member{i}LinkedIn')
+            member_github = request.POST.get(f'member{i}Github')
+
+            # Create a team member entry
+            TeamMember.objects.create(
+                team=team,
+                is_leader=False,
+                name=member_name,
+                email=member_email,
+                phone_number=member_phone,
+                linkedin_url=member_linkedin,
+                github_url=member_github
+            )
+
+        messages.success(request, "Team registered successfully!")
+        return redirect('AgratAsiaHack24')
+
     return render(
         request,
         "Hackathon/AgratasiaHackForm.html",
-        __JSON__
+        context
     )
 
 
 def privacy_static_render(request):
-    __JSON__ = {}
+    __JSON__ = {"user":request.user}
     return render(
         request,
-        'base/privacy.html'
+        'base/privacy.html',
+        __JSON__
     )
 
 def term_condition_static_render(request):
-    __JSON__ = {}
+    __JSON__ = {"user":request.user}
     return render(
         request,
-        'base/Terms_and_Conditions.html'
+        'base/Terms_and_Conditions.html',
+        __JSON__
     )

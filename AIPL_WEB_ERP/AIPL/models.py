@@ -177,3 +177,26 @@ class AddTaskDetail(models.Model):
         verbose_name = "Task Assign Tool 🧑‍🔬"
         verbose_name_plural = "Task Assign Tool 🧑‍🔬"
     
+
+from django.db import models
+
+class Team(models.Model):
+    team_name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.team_name
+
+class TeamMember(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='members')
+    is_leader = models.BooleanField(default=False)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+    institution = models.CharField(max_length=50,blank=True)
+    institution_id = models.CharField(max_length=50,blank=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    github_url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
