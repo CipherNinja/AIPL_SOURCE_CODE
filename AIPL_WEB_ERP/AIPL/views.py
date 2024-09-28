@@ -336,6 +336,14 @@ def privacy_static_render(request):
         __JSON__
     )
 
+def refund_static_render(request):
+    __JSON__ = {"user":request.user}
+    return render(
+        request,
+        'base/refund2.html',
+        __JSON__
+    )
+
 def term_condition_static_render(request):
     __JSON__ = {"user":request.user}
     return render(

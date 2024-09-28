@@ -10,7 +10,7 @@ urlpatterns = [
     path("developer/",views.developers_dashboard_view,name="developer"),
     path("articles/<str:page_name>/", views.news_and_article_page_controller, name="articles"),
     path("AgratAsiaHack/",views.AgratasiaHackView,name="AgratAsiaHack24"),
-    path("privacy&policy/",views.privacy_static_render,name="privacy"),
-    path("terms&conditions/",views.term_condition_static_render,name="t&c"),
-
+    path("privacy_and_policy/",views.privacy_static_render,name="privacy"),
+    path("terms_and_conditions/",views.term_condition_static_render,name="t&c"),
+    path("refund_policy/",views.refund_static_render,name="r&p"),
 ]
