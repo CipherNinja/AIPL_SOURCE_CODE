@@ -356,5 +356,5 @@ def term_condition_static_render(request):
 def internship_opportunity_page(request):
     return render(
         request,
-        "internship/internship.html",
+        "Internship/internship.html",
     )
