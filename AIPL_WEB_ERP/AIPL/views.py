@@ -351,3 +351,10 @@ def term_condition_static_render(request):
         'base/Terms_and_Conditions.html',
         __JSON__
     )
+
+
+def internship_opportunity_page(request):
+    return render(
+        request,
+        "internship/internship.html",
+    )

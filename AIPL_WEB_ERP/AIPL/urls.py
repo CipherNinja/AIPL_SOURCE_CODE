@@ -13,4 +13,6 @@ urlpatterns = [
     path("privacy_and_policy/",views.privacy_static_render,name="privacy"),
     path("terms_and_conditions/",views.term_condition_static_render,name="t&c"),
     path("refund_policy/",views.refund_static_render,name="r&p"),
+    path("internship/",views.internship_opportunity_page,name="internship"),
+    
 ]

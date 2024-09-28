@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Registration Form</title>
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/styles_inter.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    {% include 'base/navbar.html' %}
+
+    <header class="header">
+        <h1>Agratas Infotech</h1>
+    </header>
+
+    <!-- Image Background Overlay -->
+    <div class="image-overlay">
+        <img src="{% static 'img/internship.webp' %}" alt="Background Image">
+    </div>
+
+    <!-- Title Separated from Form -->
+    <h2 class="form-title">Internship Registration</h2> <!-- Separated Title -->
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <form id="registrationForm">
+            <!-- Input Fields -->
+            <div class="row">
+                <div class="input-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Rahul" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Gandhi" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" placeholder="AaloSeSona@gmail.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 9060504051" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="institute">Institute Name:</label>
+                    <input type="text" id="institute" name="institute" placeholder="ABCD College" required>
+                </div>
+                <div class="input-group">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" placeholder="B.Tech/B.E./MCA/BCA etc" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="">Select a role</option>
+                        <option value="developer">Developer</option>
+                        <option value="designer">Designer</option>
+                        <option value="manager">Manager</option>
+                        <option value="frontend_dev">Frontend Dev</option>
+                        <option value="backend_dev">Backend Dev</option>
+                        <option value="devops_eng">DevOps Eng</option>
+                        <option value="fullstack_dev">Fullstack Dev</option>
+                        <option value="aa_dev">AA Dev</option>
+                        <option value="ios_dev">IOS Dev</option>
+                        <option value="software_dev">Software Dev</option>
+                        <option value="ai_ml_eng">AI/ML Eng</option>
+                        <option value="data_analyst">Data Analyst</option>
+                        <option value="db_admin">DB Admin</option>
+                        <option value="cloud_dev">Cloud Dev</option>
+                        <option value="blockchain_dev">Blockchain Dev</option>
+                        <option value="ar_vr_dev">AR/VR Dev</option>
+                        <option value="test_automation">Test Automation</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="branch">Branch:</label>
+                    <select id="branch" name="branch">
+                        <option value="">Select a branch</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ee">Electrical Engineering</option>
+                        <option value="me">Mechanical Engineering</option>
+                        <option value="ce">Civil Engineering</option>
+                        <option value="it">Information Technology</option>
+                        <option value="ae">Aeronautical Engineering</option>
+                        <option value="bioe">Biotechnology Engineering</option>
+                        <option value="ece">Electronics and Communication Engineering</option>
+                        <option value="chem">Chemical Engineering</option>
+                        <option value="data">Data Science</option>
+                        <option value="mse">Materials Science and Engineering</option>
+                        <option value="env">Environmental Engineering</option>
+                        <option value="automobile">Automobile Engineering</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="linkedin">LinkedIn Profile URL:</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
+                </div>
+                <div class="input-group">
+                    <label for="github">Github Profile URL:</label>
+                    <input type="url" id="github" name="github" placeholder="Github URL">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="resume">Custom Resume:</label>
+                    <input type="file" id="resume" name="resume">
+                </div>
+                <div class="input-group">
+                    <label for="collegeId">College ID:</label>
+                    <input type="text" id="collegeId" name="collegeId" placeholder="Any Valid College ID Number" required>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<script src="{% static 'js/script_inter.js' %}"></script>
+{% include 'base/footer.html' %}
+
+</body>
+</html>
