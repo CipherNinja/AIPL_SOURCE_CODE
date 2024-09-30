@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.mail import send_mail
@@ -200,3 +201,78 @@ class TeamMember(models.Model):
     def __str__(self):
         return self.name
 
+
+
+def validate_file_size(value):
+    filesize = value.size
+    if filesize > 1024 * 1024:  # 1 MB limit
+        raise ValidationError("The maximum file size that can be uploaded is 1MB")
+    return value
+
+def validate_file_extension(value):
+    if not value.name.endswith('.pdf'):
+        raise ValidationError("Only PDF files are allowed")
+    return value
+
+class InternshipApplication(models.Model):
+    # Basic Info
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)  # Enforces email uniqueness at the database level
+    phone_number = models.CharField(max_length=15)
+    
+    # Educational Info
+    institute_name = models.CharField(max_length=200)
+    course = models.CharField(max_length=200)
+    role = models.CharField(max_length=100, choices=[
+        ('developer', 'Developer'),
+        ('designer', 'Designer'),
+        ('manager', 'Manager'),
+        ('frontend_dev', 'Frontend Dev'),
+        ('backend_dev', 'Backend Dev'),
+        ('devops_eng', 'DevOps Eng'),
+        ('fullstack_dev', 'Fullstack Dev'),
+        ('aa_dev', 'AA Dev'),
+        ('ios_dev', 'IOS Dev'),
+        ('software_dev', 'Software Dev'),
+        ('ai_ml_eng', 'AI/ML Eng'),
+        ('data_analyst', 'Data Analyst'),
+        ('db_admin', 'DB Admin'),
+        ('cloud_dev', 'Cloud Dev'),
+        ('blockchain_dev', 'Blockchain Dev'),
+        ('ar_vr_dev', 'AR/VR Dev'),
+        ('test_automation', 'Test Automation'),
+    ])
+    branch = models.CharField(max_length=100, choices=[
+        ('cse', 'Computer Science'),
+        ('ee', 'Electrical Engineering'),
+        ('me', 'Mechanical Engineering'),
+        ('ce', 'Civil Engineering'),
+        ('it', 'Information Technology'),
+        ('ae', 'Aeronautical Engineering'),
+        ('bioe', 'Biotechnology Engineering'),
+        ('ece', 'Electronics and Communication Engineering'),
+        ('chem', 'Chemical Engineering'),
+        ('data', 'Data Science'),
+        ('mse', 'Materials Science and Engineering'),
+        ('env', 'Environmental Engineering'),
+        ('automobile', 'Automobile Engineering'),
+    ])
+    
+    # Profile URLs
+    linkedin_profile_url = models.URLField(blank=True, null=True)
+    github_profile_url = models.URLField(blank=True, null=True)
+    
+    # Resume Upload (with validation for PDF format and size limit)
+    custom_resume = models.FileField(
+        upload_to='nginx/resumes/', 
+        blank=True, 
+        null=True,
+        validators=[validate_file_size, validate_file_extension]
+    )
+    
+    # College ID
+    college_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} - {self.role}'

@@ -352,9 +352,86 @@ def term_condition_static_render(request):
         __JSON__
     )
 
+from django.core.mail import send_mail
+from django.contrib import messages
+from .models import InternshipApplication
 
 def internship_opportunity_page(request):
-    return render(
-        request,
-        "Internship/internship.html",
-    )
+    if request.method == 'POST':
+        # Get the form data manually from POST
+        first_name = request.POST.get('firstName')
+        last_name = request.POST.get('lastName')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone')
+        institute_name = request.POST.get('institute')
+        course = request.POST.get('course')
+        role = request.POST.get('role')
+        branch = request.POST.get('branch')
+        linkedin_profile_url = request.POST.get('linkedin')
+        github_profile_url = request.POST.get('github')
+        custom_resume = request.FILES.get('resume')
+        college_id = request.POST.get('collegeId')
+
+        # Check if an application with this email already exists
+        if InternshipApplication.objects.filter(email=email).exists():
+            messages.error(request, 'An application with this email address already exists. Please use a different email.')
+            return render(request, 'Internship/internship.html')
+
+        # Validate the resume file size if provided
+        if custom_resume:
+            # Check if the file size is under 1 MB (1MB = 1024*1024 bytes)
+            if custom_resume.size > 1024 * 1024:
+                messages.error(request, 'The file size exceeds the 1MB limit.')
+                return render(request, 'Internship/internship.html')
+
+        # Save the data to the database
+        application = InternshipApplication.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone_number=phone_number,
+            institute_name=institute_name,
+            course=course,
+            role=role,
+            branch=branch,
+            linkedin_profile_url=linkedin_profile_url,
+            github_profile_url=github_profile_url,
+            custom_resume=custom_resume,
+            college_id=college_id
+        )
+        
+        our_message = f"""
+                    Dear {application.first_name} {application.last_name},
+
+                    Thank you for your interest in the {application.role} position at Agratas Infotech. We have successfully received your application and resume, and we are excited to review your qualifications.
+
+                    Our recruitment team will carefully assess your experience and skillset in alignment with the requirements of the {application.role} role. If your profile meets our criteria, we will contact you regarding the next steps in the recruitment process.
+
+                    Please note that this process may take a few weeks, as we are committed to thoroughly reviewing all applications. We appreciate your patience during this period.
+
+                    In the meantime, if you have any questions or need further information, please feel free to contact us at info@agratasinfotech.com or visit our website for updates.
+
+                    Once again, thank you for considering Agratas Infotech as your next career move. We look forward to the possibility of working together.
+
+                    Best regards,
+
+                    The Recruitment Team  
+                    Agratas Infotech Pvt. Ltd.  
+                    info@agratasinfotech.com | https://agratasinfotech.com  
+                    Ocean Plaza, Noida Sector 18, U.P.
+        """
+
+        # Send confirmation email
+        send_mail(
+            subject='Internship Application Confirmation',
+            message=our_message,
+            from_email='your_email@gmail.com',  # Replace with your actual email
+            recipient_list=[application.email],
+            fail_silently=False,
+        )
+
+        # Redirect to a success page after saving
+        messages.success(request, "Response Submitted, Check your Email Inbox 📧")
+        return redirect('internship')  # Change this to your success page
+
+    return render(request, 'Internship/internship.html')
