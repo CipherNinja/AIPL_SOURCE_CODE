@@ -33,7 +33,7 @@
 
     <!-- Form Container -->
     <div class="form-container">
-        <form id="registrationForm" method="post" action="{% url 'internship' %}">
+        <form id="registrationForm" method="post" action="{% url 'internship' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Input Fields -->
             <div class="row">
@@ -113,7 +113,7 @@
             </div>
             <div class="row">
                 <div class="input-group">
-                    <label for="linkedin">LinkedIn Profile URL:</label>
+                    <label for="linkedin">LinkedIn Profile URL: <span class="optional">**optional</span></label>
                     <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
                 </div>
                 <div class="input-group">
@@ -123,8 +123,8 @@
             </div>
             <div class="row">
                 <div class="input-group">
-                    <label for="resume">Your Resume: <span class="optional">**optional</span></label>
-                    <input type="file" id="resume" name="resume">
+                    <label for="resume">Your Resume: <span class="optional">**PDF file under 1 MB</span></label>
+                    <input type="file" id="resume" name="resume" required>
                 </div>
                 <div class="input-group">
                     <label for="collegeId">College ID:</label>
