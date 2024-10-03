@@ -74,9 +74,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "droppersconnect@gmail.com"
-EMAIL_HOST_PASSWORD = "blna yvhl aljg oolj"
-DEFAULT_HOST_EMAIL = "droppersconnect@gmail.com"
+EMAIL_HOST_USER = "agratascommunity@gmail.com"
+EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"
+DEFAULT_HOST_EMAIL = "agratascommunity@gmail.com"
 
 
 WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'agratasi_agratasinfotech', # agratasi_agratasinfotech
-		'USER': 'agratasi_root', # agratasi_root
-		'PASSWORD': 'agratas9069076975', # agratas9069076975
+		'NAME': 'agratasinfotech', # agratasi_agratasinfotech
+		'USER': 'root', # agratasi_root
+		'PASSWORD': '9069076975', # agratas9069076975
 		'HOST':'localhost',
 		'PORT':'3306',
 	}
