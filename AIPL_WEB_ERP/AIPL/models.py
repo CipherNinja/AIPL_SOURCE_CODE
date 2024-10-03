@@ -225,39 +225,41 @@ class InternshipApplication(models.Model):
     institute_name = models.CharField(max_length=200)
     course = models.CharField(max_length=200)
     role = models.CharField(max_length=100, choices=[
-        ('developer', 'Developer'),
-        ('designer', 'Designer'),
-        ('manager', 'Manager'),
-        ('frontend_dev', 'Frontend Dev'),
-        ('backend_dev', 'Backend Dev'),
-        ('devops_eng', 'DevOps Eng'),
-        ('fullstack_dev', 'Fullstack Dev'),
-        ('aa_dev', 'AA Dev'),
-        ('ios_dev', 'IOS Dev'),
-        ('software_dev', 'Software Dev'),
-        ('ai_ml_eng', 'AI/ML Eng'),
-        ('data_analyst', 'Data Analyst'),
-        ('db_admin', 'DB Admin'),
-        ('cloud_dev', 'Cloud Dev'),
-        ('blockchain_dev', 'Blockchain Dev'),
-        ('ar_vr_dev', 'AR/VR Dev'),
-        ('test_automation', 'Test Automation'),
+        ('ml_python', 'Machine Learning with Python'),
+        ('ai', 'Artificial Intelligence'),
+        ('cyber_security', 'Cyber Security'),
+        ('fullstack_web', 'Full Stack Web Development'),
+        ('android_dev', 'Android Development'),
+        ('data_science_python', 'Data Science with PYTHON'),
+        ('cloud_computing', 'Cloud Computing'),
+        ('digital_marketing', 'Digital Marketing'),
+        ('cw', 'Content Writer'),
+        ('finance', 'Finance'),
+        ('marketing', 'Marketing'),
+        ('ios_dev', 'IOS App Development'),
     ])
-    branch = models.CharField(max_length=100, choices=[
-        ('cse', 'Computer Science'),
-        ('ee', 'Electrical Engineering'),
-        ('me', 'Mechanical Engineering'),
-        ('ce', 'Civil Engineering'),
-        ('it', 'Information Technology'),
-        ('ae', 'Aeronautical Engineering'),
-        ('bioe', 'Biotechnology Engineering'),
-        ('ece', 'Electronics and Communication Engineering'),
-        ('chem', 'Chemical Engineering'),
-        ('data', 'Data Science'),
-        ('mse', 'Materials Science and Engineering'),
-        ('env', 'Environmental Engineering'),
-        ('automobile', 'Automobile Engineering'),
-    ])
+
+
+    branch = models.CharField(
+        max_length=100,
+        choices=[
+            ('cse', 'Computer Science'),
+            ('ee', 'Electrical Engineering'),
+            ('me', 'Mechanical Engineering'),
+            ('ce', 'Civil Engineering'),
+            ('it', 'Information Technology'),
+            ('ece', 'Electronics and Communication Engineering'),
+            ('mse', 'Materials Science and Engineering'),
+            ('env', 'Environmental Engineering'),
+            ('automobile', 'Automobile Engineering'),
+            ('hr', 'Human Resources'),
+            ('finance', 'Finance'),
+            ('marketing', 'Marketing'),
+            ('business_admin', 'Business Administration'),
+            ('digital_marketing', 'Digital Marketing'),
+        ]
+    )
+
     
     # Profile URLs
     linkedin_profile_url = models.URLField(blank=True, null=True)

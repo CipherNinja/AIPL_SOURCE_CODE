@@ -1,5 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <nav>
   <div class="logo">
     <a href="{% url 'home' %}"><img src="{% static 'img/agratas-main-logo.png' %}" alt="logo" /></a>
@@ -59,16 +60,16 @@
             ></a>
             <ul class="inner-submenu" id="inner-submenu-two">
               <a href="{% url 'articles' 'artificialintelligence' %}"><li>Artificial Intelligence</li></a>
-              <li>Cloud</li>
+              <a href="{% url 'maintenance' %}"><li>Cloud</li></a>
               <a href="{% url 'articles' 'digitalmarketing' %}"><li>Digitalization</li></a>
-              <li>Cognitive Business Operations</li>
-              <li>Consulting</li>
-              <li>Data and Analytics</li>
-              <li>Enterprise Soultions</li>
-              <li>High Tech</li>
-              <li>Insurance</li>
+              <a href="{% url 'maintenance' %}"><li>Cognitive Business Operations</li></a>
+              <a href="{% url 'maintenance' %}"><li>Consulting</li></a>
+              <a href="{% url 'maintenance' %}"><li>Data and Analytics</li></a>
+              <a href="{% url 'maintenance' %}"><li>Enterprise Soultions</li></a>
+              <a href="{% url 'maintenance' %}"><li>High Tech</li></a>
+              <a href="{% url 'maintenance' %}"><li>Insurance</li></a>
               <a href="{% url 'articles' 'internetofthings' %}"><li>IoT and Digital Engineering</li></a>
-              <li>Network Soultions and Services</li>
+              <a href="{% url 'maintenance' %}"><li>Network Soultions and Services</li></a>
             </ul>
           </li>
           <li id="active">
@@ -104,10 +105,10 @@
       <li>
         <a href="#">Who are we <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="#">Overview</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Leadership</a></li>
-          <li><a href="#">Events</a></li>
+          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
+          <li><a href="{% url 'maintenance' %}">About Us</a></li>
+          <li><a href="{% url 'maintenance' %}">Leadership</a></li>
+          <li><a href="{% url 'maintenance' %}">Events</a></li>
         </ul>
       </li>
       <li>
@@ -115,46 +116,46 @@
         <ul class="submenu">
           <li id="active"><a href="{% url 'internship' %}">Internships</a></li>
           <li><a href="{% url 'AgratAsiaHack24' %}">Hackathons</a></li>          
-          <li><a href="#">Placement</a></li>
-          <li><a href="#">Industrial Training</a></li>
-          <li><a href="#">Tech Summit</a></li>
-          <li><a href="#">FDP</a></li>
+          <li><a href="{% url 'maintenance' %}">Placement</a></li>
+          <li><a href="{% url 'maintenance' %}">Industrial Training</a></li>
+          <li><a href="{% url 'maintenance' %}">Tech Summit</a></li>
+          <li><a href="{% url 'maintenance' %}">FDP</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Careers <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
           <li id="active"><a href="#">Overview</a></li>
-          <li><a href="#">India</a></li>
-          <li><a href="#">Americas</a></li>
-          <li><a href="#">Asia Pacific</a></li>
-          <li><a href="#">Europe and UK</a></li>
-          <li><a href="#">Middle East and Africa</a></li>
+          <li><a href="{% url 'maintenance' %}">India</a></li>
+          <li><a href="{% url 'maintenance' %}">Americas</a></li>
+          <li><a href="{% url 'maintenance' %}">Asia Pacific</a></li>
+          <li><a href="{% url 'maintenance' %}">Europe and UK</a></li>
+          <li><a href="{% url 'maintenance' %}">Middle East and Africa</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Newsroom <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="#">Overview</a></li>
-          <li><a href="#">Press release</a></li>
-          <li><a href="#">News alerts</a></li>
-          <li><a href="#">Analyst recognition</a></li>
-          <li><a href="#">Media kit</a></li>
+          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
+          <li><a href="{% url 'maintenance' %}">Press release</a></li>
+          <li><a href="{% url 'maintenance' %}">News alerts</a></li>
+          <li><a href="{% url 'maintenance' %}">Analyst recognition</a></li>
+          <li><a href="{% url 'maintenance' %}">Media kit</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Investors <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="#">Overview</a></li>
-          <li><a href="#">Manage Commentary</a></li>
-          <li><a href="#">Financials</a></li>
-          <li><a href="#">News and Events</a></li>
-          <li><a href="#">ESG</a></li>
-          <li><a href="#">Resources</a></li>
+          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
+          <li><a href="{% url 'maintenance' %}">Manage Commentary</a></li>
+          <li><a href="{% url 'maintenance' %}">Financials</a></li>
+          <li><a href="{% url 'maintenance' %}">News and Events</a></li>
+          <li><a href="{% url 'maintenance' %}">ESG</a></li>
+          <li><a href="{% url 'maintenance' %}">Resources</a></li>
         </ul>
       </li>
-      <li><a href="#">Contact us</a></li>
-      <li><a href="#">AIPL worldwide</a></li>
+      <li><a href="{% url 'maintenance' %}">Contact us</a></li>
+      <li><a href="{% url 'maintenance' %}">AIPL worldwide</a></li>
     </ul>
   </div>
   <div class="searchbar">

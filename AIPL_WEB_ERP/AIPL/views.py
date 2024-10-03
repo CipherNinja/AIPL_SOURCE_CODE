@@ -424,3 +424,9 @@ def internship_opportunity_page(request):
         return redirect('internship')
 
     return render(request, 'Internship/internship.html')
+
+def maintenance_page_view(request):
+    return render(
+        request,
+        "base/maintenance.html"
+    )

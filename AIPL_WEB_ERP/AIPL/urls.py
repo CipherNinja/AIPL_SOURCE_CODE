@@ -1,5 +1,9 @@
 from django.urls import path
+from django.contrib import admin
 from . import views
+
+admin.site.site_header = "Agratas Infotech Private Limited"
+
 urlpatterns = [
     path("",views.home_page_view,name="home"),
     path("signin/",views.signin_page_view,name="signin"),
@@ -14,5 +18,7 @@ urlpatterns = [
     path("terms_and_conditions/",views.term_condition_static_render,name="t&c"),
     path("refund_policy/",views.refund_static_render,name="r&p"),
     path("internship/",views.internship_opportunity_page,name="internship"),
+    path("maintenance/",views.maintenance_page_view,name="maintenance"),
+    
     
 ]
