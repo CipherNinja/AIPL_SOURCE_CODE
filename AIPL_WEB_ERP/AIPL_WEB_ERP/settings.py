@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'agratasinfotech',
-		'USER': 'root',
-		'PASSWORD': '9069076975',
+		'NAME': 'agratasi_agratasinfotech', # agratasi_agratasinfotech
+		'USER': 'agratasi_root', # agratasi_root
+		'PASSWORD': 'agratas9069076975', # agratas9069076975
 		'HOST':'localhost',
 		'PORT':'3306',
 	}
