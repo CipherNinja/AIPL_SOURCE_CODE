@@ -84,8 +84,8 @@ class Notification(models.Model):
         return ", ".join(user.username for user in self.recipient.all())
     
     class Meta:
-        verbose_name = "Notify/Update Sender 📧"
-        verbose_name_plural = "Notify/Update Sender 📧"
+        verbose_name = "Notify/Update Sender "
+        verbose_name_plural = "Notify/Update Sender "
 
 
 # We dont collect the other data only email for sending bussiness email
@@ -97,8 +97,8 @@ class subscribers(models.Model):
     def __str__(self):
         return self.email
     class Meta:
-        verbose_name = "View Subscriber's Email 👤"
-        verbose_name_plural = "View Subscriber's Email 👤"
+        verbose_name = "View Subscriber's Email "
+        verbose_name_plural = "View Subscriber's Email "
 
 
 class newsArticle(models.Model):
@@ -126,8 +126,8 @@ class newsArticle(models.Model):
             fail_silently=False,
         )
     class Meta:
-        verbose_name = "Email Sender (Limited to Subscribers) 📧"
-        verbose_name_plural = "Email Sender (Limited to Subscribers) 📧"
+        verbose_name = "Email Sender (Limited to Subscribers) "
+        verbose_name_plural = "Email Sender (Limited to Subscribers) "
 
 # Signal to send email after a news article is saved
 @receiver(post_save, sender=newsArticle)
@@ -162,8 +162,8 @@ class developer_profile(models.Model):
         return f"{self.developer.first_name} {self.developer.last_name} | {self.job_role}"
     
     class Meta:
-        verbose_name = "AIPL's Employee 🧑‍🔬"
-        verbose_name_plural = "AIPL's Employee 🧑‍🔬"
+        verbose_name = "AIPL's Employee "
+        verbose_name_plural = "AIPL's Employee "
 
 class AddTaskDetail(models.Model):
     title = models.CharField(max_length=80)
@@ -175,8 +175,8 @@ class AddTaskDetail(models.Model):
     def __str__(self):
         return f"{self.title}"
     class Meta:
-        verbose_name = "Task Assign Tool 🧑‍🔬"
-        verbose_name_plural = "Task Assign Tool 🧑‍🔬"
+        verbose_name = "Task Assign Tool "
+        verbose_name_plural = "Task Assign Tool "
     
 
 from django.db import models
