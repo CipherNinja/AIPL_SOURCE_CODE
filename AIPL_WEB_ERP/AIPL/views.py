@@ -236,7 +236,15 @@ def news_and_article_page_controller(request,page_name):
         'artificialintelligence': "ArtificialIntelIigence.html",
         'digitalmarketing': "DigitalMarketing.html",
         'internetofthings': "InternetOfThings.html",
-        # Add more pages here
+        "banking":"banking_finance.html",
+        "cloud":"cloudArticle.html",
+        "cyber":"cybersecurity.html",
+        "ecommerse":"Ecommerce.html",
+        "overview":"overview.html",
+        "our_impact":"impact.html",
+        "testimonial":"testimonials.html",
+        "leadership":"leadership.html",
+    
     }
     __link__ = __PAGES__.get(page_name, "common_page.html")
     

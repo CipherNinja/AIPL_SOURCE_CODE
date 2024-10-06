@@ -5,138 +5,207 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Internship Opportunities at Agratas Infotech - Apply Now!</title>
     <meta name="description" content="Join Agratas Infotech for exciting internship opportunities! Get cool swag, placement assistance, and compete for prizes over ₹50,000. Apply now!">
-{%load static%}
+{% load static %}
 <link rel="stylesheet" href="{% static 'css/styles_inter.css' %}">
 <style>
     .optional {
-    color: red;
-    font-weight: bold;
-}
-    nav{
-        left: 0px;
+        color: red;
+        font-weight: bold;
+    }
+    
+    /* Fixing navbar and footer overlapping issue */
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
     }
 
+    .wrapper-content {
+        flex: 1;
+    }
+
+    nav {
+        left: 0;
+        z-index: 1000;
+    }
+
+    .intern-name {
+        text-align: right;
+        color: #00094B;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 </style>
 </head>
 <body>
-    <!-- Header Section -->
-    {% include 'base/navbar.html' %}
-    <script src="{% static 'js/nav_configuration.js' %}"></script>
-    <header class="header">
-        <h1>Agratas Infotech</h1>
-    </header>
+    <div class="wrapper">
+        <!-- Header Section -->
+        {% include 'base/navbar.html' %}
+        <script src="{% static 'js/nav_configuration.js' %}"></script>
 
-    <!-- Image Background Overlay -->
-    <div class="image-overlay">
-        <img src="{% static 'img/internship.webp' %}" alt="Internship Opportunities at Agratas Infotech">
+        <header class="header">
+            <h1>Agratas Infotech</h1>
+        </header>
+
+        <div class="wrapper-content">
+            <!-- Image Background Overlay -->
+            <div class="image-overlay">
+                <img src="{% static 'img/internspace.webp' %}" alt="Internship Opportunities at Agratas Infotech" class="internship-image">
+            </div>
+
+            <!-- Title Separated from Form -->
+            <h2 class="form-title">Internship Registration</h2> <!-- Separated Title -->
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form id="registrationForm" method="post" action="{% url 'internship' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="firstName">First Name: <span class="optional">* </span></label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Akshay" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="lastName">Last Name: <span class="optional">* </span></label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Kumar" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="email">Email ID: <span class="optional">* </span></label>
+                            <input type="email" id="email" name="email" placeholder="yourmail@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number: <span class="optional">* </span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 9060504051" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="institute">Institute Name: <span class="optional">* </span></label>
+                            <input type="text" id="institute" name="institute" placeholder="ABCD College" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="course">Course: <span class="optional">* </span></label>
+                            <input type="text" id="course" name="course" placeholder="B.Tech/B.E./MBA/BBA/MCA/BCA etc" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="role">Role: <span class="optional">* </span></label>
+                            <select id="role" name="role" required>
+                                <option value="">Select internship role</option>
+                                <option value="ml_python">Machine Learning with Python</option>
+                                <option value="ai">Artificial Intelligence</option>
+                                <option value="cyber_security">Cyber Security</option>
+                                <option value="fullstack_web">Full Stack Web Development</option>
+                                <option value="android_dev">Android Development</option>
+                                <option value="data_science_python">Data Science with PYTHON</option>
+                                <option value="cloud_computing">Cloud Computing</option>
+                                <option value="digital_marketing">Digital Marketing</option>
+                                <option value="cw">Content Writer</option>
+                                <option value="finance">Finance</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="ios_dev">IOS App Development</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="branch">Branch: <span class="optional">* </span></label>
+                            <select id="branch" name="branch" required>
+                                <option value="">Select Your Branch</option>
+                                <option value="cse">Computer Science</option>
+                                <option value="ee">Electrical Engineering</option>
+                                <option value="me">Mechanical Engineering</option>
+                                <option value="ce">Civil Engineering</option>
+                                <option value="it">Information Technology</option>
+                                <option value="ece">Electronics and Communication Engineering</option>
+                                <option value="mse">Materials Science and Engineering</option>
+                                <option value="env">Environmental Engineering</option>
+                                <option value="automobile">Automobile Engineering</option>
+                                <option value="hr">Human Resources</option>
+                                <option value="finance">Finance</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="business_admin">Business Administration</option>
+                                <option value="digital_marketing">Digital Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="linkedin">LinkedIn Profile URL: </label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
+                        </div>
+                        <div class="input-group">
+                            <label for="github">Github Profile URL: </label>
+                            <input type="url" id="github" name="github" placeholder="Github URL">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="resume">Your Resume: <span class="optional">* PDF file under 1 MB</span></label>
+                            <input type="file" id="resume" name="resume" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="collegeId">College ID: <span class="optional">* </span></label>
+                            <input type="text" id="collegeId" name="collegeId" placeholder="Any Valid College ID Number" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+
+            <!-- Blog Section with Intern Experiences -->
+            <section class="blog-section">
+                <h2>Experience of Previous Interns</h2>
+                <div class="experience-container">
+                    <!-- Intern Experience 1 -->
+                    <div class="experience-item">
+                        <img src="https://via.placeholder.com/400" alt="Intern 1">
+                        <p>"This internship gave me hands-on experience with real-world AI applications, and I got the chance to contribute to research papers."</p>
+                        <div class="intern-name">— John Doe, AI Intern</div>
+                    </div>
+                    
+                    <!-- Intern Experience 2 -->
+                    <div class="experience-item">
+                        <img src="https://via.placeholder.com/400" alt="Intern 2">
+                        <p>"Working at Agratas Infotech was a transformative experience. The mentors were amazing, and I received invaluable learning opportunities."</p>
+                        <div class="intern-name">— Jane Smith, Web Dev Intern</div>
+                    </div>
+
+                    <!-- Intern Experience 3 -->
+                    <div class="experience-item">
+                        <img src="https://via.placeholder.com/400" alt="Intern 3">
+                        <p>"My internship involved advanced machine learning projects. It was a great experience that helped me land my first job!"</p>
+                        <div class="intern-name">— Chris Lee, ML Intern</div>
+                    </div>
+
+                    <!-- Intern Experience 4 -->
+                    <div class="experience-item">
+                        <img src="https://via.placeholder.com/400" alt="Intern 4">
+                        <p>"I worked on cutting-edge technology and felt well-supported by the team. I highly recommend this internship to anyone looking to grow!"</p>
+                        <div class="intern-name">— Sarah Johnson, Cyber Security Intern</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perks Section -->
+            <section class="perks-section">
+                <h2>Perks & Benifits</h2>
+                <ul class="perks-list">
+                    <li><strong>Free Access to GPT-4:</strong> Enjoy free access to GPT-4 for all your research and development needs.</li>
+                    <li><strong>INR 5000 per Task:</strong> Earn INR 5000 for every task you complete during your internship.</li>
+                    <li><strong>Research & Development Opportunities:</strong> Engage in cutting-edge R&D projects and get your name published in research papers and conferences.</li>
+                    <li><strong>Free Research Paper Publication:</strong> We cover all costs for publishing research papers for our interns.</li>
+                    <li><strong>Welcome Kit:</strong> Receive a cool welcome kit when you join our team.</li>
+                    <li><strong>Pre-Placement Offer (PPO):</strong> Stand a chance to secure a PPO based on your performance.</li>
+                    <li><strong>Exciting Surprises:</strong> Enjoy special surprises during your internship with us.</li>
+                </ul>
+            </section>
+        </div>
+
+        {% include 'base/footer.html' %}
     </div>
-
-    <!-- Title Separated from Form -->
-    <h2 class="form-title">Internship Registration</h2> <!-- Separated Title -->
-
-    <!-- Form Container -->
-    <div class="form-container">
-        <form id="registrationForm" method="post" action="{% url 'internship' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            <!-- Input Fields -->
-            <div class="row">
-                <div class="input-group">
-                    <label for="firstName">First Name: <span class="optional">* </span></label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Akshay" required>
-                </div>
-                <div class="input-group">
-                    <label for="lastName">Last Name: <span class="optional">* </span></label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Kumar" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-group">
-                    <label for="email">Email ID: <span class="optional">* </span></label>
-                    <input type="email" id="email" name="email" placeholder="yourmail@gmail.com" required>
-                </div>
-                <div class="input-group">
-                    <label for="phone">Phone Number: <span class="optional">* </span></label>
-                    <input type="tel" id="phone" name="phone" placeholder="+91 9060504051" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-group">
-                    <label for="institute">Institute Name: <span class="optional">* </span></label>
-                    <input type="text" id="institute" name="institute" placeholder="ABCD College" required>
-                </div>
-                <div class="input-group">
-                    <label for="course">Course: <span class="optional">* </span></label>
-                    <input type="text" id="course" name="course" placeholder="B.Tech/B.E./MBA/BBA/MCA/BCA etc" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-group">
-                    <label for="role">Role: <span class="optional">* </span></label>
-                    <select id="role" name="role" required>
-                        <option value="">Select internship role</option>
-                        <option value="ml_python">Machine Learning with Python</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="cyber_security">Cyber Security</option>
-                        <option value="fullstack_web">Full Stack Web Development</option>
-                        <option value="android_dev">Android Development</option>
-                        <option value="data_science_python">Data Science with PYTHON</option>
-                        <option value="cloud_computing">Cloud Computing</option>
-                        <option value="digital_marketing">Digital Marketing</option>
-                        <option value="cw">Content Writer</option>
-                        <option value="finance">Finance</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="ios_dev">IOS App Development</option>
-                    </select>
-                </div>
-                
-                
-                <div class="input-group">
-                    <label for="branch">Branch: <span class="optional">* </span></label>
-                    <select id="branch" name="branch" required>
-                        <option value="">Select Your Branch</option>
-                        <option value="cse">Computer Science</option>
-                        <option value="ee">Electrical Engineering</option>
-                        <option value="me">Mechanical Engineering</option>
-                        <option value="ce">Civil Engineering</option>
-                        <option value="it">Information Technology</option>
-                        <option value="ece">Electronics and Communication Engineering</option>
-                        <option value="mse">Materials Science and Engineering</option>
-                        <option value="env">Environmental Engineering</option>
-                        <option value="automobile">Automobile Engineering</option>
-                        <option value="hr">Human Resources</option>
-                        <option value="finance">Finance</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="business_admin">Business Administration</option>
-                        <option value="digital_marketing">Digital Marketing</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-group">
-                    <label for="linkedin">LinkedIn Profile URL: </label>
-                    <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
-                </div>
-                <div class="input-group">
-                    <label for="github">Github Profile URL: </label>
-                    <input type="url" id="github" name="github" placeholder="Github URL">
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-group">
-                    <label for="resume">Your Resume: <span class="optional">* PDF file under 1 MB</span></label>
-                    <input type="file" id="resume" name="resume" required>
-                </div>
-                <div class="input-group">
-                    <label for="collegeId">College ID: <span class="optional">* </span></label>
-                    <input type="text" id="collegeId" name="collegeId" placeholder="Any Valid College ID Number" required>
-                </div>
-            </div>
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-<!-- <script src="{% static 'js/script_inter.js' %}"></script> -->
-{% include 'base/footer.html' %}
-
 </body>
 </html>

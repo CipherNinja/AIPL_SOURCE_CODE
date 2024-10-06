@@ -119,3 +119,138 @@ button:hover {
         padding: 10px;
     }
 }
+
+
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header & Footer Styling */
+.header, .footer {
+    width: 100%;
+    background-color: #e3e6ea;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Image Background Styling */
+.image-overlay {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.image-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+/* Blog and Internship Experience Section */
+.blog-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.blog-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #00094B;
+    text-align: center;
+}
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.experience-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.experience-item:hover {
+    transform: translateY(-10px);
+}
+
+.experience-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Perks Section */
+.perks-section {
+    background-color: #eef2f5;
+    padding: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.perks-section h2 {
+    text-align: center;
+    color: #00094B;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.perks-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.perks-list li {
+    margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-section, .perks-section {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experience-container {
+        grid-template-columns: 1fr;
+    }
+}

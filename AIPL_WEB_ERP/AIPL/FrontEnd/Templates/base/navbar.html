@@ -41,8 +41,8 @@
               ></span>
             </a>
             <ul class="inner-submenu" id="inner-submenu-one">
-              <li>Banking</li>
-              <li>Finance</li>
+              <a href="{% url 'articles' 'banking' %}"><li>Banking</li></a>
+              <a href="{% url 'articles' 'banking' %}"><li>Finance</li></a>
               <li>Digitalization</li>
               <li>Communications, Media, and Information Services</li>
               <li>Education</li>
@@ -60,16 +60,13 @@
             ></a>
             <ul class="inner-submenu" id="inner-submenu-two">
               <a href="{% url 'articles' 'artificialintelligence' %}"><li>Artificial Intelligence</li></a>
-              <a href="{% url 'maintenance' %}"><li>Cloud</li></a>
+              <a href="{% url 'articles' 'cloud' %}"><li>Cloud</li></a>
               <a href="{% url 'articles' 'digitalmarketing' %}"><li>Digitalization</li></a>
-              <a href="{% url 'maintenance' %}"><li>Cognitive Business Operations</li></a>
-              <a href="{% url 'maintenance' %}"><li>Consulting</li></a>
-              <a href="{% url 'maintenance' %}"><li>Data and Analytics</li></a>
-              <a href="{% url 'maintenance' %}"><li>Enterprise Soultions</li></a>
-              <a href="{% url 'maintenance' %}"><li>High Tech</li></a>
-              <a href="{% url 'maintenance' %}"><li>Insurance</li></a>
-              <a href="{% url 'articles' 'internetofthings' %}"><li>IoT and Digital Engineering</li></a>
-              <a href="{% url 'maintenance' %}"><li>Network Soultions and Services</li></a>
+              <a href="{% url 'maintenance' %}"><li>Cyber Security</li></a>
+              <a href="{% url 'maintenance' %}"><li>Web Development</li></a>
+              <a href="{% url 'maintenance' %}"><li>Mobile App Development</li></a>
+              <a href="{% url 'maintenance' %}"><li>IT Consultance</li></a>
+              <a href="{% url 'articles' 'ecommerse' %}"><li>E-Commerce solutions</li></a>
             </ul>
           </li>
           <li id="active">
@@ -86,8 +83,8 @@
               <li>AIPL ERP on Cloud</li>
               <li>AIPL Restaurant Management System<sup>TM</sup></li>
               <li>AIPL College ERP<sup>TM</sup></li>
-              <li>AIPL SMS System<sup>TM</sup></li>
-              <li>AIPL Teacher AI<sup>TM</sup></li>
+              <!-- <li>AIPL SMS System<sup>TM</sup></li>
+              <li>AIPL Teacher AI<sup>TM</sup></li> -->
             </ul>
           </li>
           <li id="active">
@@ -105,10 +102,10 @@
       <li>
         <a href="#">Who are we <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
-          <li><a href="{% url 'maintenance' %}">About Us</a></li>
-          <li><a href="{% url 'maintenance' %}">Leadership</a></li>
-          <li><a href="{% url 'maintenance' %}">Events</a></li>
+          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
+          <li><a href="{% url 'articles' 'our_impact' %}">Impact</a></li>
+          <li><a href="{% url 'articles' 'leadership' %}">Leadership</a></li>
+          <li><a href="{% url 'articles' 'testimonial' %}">Testimonial</a></li>
         </ul>
       </li>
       <li>
@@ -125,7 +122,7 @@
       <li>
         <a href="#">Careers <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="#">Overview</a></li>
+          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
           <li><a href="{% url 'maintenance' %}">India</a></li>
           <li><a href="{% url 'maintenance' %}">Americas</a></li>
           <li><a href="{% url 'maintenance' %}">Asia Pacific</a></li>
@@ -136,7 +133,7 @@
       <li>
         <a href="#">Newsroom <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
+          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
           <li><a href="{% url 'maintenance' %}">Press release</a></li>
           <li><a href="{% url 'maintenance' %}">News alerts</a></li>
           <li><a href="{% url 'maintenance' %}">Analyst recognition</a></li>
@@ -146,7 +143,7 @@
       <li>
         <a href="#">Investors <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
-          <li id="active"><a href="{% url 'maintenance' %}">Overview</a></li>
+          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
           <li><a href="{% url 'maintenance' %}">Manage Commentary</a></li>
           <li><a href="{% url 'maintenance' %}">Financials</a></li>
           <li><a href="{% url 'maintenance' %}">News and Events</a></li>
@@ -154,7 +151,6 @@
           <li><a href="{% url 'maintenance' %}">Resources</a></li>
         </ul>
       </li>
-      <li><a href="{% url 'maintenance' %}">Contact us</a></li>
       <li><a href="{% url 'maintenance' %}">AIPL worldwide</a></li>
     </ul>
   </div>
