@@ -14,7 +14,7 @@
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 100px auto;
             padding: 20px;
         }
         section {
@@ -28,20 +28,22 @@
             font-size: 2em;
             margin-top: 0;
         }
-        p, li {
+        p {
             line-height: 1.6;
             font-size: 1.1em;
         }
-        ul {
+
+        /* Specific list style for the expertise section */
+        .expertise-list {
             list-style-type: none;
             padding: 0;
         }
-        li {
+        .expertise-list li {
             margin-bottom: 15px;
             padding-left: 30px;
             position: relative;
         }
-        li::before {
+        .expertise-list li::before {
             content: '•';
             color: #00c6ff;
             position: absolute;
@@ -49,9 +51,11 @@
             top: 0;
         }
     </style>
+    {% load static %}
 </head>
 <body>
     {% include 'base/navbar.html' %}
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
     <div class="container">
         <section id="overview">
             <h2>Agratas Infotech Private Limited</h2>
@@ -67,7 +71,7 @@
         </section>
         <section id="expertise">
             <h2>Our Expertise</h2>
-            <ul>
+            <ul class="expertise-list">
                 <li>IoT Solutions</li>
                 <li>AI-powered Analytics</li>
                 <li>Cloud Integration</li>

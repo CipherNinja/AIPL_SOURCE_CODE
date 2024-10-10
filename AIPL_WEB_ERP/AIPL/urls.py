@@ -20,5 +20,4 @@ urlpatterns = [
     path("internship/",views.internship_opportunity_page,name="internship"),
     path("maintenance/",views.maintenance_page_view,name="maintenance"),
     
-    
 ]

@@ -244,6 +244,10 @@ def news_and_article_page_controller(request,page_name):
         "our_impact":"impact.html",
         "testimonial":"testimonials.html",
         "leadership":"leadership.html",
+        "webdevelopment":"web_development.html",
+        "cybersecurity":"cybersecurity.html",
+        "mobile-app-development":"mobile_app_development.html",
+        "IT-Consultancy":"IT_consulting.html"
     
     }
     __link__ = __PAGES__.get(page_name, "common_page.html")
@@ -438,3 +442,4 @@ def maintenance_page_view(request):
         request,
         "base/maintenance.html"
     )
+

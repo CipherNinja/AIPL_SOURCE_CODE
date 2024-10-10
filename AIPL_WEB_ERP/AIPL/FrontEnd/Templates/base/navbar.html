@@ -50,7 +50,6 @@
               <li>High Tech</li>
               <li>Life Sciences</li>
               <li>Open Sourcing</li>
-              <li>Public Services</li>
             </ul>
           </li>
           <li id="active">
@@ -62,10 +61,10 @@
               <a href="{% url 'articles' 'artificialintelligence' %}"><li>Artificial Intelligence</li></a>
               <a href="{% url 'articles' 'cloud' %}"><li>Cloud</li></a>
               <a href="{% url 'articles' 'digitalmarketing' %}"><li>Digitalization</li></a>
-              <a href="{% url 'maintenance' %}"><li>Cyber Security</li></a>
-              <a href="{% url 'maintenance' %}"><li>Web Development</li></a>
-              <a href="{% url 'maintenance' %}"><li>Mobile App Development</li></a>
-              <a href="{% url 'maintenance' %}"><li>IT Consultance</li></a>
+              <a href="{% url 'articles' 'cybersecurity' %}"><li>Cyber Security</li></a>
+              <a href="{% url 'articles' 'webdevelopment' %}"><li>Web Development</li></a>
+              <a href="{% url 'articles' 'mobile-app-development' %}"><li>Mobile App Development</li></a>
+              <a href="{% url 'articles' 'IT-Consultancy' %}"><li>IT Consultance</li></a>
               <a href="{% url 'articles' 'ecommerse' %}"><li>E-Commerce solutions</li></a>
             </ul>
           </li>
@@ -75,16 +74,14 @@
               <span class="arrow fa fa-angle-right" id="right-arrow"></span
             ></a>
             <ul class="inner-submenu" id="inner-submenu-three">
-              <li>AIPL ShopApp<sup>TM</sup></li>
-              <li>AIPL ERP<sup>TM</sup></li>
-              <li>AIPL SploitWeb</li>
-              <li>AIPL Hotel Management System<sup>TM</sup></li>
-              <li>AIPL Customer Intelligence & Insights<sup>TM</sup></li>
-              <li>AIPL ERP on Cloud</li>
-              <li>AIPL Restaurant Management System<sup>TM</sup></li>
-              <li>AIPL College ERP<sup>TM</sup></li>
-              <!-- <li>AIPL SMS System<sup>TM</sup></li>
-              <li>AIPL Teacher AI<sup>TM</sup></li> -->
+              <a href="{% url 'dashboard' %}"><li>AIPL ShopApp<sup>TM</sup></li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL ERP<sup>TM</sup></li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL SploitWeb</li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL Hotel Management System<sup>TM</sup></li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL Customer Intelligence & Insights<sup>TM</sup></li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL ERP on Cloud</li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL Restaurant Management System<sup>TM</sup></li></a>
+              <a href="{% url 'dashboard' %}"><li>AIPL College ERP<sup>TM</sup></li></a>
             </ul>
           </li>
           <li id="active">
