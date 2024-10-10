@@ -212,7 +212,7 @@ def customer_dashboard_view(request):
             {'notifications': notifications},
         )
     else:
-        messages.error(request, "You are not authorized to see this content.")
+        messages.error(request, "Please, SignIn to see this Content.")
         return redirect("home")
 
 def subscribe_by_footer(request):

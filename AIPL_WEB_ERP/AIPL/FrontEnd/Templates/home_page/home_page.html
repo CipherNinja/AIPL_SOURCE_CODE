@@ -11,7 +11,7 @@
 <body>
     <!-- Navbar Code is available in navbar.html -->
     {% include 'base/navbar.html' %}
-    <div class="hero">
+    <!-- <div class="hero">
         <video playsinline autoplay muted loop>
             <source src="https://assets.mixkit.co/videos/23742/23742-720.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -39,9 +39,12 @@
             <a href="{% url 'signup' %}" class="btn signup"><i class="fas fa-user-plus"></i> Sign Up</a>
             <a href="{% url 'signin' %}" class="btn signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
         </div>
+    </div> -->
+    {% include 'home_page/image_slider.html' %}
+    <div class="hero-buttons bottom-left">
+        <a href="{% url 'signup' %}" class="btn signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a href="{% url 'signin' %}" class="btn signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
     </div>
-
-
     <!-- 
     From: Priyesh Pandey
     To: Dear Frontend Developer !

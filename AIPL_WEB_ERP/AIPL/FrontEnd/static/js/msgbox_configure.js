@@ -1,9 +1,19 @@
-// for customer dashboard
+// Adjust padding and top for success and error messages
+window.onload = function() {
 
-box = document.getElementsByClassName("success")[0].style
-box.padding = "7px"
-box.top = "47px"
+    // This function will hide the messages after 3 seconds
+    setTimeout(function() {
+        // Select all elements with class 'success' and 'error'
+        var messages = document.querySelectorAll('.success, .error');
+        messages.forEach(function(message) {
+            // Start fading out the message
+            message.style.transition = 'opacity 1s ease';  // Adds a fade-out transition
+            message.style.opacity = '0';  // Set opacity to 0 to begin fading
 
-box2 = document.getElementsByClassName("error")[0].style
-box2.padding = "7px"
-box2.top = "47px"
+            // Remove the message from the DOM after the fade-out transition completes
+            setTimeout(function() {
+                message.remove();
+            }, 1000);  // Delay for 1 second (after the fade-out transition)
+        });
+    }, 3000);  // Wait for 3 seconds before starting the fade-out
+};
