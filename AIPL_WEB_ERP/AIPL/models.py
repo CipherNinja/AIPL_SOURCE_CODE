@@ -148,12 +148,17 @@ class developer_profile(models.Model):
         ("Data Analyst", "Data Analyst"),
         ("DB Admin", "DB Admin"),
         ("Cloud Dev", "Cloud Dev"),
-        ("Blockchain Dev","Blockchain Dev"),
-        ("AR/VR Dev","AR/VR Dev"),
-        ("Test Automation","Test Automation"),
-        ("BDA Trainee","BDA Trainee"),
+        ("Blockchain Dev", "Blockchain Dev"),
+        ("AR/VR Dev", "AR/VR Dev"),
+        ("Test Automation", "Test Automation"),
+        ("BDA Trainee", "BDA Trainee"),
         ('Content Writer', "Content Writer"),
-        ("Digital Marketing Trainee","Digital Marketing Trainee"),
+        ("Digital Marketing Trainee", "Digital Marketing Trainee"),
+        ("Backend Dev .Net", "Backend Dev .Net"),
+        ("Backend Dev PHP", "Backend Dev PHP"),
+        ("Database Administrator", "Database Administrator"),
+        ("SDE with Java", "SDE with Java"),
+        ("Business Development Analyst", "Business Development Analyst")
     ]
     developer = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name="Employee ID")
     job_role = models.CharField(choices=developer_role,max_length=50)
