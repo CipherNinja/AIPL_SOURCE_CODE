@@ -1,0 +1,99 @@
+<!-- templates/email_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #004b8d;
+        padding: 20px;
+        text-align: center;
+        color: #ffffff;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+      .content {
+        padding: 30px;
+      }
+      .content p {
+        font-size: 16px;
+        color: #333333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .content a {
+        color: #004b8d;
+        text-decoration: none;
+      }
+      .footer {
+        background-color: #f4f4f4;
+        padding: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #999999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Agratas Infotech Pvt. Ltd.</h1>
+      </div>
+
+      <!-- Main content -->
+      <div class="content">
+        <p>
+          Dear <strong>{{ application.first_name }} {{ application.last_name }}</strong>,
+        </p>
+        <p>
+          Thank you for your interest in the <strong>{{ application.role }}</strong>
+          position at Agratas Infotech Pvt. Ltd. We are pleased to confirm that
+          we have successfully received your application and resume. Our team
+          will carefully review your qualifications and will reach out to you
+          if your profile aligns with the next steps in our selection process.
+        </p>
+        <p>
+          We appreciate your time and effort in applying and your interest in
+          joining our team. If you have any questions in the meantime, feel free
+          to reach out to us at
+          <a href="mailto:recruitment@agratasinfotech.com">recruitment@agratasinfotech.com</a>.
+        </p>
+        <p>
+          Thank you once again for considering Agratas Infotech as the next step
+          in your professional journey.
+        </p>
+
+        <p>Best regards,</p>
+        <p><strong>The Recruitment Team</strong><br />Agratas Infotech Pvt. Ltd.</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          © 2024 Agratas Infotech Pvt. Ltd. | All Rights Reserved
+          <br />
+          <a href="https://www.agratasinfotech.com">www.agratasinfotech.com</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

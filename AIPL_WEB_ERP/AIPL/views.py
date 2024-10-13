@@ -378,6 +378,32 @@ def term_condition_static_render(request):
         __JSON__
     )
 
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+def send_confirmation_email(application):
+    # Define the subject and recipient
+    subject = f"Application Confirmation for the {application.role} Position"
+    recipient_email = application.email  # Assuming `application` object has `email` field
+
+    # Render the HTML content using Django's template rendering
+    html_content = render_to_string('Emails/internship_confirmation.html', {'application': application})
+    text_content = strip_tags(html_content)  # Fallback for plain text version
+
+    # Create the email message
+    email = EmailMultiAlternatives(
+        subject,
+        text_content,
+        'your-email@gmail.com',  # From email
+        [recipient_email]  # To email
+    )
+    email.attach_alternative(html_content, "text/html")
+
+    # Send the email
+    email.send()
+
+
 def internship_opportunity_page(request):
     if request.method == 'POST':
         # Get the form data manually from POST
@@ -425,25 +451,28 @@ def internship_opportunity_page(request):
             return render(request, 'Internship/internship.html')
 
         # Email confirmation message
-        our_message = f"""
-            Dear {application.first_name} {application.last_name},
+        send_confirmation_email(application) # we are using UI as email
+        
+        
+        # our_message = f"""
+        #     Dear {application.first_name} {application.last_name},
 
-            Thank you for your interest in the {application.role} position at Agratas Infotech.
-            We have successfully received your application and resume, and we are excited to review your qualifications.
-            ...
-            Best regards,
-            The Recruitment Team  
-            Agratas Infotech Pvt. Ltd.
-        """
+        #     Thank you for your interest in the {application.role} position at Agratas Infotech.
+        #     We have successfully received your application and resume, and we are excited to review your qualifications.
+        #     ...
+        #     Best regards,
+        #     The Recruitment Team  
+        #     Agratas Infotech Pvt. Ltd.
+        # """
 
-        # Send confirmation email
-        send_mail(
-            subject='Internship Application Confirmation',
-            message=our_message,
-            from_email='your_email@gmail.com',  # Replace with your actual email
-            recipient_list=[application.email],
-            fail_silently=False,
-        )
+        # # Send confirmation email
+        # send_mail(
+        #     subject='Internship Application Confirmation',
+        #     message=our_message,
+        #     from_email='info@agratasinfotech.com',  # Replace with your actual email
+        #     recipient_list=[application.email],
+        #     fail_silently=False,
+        # )
 
         # Redirect to a success page after saving
         messages.success(request, "Response Submitted, Check your Email Inbox 📧")
