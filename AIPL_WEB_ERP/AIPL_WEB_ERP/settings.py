@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rjgjg^0p_3u9coi!fyvanvzf%wp-vymu)945^a&knd6lu#n1=)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*", "agratasinfotech.com"]
 
@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'agratasi_agratasinfotech', # agratasi_agratasinfotech
-		'USER': 'agratasi_root', # agratasi_root
-		'PASSWORD': 'agratas9069076975', # agratas9069076975
+		'NAME': 'agratasinfotech', # agratasi_agratasinfotech
+		'USER': 'root', # agratasi_root
+		'PASSWORD': '9069076975', # agratas9069076975
 		'HOST':'localhost',
 		'PORT':'3306',
 	}
