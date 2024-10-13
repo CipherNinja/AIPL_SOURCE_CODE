@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Industrial Training Program</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Space+Mono&display=swap');
+
+        :root {
+            --primary-color: #00ffa3;
+            --secondary-color: #ff00d4;
+            --bg-color: #050510;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
+            opacity: 0;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            opacity: 0;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 40px;
+            margin-bottom: 60px;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        p, ul, ol {
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            .content-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <div id="canvas-container"></div>
+    
+    <header>
+        <h1>Industrial Training Program</h1>
+        <p class="subtitle">Forge Your Future in Tech with Agratas Infotech</p>
+    </header>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>Immersive Learning Experience</h2>
+            <p>Dive into the world of cutting-edge technology with our comprehensive industrial training program.</p>
+            <ul>
+                <li>6-month intensive hands-on training</li>
+                <li>Work on real-world projects alongside industry experts</li>
+                <li>Access to state-of-the-art labs and equipment</li>
+                <li>Personalized mentorship from tech leaders</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Cutting-Edge Curriculum</h2>
+            <p>Stay ahead of the curve with our future-focused training modules:</p>
+            <ul>
+                <li>Advanced AI and Machine Learning</li>
+                <li>Internet of Things (IoT) and Edge Computing</li>
+                <li>Blockchain and Distributed Systems</li>
+                <li>Quantum Computing Fundamentals</li>
+                <li>Cybersecurity and Ethical Hacking</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Industry Partnerships</h2>
+            <p>Benefit from our collaborations with tech giants:</p>
+            <ul>
+                <li>Guest lectures from industry leaders</li>
+                <li>Site visits to top tech companies</li>
+                <li>Networking events with potential employers</li>
+                <li>Opportunity to work on industry-sponsored projects</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Career Launchpad</h2>
+            <p>Set yourself up for success in the tech industry:</p>
+            <ul>
+                <li>Job placement assistance upon program completion</li>
+                <li>Resume building and interview preparation workshops</li>
+                <li>Access to Agratas Infotech's alumni network</li>
+                <li>Potential for direct hiring into Agratas Infotech</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Ready to Transform Your Future?</h2>
+            <p>Join our Industrial Training Program and catapult your career into the future of technology.</p>
+            <a href="#" class="cta-button">Apply Now</a>
+        </section>
+    </div>
+
+    <script>
+        // Three.js Animation
+        let scene, camera, renderer, particles;
+
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+
+            for (let i = 0; i < 15000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                vertices.push(x, y, z);
+
+                const color = new THREE.Color();
+                color.setHSL(Math.random(), 1.0, 0.5);
+                colors.push(color.r, color.g, color.b);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                sizeAttenuation: true,
+            });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            camera.position.z = 1000;
+        }
+
+        function animateThree() {
+            requestAnimationFrame(animateThree);
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // GSAP Animations
+        function initGSAP() {
+            gsap.to("h1", {duration: 1.8, opacity: 1, y: 20, ease: "expo.out"});
+            gsap.to(".subtitle", {duration: 1.5, opacity: 1, y: 20, ease: "expo.out", delay: 0.6});
+            gsap.to(".cta-button", {duration: 1, opacity: 1, y: 20, ease: "expo.out", delay: 1});
+
+            gsap.utils.toArray(".content-section").forEach((section, i) => {
+                gsap.to(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse",
+                    },
+                    duration: 1.2,
+                    opacity: 1,
+                    y: 0,
+                    ease: "expo.out",
+                    delay: i * 0.3,
+                });
+            });
+        }
+
+        // Init
+        window.addEventListener('load', () => {
+            initThree();
+            animateThree();
+            initGSAP();
+        });
+
+        window.addEventListener('resize', onWindowResize);
+    </script>
+    {% include "base/footer.html" %}
+</body>
+</html>

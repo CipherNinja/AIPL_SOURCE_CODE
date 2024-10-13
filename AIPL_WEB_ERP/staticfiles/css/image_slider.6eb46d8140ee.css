@@ -1,0 +1,112 @@
+/* Ensure body takes full width and height */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* The slider container covers the full viewport height */
+.slider {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Make sure the image covers the full area */
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.slider--content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Center the content */
+.slider--feature {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.slider--title {
+  font-size: 2.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.slider--text {
+  font-size: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0.5rem 0;
+}
+
+.slider--btn {
+  background: #fff;
+  text-transform: uppercase;
+  border: none;
+  color: #444;
+  border: 1px solid #444;
+  outline: none;
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.slider--btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+.slider__btn-right,
+.slider__btn-left {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 4rem;
+  color: #eee;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  z-index: 3;
+}
+
+.slider__btn-left:hover,
+.slider__btn-right:hover {
+  transform: scale(0.95);
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .slider--title {
+    font-size: 1.8rem;
+  }
+  
+  .slider--text {
+    font-size: 0.9rem;
+  }
+
+  .slider--btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .slider__btn-right,
+  .slider__btn-left {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .slider {
+    background-size: cover;
+    background-attachment: fixed; /* Add parallax effect */
+  }
+}

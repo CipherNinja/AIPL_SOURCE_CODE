@@ -1,0 +1,148 @@
+body {
+    background-image: linear-gradient(#8eb5ff, #ffffff);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0px;
+}
+
+.hackathon-details {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9); /* Light background for better readability */
+    border-radius: 10px;
+}
+
+.hackathon-banner {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Adjust this based on the desired maximum height */
+    object-fit: cover;  /* Ensures the image covers the container without distortion */
+    margin-bottom: 20px;
+    margin-top: 70px;
+    border-radius: 10px;  /* Optional: adds rounded corners to the banner */
+}
+
+
+.hackathon-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.hackathon-info p {
+    flex: 1 1 calc(33% - 40px); /* Ensures 3 items per row */
+    font-size: 18px;
+    margin: 0;
+    color: #34495e;
+    text-align: left;
+}
+
+.hackathon-info i {
+    color: #2980b9;
+    margin-right: 10px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 28px;
+    color: #2c3e50; /* Adjust title color for better contrast */
+    margin-bottom: 30px;
+}
+
+
+.agratas-team-form {
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #f5f0f0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.agratas-team-form:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.agratas-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #000000;
+}
+
+.agratas-input-field, 
+.agratas-select-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    color: #34495e;
+    transition: border-color 0.3s ease;
+}
+
+.agratas-input-field:focus, 
+.agratas-select-field:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.agratas-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.agratas-form-group {
+    flex: 1;
+}
+
+.agratas-team-member-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    background-color: #f7f9fc;
+}
+
+.agratas-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agratas-submit-btn:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.agratas-input-field::placeholder {
+    color: #95a5a6;
+}
+
+.agratas-input-field:focus::placeholder {
+    color: transparent;
+}
+
+.agratas-member-title {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: left;
+}

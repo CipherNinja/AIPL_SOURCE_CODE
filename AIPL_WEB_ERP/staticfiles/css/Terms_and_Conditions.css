@@ -1,0 +1,72 @@
+/* General Layout */
+.content-wrapper {
+    display: flex;
+    max-height: 80vh; /* Set a max height to enable scrolling */
+    overflow-y: hidden; /* Prevent scrolling on the wrapper itself */
+    margin-top: 100px;
+  }
+  
+  /* Sidebar Styling */
+  .Terms-sidebar {
+    width: 20%;
+    margin: 5px;
+    padding: 20px;
+    background-color: none;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+  
+  .Terms-sidebar h3 {
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .Terms-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .Terms-sidebar li {
+    margin-bottom: 15px;
+  }
+  
+  .Terms-sidebar a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.85rem;
+  }
+  
+  .Terms-sidebar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main Content Styling */
+  .Terms-content {
+    width: 80%;
+    margin: 20px;
+    padding: 0 20px;
+    padding-left: 30px;
+    max-height: 80vh; /* Set the max height */
+    overflow-y: auto; /* Scroll the content */
+    border-left: 3px solid #000; /* Add a visual divider */
+  }
+  
+  /* Black Scrollbar Styling */
+  .Terms-content::-webkit-scrollbar {
+    width: 10px;
+    align-items: left;
+    background-color: #f4f4f4; /* Match with sidebar background */
+  }
+  
+  .Terms-content::-webkit-scrollbar-thumb {
+    background-color: #000; /* Black scrollbar */
+  }
+  
+  .Terms-content::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+  }
+  
+  

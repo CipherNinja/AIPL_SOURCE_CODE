@@ -256,6 +256,20 @@ def news_and_article_page_controller(request,page_name):
     return render(request, f"News&Articles/{__link__}")
 
 
+def education_page_controller(request,page_name):
+    
+    __PAGES__ = {
+        'faculty_development': "FDP.html",
+        'industrial_training': "industrial_training.html",
+        'placements': "placements.html",
+        "techsummit":"techsummit.html",
+    
+    }
+    __link__ = __PAGES__.get(page_name, "common_page.html")
+    
+    # Ensure the correct template path
+    return render(request, f"Education/{__link__}")
+
 
 def developers_dashboard_view(request):
     if request.user.is_authenticated:

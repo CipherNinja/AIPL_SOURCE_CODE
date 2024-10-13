@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Faculty Development Program</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Source+Code+Pro&display=swap');
+
+        :root {
+            --primary-color: #ff6f61;
+            --secondary-color: #ffd700;
+            --bg-color: #10121b;
+            --text-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-family: 'Source Code Pro', monospace;
+            text-shadow: 0 0 15px var(--primary-color);
+            opacity: 0;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            opacity: 0;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            transform: translateX(50px);
+            opacity: 0;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        p, ul, ol {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+
+        .cta-button.pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            .content-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+    <div id="canvas-container"></div>
+    
+    <header>
+        <h1>Faculty Development Program</h1>
+        <p class="subtitle">Empowering Educators for a Future-Ready World</p>
+    </header>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>Comprehensive Workshops</h2>
+            <p>Engage in specialized training designed to enhance teaching methodologies and integrate technology into education.</p>
+            <ul>
+                <li>Interactive pedagogy workshops</li>
+                <li>Technology integration in classrooms</li>
+                <li>Design thinking for modern educators</li>
+                <li>Blended learning approaches</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Expert Sessions</h2>
+            <p>Learn from leading experts in education and technology:</p>
+            <ul>
+                <li>Keynotes from academic and industry leaders</li>
+                <li>Sessions on AI in education</li>
+                <li>Workshops on digital literacy</li>
+                <li>Specialized sessions on online teaching platforms</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Networking and Collaboration</h2>
+            <p>Connect with fellow educators and build collaborative networks:</p>
+            <ul>
+                <li>Collaborative projects with educators worldwide</li>
+                <li>Breakout sessions for sharing best practices</li>
+                <li>Peer learning and feedback sessions</li>
+                <li>Group discussions on future-ready education</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Register for FDP 2024</h2>
+            <p>Join the Faculty Development Program and take the next step in advancing your teaching career.</p>
+            <a href="#" class="cta-button pulse">Register Now</a>
+        </section>
+    </div>
+
+    <script>
+        // Three.js Animation for FDP
+        let scene, camera, renderer, ringParticles;
+
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.RingGeometry(1, 5, 32);
+            const material = new THREE.MeshBasicMaterial({ color: 0xff6f61, side: THREE.DoubleSide });
+
+            const ringsGroup = new THREE.Group();
+
+            for (let i = 0; i < 50; i++) {
+                const ring = new THREE.Mesh(geometry, material);
+                ring.position.set((Math.random() - 0.5) * 500, (Math.random() - 0.5) * 500, (Math.random() - 0.5) * 500);
+                ring.rotation.x = Math.random() * 2 * Math.PI;
+                ring.rotation.y = Math.random() * 2 * Math.PI;
+                ringsGroup.add(ring);
+            }
+
+            scene.add(ringsGroup);
+            camera.position.z = 1000;
+
+            function animateThree() {
+                requestAnimationFrame(animateThree);
+                ringsGroup.rotation.x += 0.001;
+                ringsGroup.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+            animateThree();
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // GSAP Animations for FDP
+        function initGSAP() {
+            gsap.to("h1", {duration: 1.8, opacity: 1, y: 0, ease: "power4.out"});
+            gsap.to(".subtitle", {duration: 1.5, opacity: 1, y: 0, ease: "power4.out", delay: 0.3});
+            gsap.to(".cta-button", {duration: 1.5, opacity: 1, y: 0, ease: "power4.out", delay: 0.6});
+
+            gsap.utils.toArray(".content-section").forEach((section, i) => {
+                gsap.to(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    duration: 1.2,
+                    opacity: 1,
+                    x: 0,
+                    ease: "power3.out",
+                    delay: i * 0.2,
+                });
+            });
+        }
+
+        // Init
+        window.addEventListener('load', () => {
+            initThree();
+            initGSAP();
+        });
+
+        window.addEventListener('resize', onWindowResize);
+    </script>
+    {% include 'base/footer.html' %}
+</body>
+</html>

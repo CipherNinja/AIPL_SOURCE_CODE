@@ -110,21 +110,20 @@
         <ul class="submenu">
           <li id="active"><a href="{% url 'internship' %}">Internships</a></li>
           <li><a href="{% url 'AgratAsiaHack24' %}">Hackathons</a></li>          
-          <li><a href="{% url 'maintenance' %}">Placement</a></li>
-          <li><a href="{% url 'maintenance' %}">Industrial Training</a></li>
-          <li><a href="{% url 'maintenance' %}">Tech Summit</a></li>
-          <li><a href="{% url 'maintenance' %}">FDP</a></li>
+          <li><a href="{% url 'education' 'placements' %}">Placement</a></li>
+          <li><a href="{% url 'education' 'industrial_training' %}">Industrial Training</a></li>
+          <li><a href="{% url 'education' 'techsummit' %}">Tech Summit</a></li>
+          <li><a href="{% url 'education' 'faculty_development' %}">FDP</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Careers <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
           <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
-          <li><a href="{% url 'maintenance' %}">India</a></li>
-          <li><a href="{% url 'maintenance' %}">Americas</a></li>
-          <li><a href="{% url 'maintenance' %}">Asia Pacific</a></li>
-          <li><a href="{% url 'maintenance' %}">Europe and UK</a></li>
-          <li><a href="{% url 'maintenance' %}">Middle East and Africa</a></li>
+          <li><a href="{% url 'maintenance' %}">Internships</a></li>
+          <li><a href="{% url 'maintenance' %}">Developers</a></li>
+          <li><a href="{% url 'maintenance' %}">Regional Partners</a></li>
+          <li><a href="{% url 'maintenance' %}">Management Employees</a></li>
         </ul>
       </li>
       <li>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Graduate Placements</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --bg-color: #0a0a2a;
+            --text-color: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: linear-gradient(45deg, #0a0a2a, #1a1a4a);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.2) 40%,
+                rgba(255, 255, 255, 0.1) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(-45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                top: -50%;
+                left: -50%;
+            }
+            100% {
+                top: 150%;
+                left: 150%;
+            }
+        }
+
+        .ai-particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <header id="header">
+        <h1>Graduate Placements</h1>
+        <p class="subtitle">Launch Your Career in AI & Technology</p>
+    </header>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>Our Commitment to Your Growth</h2>
+            <p>At Agratas Infotech, we're at the forefront of tech innovation. Join us to skyrocket your career in the most exciting field of the 21st century.</p>
+            <ul>
+                <li>Immersive 3-month AI and advanced tech bootcamp</li>
+                <li>One-on-one mentorship with industry-leading AI researchers</li>
+                <li>Hands-on experience with cutting-edge AI projects</li>
+                <li>Competitive salary with performance-based bonuses</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>What Sets Us Apart</h2>
+            <ul>
+                <li>Work on real-world AI solutions that impact millions</li>
+                <li>Access to state-of-the-art AI labs and supercomputers</li>
+                <li>Opportunity to publish and present at top AI conferences</li>
+                <li>Fast-track career progression for exceptional performers</li>
+                <li>Continuous learning with our AI Master Classes series</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Selection Process</h2>
+            <ol>
+                <li>Online AI aptitude assessment</li>
+                <li>Algorithm challenge</li>
+                <li>Technical interview with our team leads</li>
+                <li>Innovation pitch - your vision for AI's future</li>
+                <li>Offer and welcome to the Agratas family</li>
+            </ol>
+            <p>We're looking for passionate innovators ready to push the boundaries of AI. Show us your potential, and let's shape the future together.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Ready to Revolutionize the World with tech?</h2>
+            <p>If you're excited about tech and have the drive to make a global impact, we want you on our team. Apply now and be part of the AI and tech revolution with Agratas Infotech.</p>
+            <a href="#" class="cta-button">Apply for Placements</a>
+        </section>
+    </div>
+
+    <script>
+        // Create AI particle animation
+        function createParticles() {
+            const header = document.getElementById('header');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('ai-particle');
+                header.appendChild(particle);
+
+                gsap.set(particle, {
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight
+                });
+
+                animateParticle(particle);
+            }
+        }
+
+        function animateParticle(particle) {
+            gsap.to(particle, {
+                duration: Math.random() * 3 + 2,
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                opacity: Math.random(),
+                scale: Math.random() * 2 + 0.5,
+                ease: "power1.inOut",
+                onComplete: function() {
+                    animateParticle(particle);
+                }
+            });
+        }
+
+        // Animate content sections
+        function animateContent() {
+            gsap.from('.content-section', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                stagger: 0.3,
+                ease: "power2.out"
+            });
+        }
+
+        // Init animations
+        window.addEventListener('load', () => {
+            createParticles();
+            animateContent();
+        });
+    </script>
+    {% include "base/footer.html" %}
+</body>
+</html>

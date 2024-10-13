@@ -36,6 +36,7 @@
         font-weight: bold;
         margin-top: 10px;
     }
+
 </style>
 </head>
 <body>
@@ -204,8 +205,15 @@
                 </ul>
             </section>
         </div>
-
-        {% include 'base/footer.html' %}
     </div>
+    {% include 'base/footer.html' %}
+    <style>
+            @media (max-width: 700px) {
+            footer {
+                    position: relative;
+                    left: 20px;
+                }
+            }
+    </style>
 </body>
 </html>
