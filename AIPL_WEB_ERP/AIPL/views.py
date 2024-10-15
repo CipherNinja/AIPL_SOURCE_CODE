@@ -424,6 +424,9 @@ def internship_opportunity_page(request):
         if InternshipApplication.objects.filter(email=email).exists():
             messages.error(request, 'An application with this email address already exists. Please use a different email.')
             return render(request, 'Internship/internship.html')
+        if InternshipApplication.objects.filter(phone_number=phone_number).exists():
+            messages.error(request, 'An application with this phone number already exists. Please use a different phone no.')
+            return render(request, 'Internship/internship.html')
 
         # Create the internship application instance without saving it yet
         application = InternshipApplication(

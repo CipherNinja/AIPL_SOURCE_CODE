@@ -1,0 +1,15 @@
+# Ignore media directory (user-uploaded content)
+/media/
+
+# Ignore Python virtual environment
+/venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables
+.env
+
+# Ignore local database file (if using SQLite)
+db.sqlite3

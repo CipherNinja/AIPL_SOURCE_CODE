@@ -232,18 +232,27 @@ class InternshipApplication(models.Model):
     institute_name = models.CharField(max_length=200)
     course = models.CharField(max_length=200)
     role = models.CharField(max_length=100, choices=[
-        ('ml_python', 'Machine Learning with Python'),
-        ('ai', 'Artificial Intelligence'),
-        ('cyber_security', 'Cyber Security'),
-        ('fullstack_web', 'Full Stack Web Development'),
-        ('android_dev', 'Android Development'),
-        ('data_science_python', 'Data Science with PYTHON'),
-        ('cloud_computing', 'Cloud Computing'),
-        ('digital_marketing', 'Digital Marketing'),
-        ('cw', 'Content Writer'),
-        ('finance', 'Finance'),
-        ('marketing', 'Marketing'),
-        ('ios_dev', 'IOS App Development'),
+        # Development Roles
+        ('Machine Learning Intern', 'Machine Learning with Python'),
+        ('Artificial Intelligence Intern', 'Artificial Intelligence and GenAI'),
+        ('Cyber Security Intern', 'Cyber Security Analyst'),
+        ('Full Stack Development Intern', 'Full Stack Web Development (MERN Stack)'),
+        ('Android Development Intern', 'Android Development'),
+        ('Data Analyst Intern', 'Data Science with PYTHON'),
+        ('Cloud Computing Intern', 'Cloud Computing'),
+        ('IOS App Development Intern', 'IOS App Development'),
+        ('Dot Net Backend Development Intern', 'Backend with .Net'),
+        ('PHP Backend Development Intern', 'Backend with PHP'),
+        ('Database Admin Intern', 'Database Administrator'),
+        ('SDE with Java Trainee', 'SDE with Java'),
+        ('UIUX Development Intern', 'UI UX Developer Intern'),
+
+        # Management/Non-Development Roles
+        ('Digital Marketing Intern', 'Digital Marketing'),
+        ('Content Writer Intern', 'Content Writer'),
+        ('Finance Intern', 'Finance'),
+        ('Marketing Intern', 'Marketing'),
+        ('Business Development Analyst Intern', 'Business Development Analyst')
     ])
 
 
