@@ -1,5 +1,8 @@
 # Ignore media directory (user-uploaded content)
 /media/
+/media/nginx/
+/media/nginx/resumes/
+
 
 # Ignore Python virtual environment
 /venv/
