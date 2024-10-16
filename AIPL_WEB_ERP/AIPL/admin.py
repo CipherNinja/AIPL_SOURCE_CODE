@@ -49,5 +49,12 @@ admin.site.register(TeamMember, TeamMemberAdmin)
 # Register the InternshipApplication model
 class InternshipApplicationAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'phone_number', 'role', 'branch', 'custom_resume')
+    
+    # Add filters for role and branch
+    list_filter = ('role', 'branch')
+    
+    # Optionally, set default ordering (for example, by role or branch)
+    ordering = ('role', 'branch')  # This will order the applications by role first, then branch
 
 admin.site.register(InternshipApplication, InternshipApplicationAdmin)
+

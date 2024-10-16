@@ -8,6 +8,9 @@ from zoneinfo import ZoneInfo
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponseRedirect
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 import re
 from .models import *
 # Create your views here.
@@ -377,10 +380,6 @@ def term_condition_static_render(request):
         'base/Terms_and_Conditions.html',
         __JSON__
     )
-
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 
 def send_confirmation_email(application):
     # Define the subject and recipient

@@ -5,6 +5,11 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.db.models.signals import post_save 
 from django.dispatch import receiver
+import os
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 # import pytz
 
 # Create your models here.
@@ -67,14 +72,15 @@ FOR SENDING RESPONSE AS A NOTIFICATION
 [.] FUTURE UPDATE (PENDING): Integrate the model with smtp protocol and send the notification
                                 on Email of customer/staff.
 '''
-# model for sending the notification to the customer/staff
+
+
 class Notification(models.Model):
     sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE)
-    recipient = models.ManyToManyField(User, related_name='received_notifications',)
+    recipient = models.ManyToManyField(User, related_name='received_notifications')
     message = models.TextField()
     meeting_link = models.URLField(blank=True, null=True)  # Optional field
     timestamp = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False) # we can use a cross/cancel button with GET method to set is_read = False | (hide or delete the notification)
+    is_read = models.BooleanField(default=False)  # Mark as read/unread
 
     def __str__(self):
         recipient_names = ", ".join(user.username for user in self.recipient.all())
@@ -82,10 +88,38 @@ class Notification(models.Model):
 
     def get_recipient_names(self):
         return ", ".join(user.username for user in self.recipient.all())
-    
-    class Meta:
-        verbose_name = "Notify/Update Sender "
-        verbose_name_plural = "Notify/Update Sender "
+
+    # Method to send email notification using the HR email template
+    def send_email_notification(self):
+        # Loop through recipients and send an email to each
+        for recipient in self.recipient.all():
+            # Define the subject and recipient email
+            subject = f"Notification from {self.sender.username} - Agratas Infotech Pvt. Ltd."
+            recipient_email = recipient.email  # Recipient's email address
+
+            # Render the HTML content using the HR email template
+            html_content = render_to_string('Emails/HR_email_template.html', {
+                'recipient': recipient,
+                'sender': self.sender.username,
+                'message': self.message,
+                'meeting_link': self.meeting_link,
+                'timestamp': self.timestamp,
+            })
+
+            # Generate a plain-text version by stripping the HTML tags
+            text_content = strip_tags(html_content)
+
+            # Create the email message with both plain-text and HTML alternatives
+            email = EmailMultiAlternatives(
+                subject,
+                text_content,  # Plain-text version
+                'agratascommunity@gmail.com',  # From email
+                [recipient_email]  # To email
+            )
+            email.attach_alternative(html_content, "text/html")  # Attach HTML version
+
+            # Send the email
+            email.send()
 
 
 # We dont collect the other data only email for sending bussiness email
