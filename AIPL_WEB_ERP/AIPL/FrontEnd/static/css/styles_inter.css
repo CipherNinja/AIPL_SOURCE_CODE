@@ -135,7 +135,7 @@ select:focus {
 
 .experience-item img {
     max-width: 100%;
-    border-radius: 50%;
+    border-radius: 3%;
     margin-bottom: 15px;
 }
 
