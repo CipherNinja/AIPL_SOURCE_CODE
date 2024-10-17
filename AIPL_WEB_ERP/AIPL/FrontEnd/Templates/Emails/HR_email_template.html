@@ -3,13 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification from Agratas Infotech Pvt. Ltd.</title>
     <style>
-      body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-      .container { max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; }
-      .header { background-color: #004b8d; color: white; text-align: center; padding: 10px; }
-      .content { padding: 20px; font-size: 16px; color: #333; }
-      .footer { font-size: 12px; color: #777; text-align: center; margin-top: 20px; }
-      .button { padding: 10px 15px; background-color: #004b8d; color: white; text-decoration: none; border-radius: 5px; }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #004b8d;
+        color: white;
+        text-align: center;
+        padding: 15px;
+      }
+      .content {
+        padding: 20px;
+        font-size: 16px;
+        color: #333;
+      }
+      .footer {
+        font-size: 12px;
+        color: #777;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #004b8d;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -20,10 +55,13 @@
       <div class="content">
         <p>Dear {{ recipient.first_name }} {{ recipient.last_name }},</p>
         <p>{{ message }}</p>
+
+        <!-- If a meeting link is provided, display a call-to-action button -->
         {% if meeting_link %}
         <p>To join the meeting, click on the link below:</p>
         <p><a href="{{ meeting_link }}" class="button">Join the Meeting</a></p>
         {% endif %}
+
         <p>This notification was sent on {{ timestamp }}.</p>
         <p>Best regards,</p>
         <p><strong>{{ sender }}</strong><br />Agratas Infotech Pvt. Ltd.</p>

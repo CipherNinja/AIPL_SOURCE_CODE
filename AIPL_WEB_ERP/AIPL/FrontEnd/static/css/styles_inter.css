@@ -202,3 +202,83 @@ select:focus {
 }
 
 /* Footer and Navbar already handled by Django */
+
+
+/* "Know More About This Opportunity" Section */
+.know-more-section {
+    background-color: #f5f5f5;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.know-more-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.know-more-section h2 {
+    font-size: 28px;
+    color: #004085;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.know-more-content p {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #004085;
+    transition: color 0.3s ease;
+}
+
+.know-more-content ul li:last-child {
+    border-bottom: none;
+}
+
+.know-more-content ul li:hover {
+    color: #007bff;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

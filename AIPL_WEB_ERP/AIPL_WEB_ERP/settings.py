@@ -75,8 +75,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "agratascommunity@gmail.com"
-EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"
-DEFAULT_HOST_EMAIL = "agratascommunity@gmail.com"
+EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"  # Use app password if 2FA is enabled
+DEFAULT_FROM_EMAIL = "agratascommunity@gmail.com"  # Fix the setting name
+
 
 
 WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'

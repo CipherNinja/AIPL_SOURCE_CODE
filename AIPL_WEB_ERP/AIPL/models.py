@@ -72,54 +72,82 @@ FOR SENDING RESPONSE AS A NOTIFICATION
 [.] FUTURE UPDATE (PENDING): Integrate the model with smtp protocol and send the notification
                                 on Email of customer/staff.
 '''
+import logging
 
+logger = logging.getLogger(__name__)
 
 class Notification(models.Model):
     sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE)
     recipient = models.ManyToManyField(User, related_name='received_notifications')
     message = models.TextField()
-    meeting_link = models.URLField(blank=True, null=True)  # Optional field
+    meeting_link = models.URLField(blank=True, null=True)  # Optional field for meeting links
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)  # Mark as read/unread
 
     def __str__(self):
         recipient_names = ", ".join(user.username for user in self.recipient.all())
         return f'Notification from {self.sender.username} to {recipient_names} at {self.timestamp}'
-
+    
     def get_recipient_names(self):
+        """
+        Returns a comma-separated string of all recipient usernames.
+        """
         return ", ".join(user.username for user in self.recipient.all())
 
-    # Method to send email notification using the HR email template
+
     def send_email_notification(self):
-        # Loop through recipients and send an email to each
+        """
+        Sends an email notification to all recipients.
+        """
         for recipient in self.recipient.all():
-            # Define the subject and recipient email
-            subject = f"Notification from {self.sender.username} - Agratas Infotech Pvt. Ltd."
-            recipient_email = recipient.email  # Recipient's email address
+            try:
+                logger.info(f"Preparing to send email to {recipient.email} from {self.sender.email}")
+                
+                # Define the email subject and recipient's email
+                subject = f"Notification from {self.sender.username} - Agratas Infotech Pvt. Ltd."
+                recipient_email = recipient.email
 
-            # Render the HTML content using the HR email template
-            html_content = render_to_string('Emails/HR_email_template.html', {
-                'recipient': recipient,
-                'sender': self.sender.username,
-                'message': self.message,
-                'meeting_link': self.meeting_link,
-                'timestamp': self.timestamp,
-            })
+                # Render the HTML content using the email template
+                html_content = render_to_string('Emails/HR_email_template.html', {
+                    'recipient': recipient,
+                    'sender': self.sender.username,
+                    'message': self.message,
+                    'meeting_link': self.meeting_link,
+                    'timestamp': self.timestamp,
+                })
+                logger.info(f"HTML content prepared: {html_content}")
 
-            # Generate a plain-text version by stripping the HTML tags
-            text_content = strip_tags(html_content)
+                # Generate a plain-text version by stripping the HTML tags
+                text_content = strip_tags(html_content)
 
-            # Create the email message with both plain-text and HTML alternatives
-            email = EmailMultiAlternatives(
-                subject,
-                text_content,  # Plain-text version
-                'agratascommunity@gmail.com',  # From email
-                [recipient_email]  # To email
-            )
-            email.attach_alternative(html_content, "text/html")  # Attach HTML version
+                # Create the email message with both plain-text and HTML alternatives
+                email = EmailMultiAlternatives(
+                    subject,
+                    text_content,  # Plain-text version
+                    'agratascommunity@gmail.com',  # From email
+                    [recipient_email]  # To email
+                )
+                email.attach_alternative(html_content, "text/html")  # Attach the HTML version
 
-            # Send the email
-            email.send()
+                # Send the email
+                email.send()
+
+                logger.info(f"Email successfully sent to {recipient_email}")
+            except Exception as e:
+                logger.error(f"Error sending email to {recipient_email}: {e}")
+
+
+# Signal to trigger email sending after saving the notification
+@receiver(post_save, sender=Notification)
+def send_notification_email(sender, instance, created, **kwargs):
+    """
+    This signal triggers the send_email_notification method after a Notification object is saved.
+    """
+    if created:  # Only send email when a new notification is created
+        print(f"Signal triggered for notification ID {instance.id}")
+        instance.send_email_notification()
+
+
 
 
 # We dont collect the other data only email for sending bussiness email
