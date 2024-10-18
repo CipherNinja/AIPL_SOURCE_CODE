@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.mail import send_mail
-from django.db.models.signals import post_save 
+from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
 import os
 from django.core.mail import EmailMultiAlternatives
@@ -80,42 +80,46 @@ class Notification(models.Model):
     sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE)
     recipient = models.ManyToManyField(User, related_name='received_notifications')
     message = models.TextField()
-    meeting_link = models.URLField(blank=True, null=True)  # Optional field for meeting links
+    meeting_link = models.URLField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False)  # Mark as read/unread
+    is_read = models.BooleanField(default=False)
 
     def __str__(self):
         recipient_names = ", ".join(user.username for user in self.recipient.all())
         return f'Notification from {self.sender.username} to {recipient_names} at {self.timestamp}'
-    
+
     def get_recipient_names(self):
         """
         Returns a comma-separated string of all recipient usernames.
         """
         return ", ".join(user.username for user in self.recipient.all())
-
-
+    
     def send_email_notification(self):
         """
-        Sends an email notification to all recipients.
+        Sends an email notification to all recipients using a template.
         """
-        for recipient in self.recipient.all():
+        # print(f"Executing send_email_notification for notification ID {self.id}")
+        
+        recipients = self.recipient.all()  # Fetch all recipients
+        print(f"Recipients: {recipients}")  # Print the recipients
+
+        for recipient in recipients:
             try:
-                logger.info(f"Preparing to send email to {recipient.email} from {self.sender.email}")
+                # print(f"Preparing to send email to {recipient.email}")
                 
                 # Define the email subject and recipient's email
                 subject = f"Notification from {self.sender.username} - Agratas Infotech Pvt. Ltd."
                 recipient_email = recipient.email
 
-                # Render the HTML content using the email template
+                # Render the HTML content using your template
                 html_content = render_to_string('Emails/HR_email_template.html', {
-                    'recipient': recipient,
+                    'recipient': recipient,  # Pass the recipient as context
                     'sender': self.sender.username,
                     'message': self.message,
                     'meeting_link': self.meeting_link,
                     'timestamp': self.timestamp,
                 })
-                logger.info(f"HTML content prepared: {html_content}")
+                # print(f"HTML content prepared: {html_content}")
 
                 # Generate a plain-text version by stripping the HTML tags
                 text_content = strip_tags(html_content)
@@ -132,20 +136,22 @@ class Notification(models.Model):
                 # Send the email
                 email.send()
 
-                logger.info(f"Email successfully sent to {recipient_email}")
+                print(f"Email successfully sent to {recipient_email}")
             except Exception as e:
-                logger.error(f"Error sending email to {recipient_email}: {e}")
+                print(f"Error sending email to {recipient_email}: {e}")
+
 
 
 # Signal to trigger email sending after saving the notification
-@receiver(post_save, sender=Notification)
-def send_notification_email(sender, instance, created, **kwargs):
+@receiver(m2m_changed, sender=Notification.recipient.through)
+def send_email_notification_m2m(sender, instance, action, **kwargs):
     """
-    This signal triggers the send_email_notification method after a Notification object is saved.
+    This signal triggers the send_email_notification method after recipients are added.
     """
-    if created:  # Only send email when a new notification is created
-        print(f"Signal triggered for notification ID {instance.id}")
+    if action == 'post_add':  # Trigger only after recipients are added
+        # print(f"m2m_changed signal triggered for notification ID {instance.id}")
         instance.send_email_notification()
+        
 
 
 

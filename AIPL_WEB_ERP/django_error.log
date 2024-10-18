@@ -1,0 +1,94 @@
+ERROR 2024-10-18 08:56:40,861 log Internal Server Error: /admin/AIPL/notification/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\options.py", line 672, in get_field
+    return self.fields_map[field_name]
+KeyError: 'get_recipient_names'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\options.py", line 674, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Notification has no field named 'get_recipient_names'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\library.py", line 260, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\templatetags\admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\templatetags\admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\templatetags\admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\templatetags\admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\utils.py", line 280, in lookup_field
+    value = attr(obj)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\admin.py", line 20, in get_recipient_names
+    return obj.get_recipient_names()
+AttributeError: 'Notification' object has no attribute 'get_recipient_names'
+ERROR 2024-10-18 08:56:40,866 basehttp "GET /admin/AIPL/notification/ HTTP/1.1" 500 441753
