@@ -87,7 +87,7 @@ class Notification(models.Model):
     def __str__(self):
         recipient_names = ", ".join(user.username for user in self.recipient.all())
         return f'Notification from {self.sender.username} to {recipient_names} at {self.timestamp}'
-
+    
     def get_recipient_names(self):
         """
         Returns a comma-separated string of all recipient usernames.
@@ -98,28 +98,30 @@ class Notification(models.Model):
         """
         Sends an email notification to all recipients using a template.
         """
-        # print(f"Executing send_email_notification for notification ID {self.id}")
-        
         recipients = self.recipient.all()  # Fetch all recipients
-        print(f"Recipients: {recipients}")  # Print the recipients
 
-        for recipient in recipients:
-            try:
-                # print(f"Preparing to send email to {recipient.email}")
-                
+        try:
+            # Get the sender's profile to fetch their role
+            sender_profile = developer_profile.objects.get(developer=self.sender)
+            sender_name = f"{self.sender.first_name} {self.sender.last_name}"
+            sender_role = sender_profile.job_role
+            sender_email = self.sender.email
+
+            for recipient in recipients:
                 # Define the email subject and recipient's email
                 subject = f"Notification from {self.sender.username} - Agratas Infotech Pvt. Ltd."
                 recipient_email = recipient.email
 
-                # Render the HTML content using your template
+                # Render the HTML content using your template and pass sender details
                 html_content = render_to_string('Emails/HR_email_template.html', {
                     'recipient': recipient,  # Pass the recipient as context
-                    'sender': self.sender.username,
+                    'sender': sender_name,
+                    'sender_role': sender_role,
+                    'sender_email': sender_email,
                     'message': self.message,
                     'meeting_link': self.meeting_link,
                     'timestamp': self.timestamp,
                 })
-                # print(f"HTML content prepared: {html_content}")
 
                 # Generate a plain-text version by stripping the HTML tags
                 text_content = strip_tags(html_content)
@@ -137,9 +139,12 @@ class Notification(models.Model):
                 email.send()
 
                 print(f"Email successfully sent to {recipient_email}")
-            except Exception as e:
-                print(f"Error sending email to {recipient_email}: {e}")
+        except developer_profile.DoesNotExist:
+            print(f"Developer profile not found for sender {self.sender.username}")
+        except Exception as e:
+            print(f"Error sending email: {e}")
 
+        
 
 
 # Signal to trigger email sending after saving the notification
@@ -226,7 +231,11 @@ class developer_profile(models.Model):
         ("Backend Dev PHP", "Backend Dev PHP"),
         ("Database Administrator", "Database Administrator"),
         ("SDE with Java", "SDE with Java"),
-        ("Business Development Analyst", "Business Development Analyst")
+        ("Business Development Analyst", "Business Development Analyst"),
+        ("Head | Human Resources","Head | Human Resources"),
+        ("Director IT","Director IT"),
+        ("CEO","CEO"),
+        ("Deputy Director","Deputy Director")
     ]
     developer = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name="Employee ID")
     job_role = models.CharField(choices=developer_role,max_length=50)

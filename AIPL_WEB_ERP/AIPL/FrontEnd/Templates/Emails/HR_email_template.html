@@ -56,15 +56,18 @@
         <p>Dear {{ recipient.first_name }} {{ recipient.last_name }},</p>
         <p>{{ message }}</p>
 
-        <!-- If a meeting link is provided, display a call-to-action button -->
         {% if meeting_link %}
-        <p>To join the meeting, click on the link below:</p>
+        <p>To join the meeting, click on this button:</p>
         <p><a href="{{ meeting_link }}" class="button">Join the Meeting</a></p>
         {% endif %}
 
         <p>This notification was sent on {{ timestamp }}.</p>
         <p>Best regards,</p>
-        <p><strong>{{ sender }}</strong><br />Agratas Infotech Pvt. Ltd.</p>
+        <p><strong>{{ sender }}</strong><br />
+           {{ sender_role }}<br />
+           Agratas Infotech Pvt. Ltd.<br />
+           <a href="mailto:{{ sender_email }}"><strong>Email: </strong> {{ sender_email }}</a>
+        </p>
       </div>
       <div class="footer">
         <p>&copy; 2024 Agratas Infotech Pvt. Ltd. All rights reserved.</p>
