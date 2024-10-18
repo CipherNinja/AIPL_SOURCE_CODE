@@ -154,3 +154,33 @@ Traceback (most recent call last):
     raise self.RelatedObjectDoesNotExist(
 AIPL.models.Notification.sender.RelatedObjectDoesNotExist: Notification has no sender.
 ERROR 2024-10-18 10:52:03,392 basehttp "POST /admin/AIPL/notification/add/ HTTP/1.1" 500 124432
+ERROR 2024-10-19 01:03:42,816 log Internal Server Error: /admin/AIPL/notification/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\admin.py", line 26, in save_model
+    if not obj.sender:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\fields\related_descriptors.py", line 215, in __get__
+    raise self.RelatedObjectDoesNotExist(
+AIPL.models.Notification.sender.RelatedObjectDoesNotExist: Notification has no sender.
+ERROR 2024-10-19 01:03:42,821 basehttp "POST /admin/AIPL/notification/add/ HTTP/1.1" 500 120272

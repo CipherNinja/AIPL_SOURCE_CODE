@@ -77,7 +77,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class Notification(models.Model):
-    sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, related_name='sent_notifications', on_delete=models.CASCADE,blank=True,null=True)
     recipient = models.ManyToManyField(User, related_name='received_notifications')
     message = models.TextField()
     meeting_link = models.URLField(blank=True, null=True)
@@ -253,7 +253,8 @@ class AddTaskDetail(models.Model):
     title = models.CharField(max_length=80)
     detail = models.TextField(max_length=800)
     created_at = models.DateTimeField(auto_now=True)
-    accepted_by = models.OneToOneField(User,on_delete=models.CASCADE,default=1)
+    accepted_by = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+    completion_status = models.BooleanField(default=False)
 
 
     def __str__(self):

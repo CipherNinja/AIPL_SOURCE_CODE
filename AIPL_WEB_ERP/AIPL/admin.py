@@ -12,27 +12,35 @@ class DocumentModelAdmin(admin.ModelAdmin):
     list_display = ["id","user","date","time","location","reason","description"]
 
 
-
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('sender', 'get_recipient_names', 'message', 'timestamp', 'is_read')
     
+    exclude = ('sender',)  # Exclude the sender field from the admin form
+
     def get_recipient_names(self, obj):
         return obj.get_recipient_names()
     get_recipient_names.short_description = 'Recipients'
+    
+    def save_model(self, request, obj, form, change):
+        # Automatically assign the sender as the currently logged-in user
+        if not obj.sender:
+            obj.sender = request.user
+        obj.save()
+
+# Register the admin class
+admin.site.register(Notification, NotificationAdmin)
+
 
 admin.site.register(subscribers)
 admin.site.register(newsArticle)
-class DocumentModelAdmin(admin.ModelAdmin):
-    list_display = ["title","content"]
-admin.site.register(Notification, NotificationAdmin)
 
 @admin.register(developer_profile)
 class DocumentModelAdmin(admin.ModelAdmin):
     list_display = ["id","developer","job_role","points","rank"]
 
-admin.site.register(AddTaskDetail)
+@admin.register(AddTaskDetail)
 class TaskDetailsView(admin.ModelAdmin):
-    list_display = ["id","title","detail","created_at"]
+    list_display = ["title","detail","created_at","accepted_by","completion_status"]
 
 
 # Custom admin for TeamMember model
