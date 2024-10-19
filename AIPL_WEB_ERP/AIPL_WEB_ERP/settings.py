@@ -70,14 +70,27 @@ TEMPLATES = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "agratascommunity@gmail.com"
-EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"  # Use app password if 2FA is enabled
-DEFAULT_FROM_EMAIL = "agratascommunity@gmail.com"  # Fix the setting name
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = "agratascommunity@gmail.com"
+# EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"  # Use app password if 2FA is enabled
+# DEFAULT_FROM_EMAIL = "agratascommunity@gmail.com"  # Fix the setting name
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SMTP configuration for erp@agratasinfotech.com
+EMAIL_HOST = 'mail.agratasinfotech.com'  # The SMTP server from your screenshot
+EMAIL_PORT = 465  # Use port 465 for SSL
+EMAIL_USE_SSL = True  # SSL for secure connection
+EMAIL_HOST_USER = 'erp@agratasinfotech.com'  # Your new email
+EMAIL_HOST_PASSWORD = 'Adminerp#2420'  # Replace with the actual password
+DEFAULT_FROM_EMAIL = 'erp@agratasinfotech.com'  # The default 'From' email
+
+# Set EMAIL_USE_TLS = False since you're using SSL (port 465)
+EMAIL_USE_TLS = False
 
 
 WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'

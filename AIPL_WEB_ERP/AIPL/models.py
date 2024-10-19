@@ -130,7 +130,7 @@ class Notification(models.Model):
                 email = EmailMultiAlternatives(
                     subject,
                     text_content,  # Plain-text version
-                    'agratascommunity@gmail.com',  # From email
+                    'erp@agratasinfotech.com',  # From email
                     [recipient_email]  # To email
                 )
                 email.attach_alternative(html_content, "text/html")  # Attach the HTML version
@@ -194,7 +194,7 @@ class newsArticle(models.Model):
         send_mail(
             subject=subject,
             message=message,
-            from_email="droppersconnect@gmail.com",
+            from_email="erp@agratasinfotech.com",
             recipient_list=recipient_list,
             fail_silently=False,
         )

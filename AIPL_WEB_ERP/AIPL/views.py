@@ -394,7 +394,7 @@ def send_confirmation_email(application):
     email = EmailMultiAlternatives(
         subject,
         text_content,
-        'your-email@gmail.com',  # From email
+        'agratascommunity@gmail.com',  # From email
         [recipient_email]  # To email
     )
     email.attach_alternative(html_content, "text/html")
