@@ -38,9 +38,20 @@ admin.site.register(newsArticle)
 class DocumentModelAdmin(admin.ModelAdmin):
     list_display = ["id","developer","job_role","points","rank"]
 
-@admin.register(AddTaskDetail)
+
+@admin.register(ManageTask)
 class TaskDetailsView(admin.ModelAdmin):
-    list_display = ["title","detail","created_at","accepted_by","completion_status"]
+    list_display = [
+        "task_sender",             # Task sender
+        "task_title",         # Task title
+        "task_detail",        # Task details
+        "task_created_at",    # Task created date
+        "receiver",           # Task receiver (assigned to)
+        "task_completion_status",  # Completion status of the task
+        "task_deadline",      # Task deadline
+        "task_priority",      # Priority of the task
+        "task_progress"       # Progress of the task
+    ]
 
 
 # Custom admin for TeamMember model

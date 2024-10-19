@@ -184,3 +184,302 @@ Traceback (most recent call last):
     raise self.RelatedObjectDoesNotExist(
 AIPL.models.Notification.sender.RelatedObjectDoesNotExist: Notification has no sender.
 ERROR 2024-10-19 01:03:42,821 basehttp "POST /admin/AIPL/notification/add/ HTTP/1.1" 500 120272
+ERROR 2024-10-19 18:07:07,438 log Internal Server Error: /admin/AIPL/addtaskdetail/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb.OperationalError: (1054, "Unknown column 'AIPL_addtaskdetail.sender_id' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'AIPL_addtaskdetail.sender_id' in 'field list'")
+ERROR 2024-10-19 18:07:07,438 basehttp "GET /admin/AIPL/addtaskdetail/ HTTP/1.1" 500 198736
+ERROR 2024-10-19 18:53:24,921 log Internal Server Error: /admin/AIPL/addtaskdetail/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 872, in save_base
+    post_save.send(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\models.py", line 301, in send_task_assignment_email
+    html_content = render_to_string('Emails/task_assignment_email_template.html', {
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: Emails/task_assignment_email_template.html
+ERROR 2024-10-19 18:53:24,934 basehttp "POST /admin/AIPL/addtaskdetail/add/ HTTP/1.1" 500 153069
+ERROR 2024-10-19 18:54:30,066 log Internal Server Error: /admin/AIPL/addtaskdetail/add/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\base.py", line 872, in save_base
+    post_save.send(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Users\Priyesh Pandey\OneDrive\Desktop\agratas\AIPL_SOURCE_CODE\AIPL_WEB_ERP\AIPL\models.py", line 301, in send_task_assignment_email
+    html_content = render_to_string('Emails/task_template.html', {
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: Emails/task_template.html
+ERROR 2024-10-19 18:54:30,066 basehttp "POST /admin/AIPL/addtaskdetail/add/ HTTP/1.1" 500 152814
+ERROR 2024-10-19 19:37:59,903 log Internal Server Error: /admin/AIPL/managetask/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb.ProgrammingError: (1146, "Table 'agratasinfotech.aipl_managetask' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 831, in get_changelist_instance
+    return ChangeList(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\functional.py", line 49, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 470, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\query.py", line 552, in get_count
+    number = obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\query.py", line 537, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'agratasinfotech.aipl_managetask' doesn't exist")
+ERROR 2024-10-19 19:37:59,918 basehttp "GET /admin/AIPL/managetask/ HTTP/1.1" 500 204960
+ERROR 2024-10-19 19:54:12,757 log Internal Server Error: /admin/AIPL/managetask/
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb.ProgrammingError: (1146, "Table 'agratasinfotech.aipl_managetask' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 831, in get_changelist_instance
+    return ChangeList(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\utils\functional.py", line 49, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 470, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\query.py", line 552, in get_count
+    number = obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\query.py", line 537, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Priyesh Pandey\AppData\Roaming\Python\Python310\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'agratasinfotech.aipl_managetask' doesn't exist")
+ERROR 2024-10-19 19:54:12,809 basehttp "GET /admin/AIPL/managetask/ HTTP/1.1" 500 204960

@@ -248,21 +248,150 @@ class developer_profile(models.Model):
     class Meta:
         verbose_name = "AIPL's Employee "
         verbose_name_plural = "AIPL's Employee "
+        
+class ManageTask(models.Model):
+    # Updated field name: task_sender instead of sender
+    task_sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_tasks_manage', null=True, blank=True)
 
+    # Existing fields
+    task_title = models.CharField(max_length=80)
+    task_detail = models.TextField(max_length=800)
+    task_created_at = models.DateTimeField(auto_now=True)
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_tasks_manage', default=1)
+    task_completion_status = models.BooleanField(default=False)
+
+    # New fields for task assignment
+    task_deadline = models.DateTimeField(null=True, blank=True)
+    task_priority = models.CharField(max_length=20, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], default='medium')
+    task_progress = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed')], default='not started')
+
+    def __str__(self):
+        return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
+
+    class Meta:
+        verbose_name = "Developer Tool"
+        verbose_name_plural = "Developer Tools"
+
+# Signal to trigger email notification when a task is created
+@receiver(post_save, sender=ManageTask)
+def send_task_assignment_email(sender, instance, created, **kwargs):
+    if created:  # Only send email when a new task is created
+        task_title = instance.task_title
+        task_detail = instance.task_detail
+        task_deadline = instance.task_deadline
+        task_priority = instance.task_priority
+        recipient_email = instance.receiver.email
+
+        # Handle the case where task_sender might be None (due to null=True)
+        if instance.task_sender:
+            sender_name = f"{instance.task_sender.first_name} {instance.task_sender.last_name}"
+            sender_email = instance.task_sender.email
+            try:
+                sender_profile = instance.task_sender.developer_profile  # Assuming a related `developer_profile` model exists
+                sender_role = sender_profile.job_role
+            except Exception:
+                sender_role = 'N/A'  # Default role if no profile is found
+        else:
+            sender_name = "No sender assigned"
+            sender_email = "N/A"
+            sender_role = "N/A"
+
+        # Render HTML content for email
+        html_content = render_to_string('Emails/task_templates.html', {
+            'task_title': task_title,
+            'task_detail': task_detail,
+            'task_deadline': task_deadline,
+            'task_priority': task_priority,
+            'receiver': instance.receiver,
+            'sender_name': sender_name,
+            'sender_role': sender_role,
+            'sender_email': sender_email,
+        })
+        text_content = strip_tags(html_content)
+
+        # Send email notification
+        send_mail(
+            subject=f"New Task Assigned: {task_title}",
+            message=text_content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[recipient_email],
+            html_message=html_content
+        )
+
+
+
+
+# DISCARDED MODEL
 class AddTaskDetail(models.Model):
+    # Optional task sender field
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_tasks_add', null=True, blank=True)  # Task sender
+
+    # Existing fields
     title = models.CharField(max_length=80)
     detail = models.TextField(max_length=800)
     created_at = models.DateTimeField(auto_now=True)
-    accepted_by = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+    accepted_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_tasks_add', default=1)
     completion_status = models.BooleanField(default=False)
 
+    # New fields for task assignment
+    deadline = models.DateTimeField(null=True, blank=True)  # Deadline for task completion
+    priority = models.CharField(max_length=20, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], default='medium')  # Priority of the task
+    status = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed')], default='not started')  # Task status
 
     def __str__(self):
-        return f"{self.title}"
+        return f"Task: {self.title}, Assigned to: {self.accepted_by.username}"
+
     class Meta:
-        verbose_name = "Task Assign Tool "
-        verbose_name_plural = "Task Assign Tool "
-    
+        verbose_name = "Task Assign Tool"
+        verbose_name_plural = "Task Assign Tool"
+
+
+# # Signal to trigger email notification when a task is created
+# @receiver(post_save, sender=AddTaskDetail)
+# def send_task_assignment_email(sender, instance, created, **kwargs):
+#     if created:  # Only send email when a new task is created
+#         task_title = instance.title
+#         task_detail = instance.detail
+#         task_deadline = instance.deadline
+#         task_priority = instance.priority
+#         recipient_email = instance.accepted_by.email
+
+#         # Handle the case where sender might be None (due to null=True)
+#         if instance.sender:
+#             sender_name = f"{instance.sender.first_name} {instance.sender.last_name}"
+#             sender_email = instance.sender.email
+#             try:
+#                 sender_profile = instance.sender.developer_profile  # Assuming a related `developer_profile` model exists
+#                 sender_role = sender_profile.job_role
+#             except Exception:
+#                 sender_role = 'N/A'  # Default role if no profile is found
+#         else:
+#             sender_name = "No sender assigned"
+#             sender_email = "N/A"
+#             sender_role = "N/A"
+
+#         # Render HTML content for email
+#         html_content = render_to_string('Emails/task_templates.html', {
+#             'task_title': task_title,
+#             'task_detail': task_detail,
+#             'task_deadline': task_deadline,
+#             'task_priority': task_priority,
+#             'accepted_by': instance.accepted_by,
+#             'sender_name': sender_name,
+#             'sender_role': sender_role,
+#             'sender_email': sender_email,
+#         })
+#         text_content = strip_tags(html_content)
+
+#         # Send email notification
+#         send_mail(
+#             subject=f"New Task Assigned: {task_title}",
+#             message=text_content,
+#             from_email=settings.DEFAULT_FROM_EMAIL,
+#             recipient_list=[recipient_email],
+#             html_message=html_content
+#         )
+
 
 from django.db import models
 
