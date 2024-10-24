@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rjgjg^0p_3u9coi!fyvanvzf%wp-vymu)945^a&knd6lu#n1=)'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'AIPL_WEB_ERP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "AIPL" / "FrontEnd" / "Templates"],
+        'DIRS': [BASE_DIR / "AIPL" / "FrontEnd" / "Templates"], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +86,7 @@ EMAIL_HOST = 'mail.agratasinfotech.com'  # The SMTP server from your screenshot
 EMAIL_PORT = 465  # Use port 465 for SSL
 EMAIL_USE_SSL = True  # SSL for secure connection
 EMAIL_HOST_USER = 'erp@agratasinfotech.com'  # Your new email
-EMAIL_HOST_PASSWORD = 'Adminerp#2420'  # Replace with the actual password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')  # Replace with the actual password
 DEFAULT_FROM_EMAIL = 'erp@agratasinfotech.com'  # The default 'From' email
 
 # Set EMAIL_USE_TLS = False since you're using SSL (port 465)
@@ -109,9 +109,9 @@ WSGI_APPLICATION = 'AIPL_WEB_ERP.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'agratasi_agratasinfotech', # agratasi_agratasinfotech
-		'USER': 'agratasi_root', # agratasi_root
-		'PASSWORD': 'agratas9069076975', # agratas9069076975
+		'NAME': os.getenv('DB_NAME'), # agratasi_agratasinfotech
+		'USER': os.getenv('DB_USER'), # agratasi_root
+		'PASSWORD': os.getenv('DB_PASSWORD'), # agratas9069076975
 		'HOST':'localhost',
 		'PORT':'3306',
 	}

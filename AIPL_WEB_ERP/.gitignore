@@ -1,11 +1,14 @@
-# Ignore media directory (user-uploaded content)
-/media/
-/media/nginx/
-/media/nginx/resumes/
+# Ignore Django log files
+*.log
+django_error.log
 
+# Ignore media directory (user-uploaded content)
+media/
+media/nginx/
+media/nginx/resumes/
 
 # Ignore Python virtual environment
-/venv/
+venv/
 
 # Ignore Python cache files
 __pycache__/
@@ -16,3 +19,6 @@ __pycache__/
 
 # Ignore local database file (if using SQLite)
 db.sqlite3
+
+# Ignore compiled bytecode files
+*.pyc

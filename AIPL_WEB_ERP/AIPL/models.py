@@ -322,28 +322,28 @@ def send_task_assignment_email(sender, instance, created, **kwargs):
 
 
 # DISCARDED MODEL
-class AddTaskDetail(models.Model):
-    # Optional task sender field
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_tasks_add', null=True, blank=True)  # Task sender
+# class AddTaskDetail(models.Model):
+#     # Optional task sender field
+#     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_tasks_add', null=True, blank=True)  # Task sender
 
-    # Existing fields
-    title = models.CharField(max_length=80)
-    detail = models.TextField(max_length=800)
-    created_at = models.DateTimeField(auto_now=True)
-    accepted_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_tasks_add', default=1)
-    completion_status = models.BooleanField(default=False)
+#     # Existing fields
+#     title = models.CharField(max_length=80)
+#     detail = models.TextField(max_length=800)
+#     created_at = models.DateTimeField(auto_now=True)
+#     accepted_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_tasks_add', default=1)
+#     completion_status = models.BooleanField(default=False)
 
-    # New fields for task assignment
-    deadline = models.DateTimeField(null=True, blank=True)  # Deadline for task completion
-    priority = models.CharField(max_length=20, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], default='medium')  # Priority of the task
-    status = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed')], default='not started')  # Task status
+#     # New fields for task assignment
+#     deadline = models.DateTimeField(null=True, blank=True)  # Deadline for task completion
+#     priority = models.CharField(max_length=20, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], default='medium')  # Priority of the task
+#     status = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed')], default='not started')  # Task status
 
-    def __str__(self):
-        return f"Task: {self.title}, Assigned to: {self.accepted_by.username}"
+#     def __str__(self):
+#         return f"Task: {self.title}, Assigned to: {self.accepted_by.username}"
 
-    class Meta:
-        verbose_name = "Task Assign Tool"
-        verbose_name_plural = "Task Assign Tool"
+#     class Meta:
+#         verbose_name = "Task Assign Tool"
+#         verbose_name_plural = "Task Assign Tool"
 
 
 # # Signal to trigger email notification when a task is created
