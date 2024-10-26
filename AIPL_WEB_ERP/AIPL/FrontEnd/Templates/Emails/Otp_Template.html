@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #004b8d;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .content p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .otp {
+            font-size: 20px;
+            font-weight: bold;
+            color: #004b8d;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content a {
+            color: #004b8d;
+            text-decoration: none;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Agratas Infotech Pvt. Ltd.</h1>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <p>
+                Dear User,
+            </p>
+            <p>
+                We have received a request to reset the password associated with this email address. Please use the following One-Time Password (OTP) to proceed with resetting your password:
+            </p>
+            
+            <div class="otp">
+                {{ otp_code }}
+            </div>
+            
+            <p>
+                This OTP is valid for 10 minutes. If you did not request a password reset, please ignore this email or contact our support team.
+            </p>
+
+            <p>Thank you,</p>
+            <p><strong>Agratas Infotech Pvt. Ltd. Team</strong></p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                © 2024 Agratas Infotech Pvt. Ltd. | All Rights Reserved
+                <br />
+                <a href="https://www.agratasinfotech.com">www.agratasinfotech.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

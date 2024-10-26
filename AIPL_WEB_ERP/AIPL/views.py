@@ -491,6 +491,29 @@ def maintenance_page_view(request):
 
 import random
 
+# Function to send the OTP email
+def send_otp_email(email, otp_code):
+    # Define the subject and recipient
+    subject = "Your OTP for Password Reset"
+    recipient_email = email
+
+    # Render the HTML content using Django's template rendering
+    html_content = render_to_string('Emails/Otp_Template.html', {'otp_code': otp_code})
+    text_content = strip_tags(html_content)  # Fallback for plain text version
+
+    # Create the email message
+    email_message = EmailMultiAlternatives(
+        subject,
+        text_content,
+        'erp@agratasinfotech.com',  # From email
+        [recipient_email]  # To email
+    )
+    email_message.attach_alternative(html_content, "text/html")
+
+    # Send the email
+    email_message.send()
+
+
 def forget_password_view(request):
     if request.method == "POST":
         # Check if OTP verification form is being submitted
@@ -522,13 +545,7 @@ def forget_password_view(request):
             request.session['email'] = email
             
             # Send OTP via email
-            send_mail(
-                "Password Reset OTP",
-                f"Your OTP for password reset is {otp}",
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
+            send_otp_email(email, otp)
             messages.info(request, "OTP has been sent to your email.")
             return render(request, "Forget_Pass/otp_verify.html")
     
