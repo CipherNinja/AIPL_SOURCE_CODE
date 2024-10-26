@@ -37,7 +37,7 @@ admin.site.register(newsArticle)
 @admin.register(developer_profile)
 class DocumentModelAdmin(admin.ModelAdmin):
     list_display = ["id","developer","job_role","points","rank"]
-
+    ordering = ["rank"]
 
 @admin.register(ManageTask)
 class TaskDetailsView(admin.ModelAdmin):
@@ -47,7 +47,7 @@ class TaskDetailsView(admin.ModelAdmin):
         "task_detail",        # Task details
         "task_created_at",    # Task created date
         "receiver",           # Task receiver (assigned to)
-        "task_completion_status",  # Completion status of the task
+        # "task_completion_status",  # Completion status of the task
         "task_deadline",      # Task deadline
         "task_priority",      # Priority of the task
         "task_progress"       # Progress of the task

@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.mail import send_mail
-from django.db.models.signals import post_save, m2m_changed
+from django.db.models.signals import post_save, m2m_changed, pre_save
 from django.dispatch import receiver
 import os
 from django.core.mail import EmailMultiAlternatives
@@ -245,6 +245,16 @@ class developer_profile(models.Model):
     def __str__(self):
         return f"{self.developer.first_name} {self.developer.last_name} | {self.job_role}"
     
+    @classmethod
+    def recalculate_ranks(cls):
+        """Recalculate ranks for all developers based on points."""
+        developers = cls.objects.order_by('-points')  # Sort by points descending
+        rank = 1
+        for dev in developers:
+            dev.rank = rank
+            dev.save()
+            rank += 1
+    
     class Meta:
         verbose_name = "AIPL's Employee "
         verbose_name_plural = "AIPL's Employee "
@@ -267,10 +277,81 @@ class ManageTask(models.Model):
 
     def __str__(self):
         return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
+    def __str__(self):
+        return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
+    # class Meta:
+    #     verbose_name = "Developer Tool"
+    #     verbose_name_plural = "Developer Tools"
+
+    def update_sender_points_on_completion(self):
+        if self.task_sender and self.task_completion_status:
+            self.task_sender.developer_profile.points += 25
+            self.task_sender.developer_profile.save()
+
+    def deduct_sender_points_on_incompletion(self):
+        if self.task_sender:
+            self.task_sender.developer_profile.points -= 25
+            self.task_sender.developer_profile.save()
+
+    def update_receiver_points_on_completion(self):
+        """Award points when the task is marked as completed."""
+        priority_points = {'low': 25, 'medium': 50, 'high': 75}
+        self.points_awarded = priority_points.get(self.task_priority, 0)
+
+        # Deduct 30 points for late submission
+        if self.task_deadline and timezone.now() > self.task_deadline:
+            self.points_awarded -= 30
+        
+        # Only add points if the task was completed
+        self.receiver.developer_profile.points += self.points_awarded
+        self.receiver.developer_profile.save()
+
+    def revert_points_on_progress_change(self):
+        """Deduct full points if the task progress is reverted from 'completed'."""
+        if self.task_progress in ['not started', 'in progress'] and self.task_completion_status:
+            # Deduct full points based on task priority
+            priority_points = {'low': 25, 'medium': 50, 'high': 75}
+            points_to_deduct = priority_points.get(self.task_priority, 0)
+            
+            self.receiver.developer_profile.points -= points_to_deduct
+            self.receiver.developer_profile.save()
+            self.task_completion_status = False
 
     class Meta:
         verbose_name = "Developer Tool"
         verbose_name_plural = "Developer Tools"
+        unique_together = ('task_title', 'receiver', 'task_sender')  # Ensure no duplicate tasks
+
+# Signal to handle task progress and points
+@receiver(pre_save, sender=ManageTask)
+def handle_task_progress(sender, instance, **kwargs):
+    try:
+        previous_instance = ManageTask.objects.get(pk=instance.pk)
+        previous_progress = previous_instance.task_progress
+        previous_completion_status = previous_instance.task_completion_status
+    except ManageTask.DoesNotExist:
+        previous_progress = None
+        previous_completion_status = None
+
+    if instance.task_progress == 'completed' and not instance.task_completion_status:
+        instance.task_completion_status = True
+        instance.update_receiver_points_on_completion()
+        instance.update_sender_points_on_completion()
+        developer_profile.recalculate_ranks()  # Recalculate ranks after updating points
+
+    if previous_progress == 'completed' and instance.task_progress in ['not started', 'in progress']:
+        instance.revert_points_on_progress_change()
+        developer_profile.recalculate_ranks()  # Recalculate ranks after reverting points
+
+    if previous_completion_status and not instance.task_completion_status:
+        instance.deduct_sender_points_on_incompletion()
+        developer_profile.recalculate_ranks()  # Recalculate ranks after deduction
+
+@receiver(post_save, sender=ManageTask)
+def handle_task_creation(sender, instance, created, **kwargs):
+    if created and instance.task_completion_status:
+        instance.update_sender_points_on_completion()
+        developer_profile.recalculate_ranks()  # Recalculate ranks after sender points update    
 
 # Signal to trigger email notification when a task is created
 @receiver(post_save, sender=ManageTask)
