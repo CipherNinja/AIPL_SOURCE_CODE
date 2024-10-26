@@ -18,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin-top: 80px; /* Adjust this value to match your navbar height */
+    margin-top: 100px; /* Adjust this value to match your navbar height */
 }
 
 
@@ -155,6 +155,9 @@ button:active {
     .container {
         padding: 20px;
         width: 100%;
+    }
+    nav {
+        width: 93vw;
     }
 
     .otp-inputs input {
