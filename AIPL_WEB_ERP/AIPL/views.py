@@ -488,3 +488,50 @@ def maintenance_page_view(request):
         "base/maintenance.html"
     )
 
+
+import random
+
+def forget_password_view(request):
+    if request.method == "POST":
+        # Check if OTP verification form is being submitted
+        if 'otp1' in request.POST and 'otp2' in request.POST and 'otp3' in request.POST and 'otp4' in request.POST:
+            # Combine OTP inputs into a single string
+            otp_entered = request.POST.get("otp1") + request.POST.get("otp2") + request.POST.get("otp3") + request.POST.get("otp4")
+            otp_saved = request.session.get("otp")
+            email = request.session.get("email")
+            
+            # Verify OTP
+            if otp_saved and otp_entered == otp_saved:
+                # OTP verified successfully
+                del request.session['otp']  # Remove OTP from session after successful verification
+                messages.success(request, "OTP verified. You can now reset your password.")
+                return redirect("maintenance")  # Replace with your password reset view
+                
+            else:
+                # OTP did not match
+                messages.error(request, "Invalid OTP. Please try again.")
+                return render(request, "Forget_Pass/otp_verify.html")
+        
+        # Check if email submission form is being submitted
+        elif 'email' in request.POST:
+            email = request.POST.get("email")
+            otp = str(random.randint(1000, 9999))  # Generate a random 4-digit OTP
+            
+            # Save OTP and email in the session
+            request.session['otp'] = otp
+            request.session['email'] = email
+            
+            # Send OTP via email
+            send_mail(
+                "Password Reset OTP",
+                f"Your OTP for password reset is {otp}",
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False,
+            )
+            messages.info(request, "OTP has been sent to your email.")
+            return render(request, "Forget_Pass/otp_verify.html")
+    
+    # If no form has been submitted, show the "Forgot Password" page
+    return render(request, "Forget_Pass/forget_pass.html")
+
