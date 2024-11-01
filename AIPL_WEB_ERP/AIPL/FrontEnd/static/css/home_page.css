@@ -49,7 +49,7 @@ body {
 
 .hero-buttons {
   position: absolute;
-  bottom: 200px;
+  bottom: 240px;
   left: 20px;
   display: flex;
   gap: 10px;

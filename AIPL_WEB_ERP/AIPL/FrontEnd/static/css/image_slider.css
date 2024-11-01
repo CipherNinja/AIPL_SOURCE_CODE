@@ -14,6 +14,7 @@ body, html {
   position: relative;
 }
 
+/* Content within the slider */
 .slider--content {
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,7 @@ body, html {
   z-index: 2;
 }
 
-/* Center the content */
+/* Center the feature content */
 .slider--feature {
   text-align: center;
   display: flex;
@@ -47,24 +48,35 @@ body, html {
   margin: 0.5rem 0;
 }
 
+/* Enhanced Button Styles */
 .slider--btn {
-  background: #fff;
+  background: linear-gradient(45deg, #56CCF2, #2F80ED); /* Gradient for a modern look */
   text-transform: uppercase;
   border: none;
-  color: #444;
-  border: 1px solid #444;
+  color: #fff;
   outline: none;
   font-weight: 700;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 2.5rem; /* Slightly larger for emphasis */
   cursor: pointer;
   margin-top: 1.5rem;
+  border-radius: 30px; /* Rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Drop shadow for depth */
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .slider--btn:hover {
-  background: #444;
+  background: linear-gradient(45deg, #2F80ED, #56CCF2); /* Reverse the gradient on hover */
   color: #fff;
+  transform: scale(1.05); /* Slight scaling effect */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
 }
 
+.slider--btn:active {
+  transform: scale(0.95); /* Slight compression on click */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Reduced shadow when pressed */
+}
+
+/* Left and Right Navigation Buttons */
 .slider__btn-right,
 .slider__btn-left {
   background: transparent;

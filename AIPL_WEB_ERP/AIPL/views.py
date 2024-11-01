@@ -250,7 +250,8 @@ def news_and_article_page_controller(request,page_name):
         "webdevelopment":"web_development.html",
         "cybersecurity":"cybersecurity.html",
         "mobile-app-development":"mobile_app_development.html",
-        "IT-Consultancy":"IT_consulting.html"
+        "IT-Consultancy":"IT_consulting.html",
+        "research-and-development":"R&D.html"
     
     }
     __link__ = __PAGES__.get(page_name, "common_page.html")
@@ -552,3 +553,46 @@ def forget_password_view(request):
     # If no form has been submitted, show the "Forgot Password" page
     return render(request, "Forget_Pass/forget_pass.html")
 
+
+
+def contact_agratas(request):
+    if request.method == "POST":
+        full_name = request.POST.get("full_name")
+        email = request.POST.get("email_id")
+        phone = request.POST.get("phone_number")
+        messages = request.POST.get("message")
+        subject = request.POST.get("subject")
+
+        # Get sender details from user input
+        sender_role = request.POST.get("sender_role", "Support Staff")
+        sender_email = request.POST.get("sender_email", email)  # Use user's email if sender_email not provided
+        
+        # Email recipients
+        recipient_list = ["priyesh.pandey@agratasinfotech.com", "sandip.singh@agratasinfotech.com"]
+        
+        # Render the HTML content using the updated template
+        html_content = render_to_string('Emails/contact_us_template.html', {
+            'sender': full_name,
+            'sender_email': sender_email,
+            'phone': phone,
+            'sender_role': sender_role,
+            'subject': subject,
+            'message': messages,
+            'timestamp': timezone.now().strftime("%Y-%m-%d %H:%M:%S"),
+        })
+        
+        text_content = strip_tags(html_content)  # Fallback for plain text version
+        
+        # Create the email
+        email_message = EmailMultiAlternatives(
+            subject=f"New Contact Message: {subject}",
+            body=text_content,  # Plain-text version
+            from_email="erp@agratasinfotech.com",
+            to=recipient_list,
+        )
+        email_message.attach_alternative(html_content, "text/html")  # Attach the HTML version
+        
+        # Send the email
+        email_message.send()
+        
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

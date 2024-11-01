@@ -20,6 +20,7 @@ urlpatterns = [
     path("refund_policy/",views.refund_static_render,name="r&p"),
     path("internship/",views.internship_opportunity_page,name="internship"),
     path("maintenance/",views.maintenance_page_view,name="maintenance"),
-    path("education/<str:page_name>/",views.education_page_controller,name="education")
+    path("education/<str:page_name>/",views.education_page_controller,name="education"),
+    path("contact-agratas/",views.contact_agratas,name="contact_agratas")
     
 ]

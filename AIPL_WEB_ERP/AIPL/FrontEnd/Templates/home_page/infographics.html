@@ -1,0 +1,111 @@
+<div class="infographic-stats">
+    <h2>An Integral Part of the IT Industry's Journey</h2>
+    <p>Trusted partners to enterprises worldwide, delivering cutting-edge IT solutions and services.</p>
+    <div class="stats-container">
+        <div class="stat-item">
+            <div class="stat-circle">
+                <div class="wave"></div>
+                <div class="stat-text">15+</div>
+            </div>
+            <p>Years of Industry Experience</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-circle">
+                <div class="wave"></div>
+                <div class="stat-text">500+</div>
+            </div>
+            <p>Projects Successfully Delivered</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-circle">
+                <div class="wave"></div>
+                <div class="stat-text">100+</div>
+            </div>
+            <p>Skilled IT Professionals</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-circle">
+                <div class="wave"></div>
+                <div class="stat-text">25+</div>
+            </div>
+            <p>Countries Served Globally</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.infographic-stats {
+    text-align: center;
+    margin: 3rem auto;
+    max-width: 900px;
+}
+
+.infographic-stats h2 {
+    font-size: 2rem;
+    color: #56CCF2; /* Lighten the color to make it more vibrant */
+    margin-bottom: 0.5rem;
+}
+
+.infographic-stats p {
+    font-size: 1rem;
+    color: #bbbbbb; /* Light gray for better readability */
+    margin-bottom: 2rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-circle {
+    position: relative;
+    background: #007cc3; /* Primary blue */
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Add shadow to make text stand out */
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.5);
+    top: 100%; /* Start below the circle */
+    left: -50%;
+    border-radius: 40%;
+    animation: wave-fill 6s ease-in-out infinite;
+}
+
+@keyframes wave-fill {
+    0%, 100% { top: 100%; } /* Start and end below */
+    50% { top: 0%; } /* Fill up the circle at midway */
+}
+
+.stat-text {
+    position: absolute;
+    z-index: 10;
+}
+
+.stat-item p {
+    font-size: 0.95rem;
+    color: #eaeaea; /* Use a lighter gray for better visibility */
+    max-width: 150px;
+    margin: 0 auto;
+}
+</style>

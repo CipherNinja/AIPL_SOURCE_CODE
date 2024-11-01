@@ -213,6 +213,7 @@ class developer_profile(models.Model):
     developer_role = [
         ('Frontend Dev', "Frontend Dev"),
         ('Backend Dev', "Backend Dev"),
+        ('UIUX Dev', "UIUX Dev"),
         ('DevOps Eng', "DevOps Eng"),
         ('Fullstack Dev', "Fullstack Dev"),
         ('IOS Dev', "IOS Dev"),
@@ -233,6 +234,7 @@ class developer_profile(models.Model):
         ("SDE with Java", "SDE with Java"),
         ("Business Development Analyst", "Business Development Analyst"),
         ("Head | Human Resources","Head | Human Resources"),
+        ("Intern | Human Resources","Intern | Human Resources"),
         ("Director IT","Director IT"),
         ("CEO","CEO"),
         ("Deputy Director","Deputy Director")
@@ -279,9 +281,6 @@ class ManageTask(models.Model):
         return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
     def __str__(self):
         return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
-    # class Meta:
-    #     verbose_name = "Developer Tool"
-    #     verbose_name_plural = "Developer Tools"
 
     def update_sender_points_on_completion(self):
         if self.task_sender and self.task_completion_status:
@@ -399,9 +398,6 @@ def send_task_assignment_email(sender, instance, created, **kwargs):
             html_message=html_content
         )
 
-
-
-from django.db import models
 
 class Team(models.Model):
     team_name = models.CharField(max_length=100, unique=True)

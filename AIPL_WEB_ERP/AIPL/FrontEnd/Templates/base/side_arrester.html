@@ -18,12 +18,16 @@
 <!-- Contact Form Container -->
 <div class="contact-form-container" id="contactFormContainer">
   <!-- Contact Form -->
-  <form class="contact-form" id="contactForm">
+  <form class="contact-form" id="contactForm" method="post" action="{% url 'contact_agratas' %}">
+    {% csrf_token %}
     <span class="close-icon" onclick="hideContactForm()"><i class="fas fa-times"></i></span> <!-- Close icon -->
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="tel" placeholder="Phone Number">
-    <textarea placeholder="Message" required></textarea>
+    <input type="text" placeholder="Full Name" name="full_name" required>
+    <input type="email" placeholder="Email Address" name="email_id" required>
+    <input type="tel" placeholder="Phone Number" name="phone_number" required>
+    <input type="text" name="sender_role" placeholder="Your Designation">
+    <input type="text" name="sender_email" placeholder="Your Business Email">
+    <input type="text" placeholder="Subject" name="subject" required>
+    <textarea placeholder="Message" name="message" required></textarea>
     <button type="submit">Submit</button>
   </form>
 </div>

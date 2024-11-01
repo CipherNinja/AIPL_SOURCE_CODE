@@ -90,8 +90,8 @@
               <span class="arrow fa fa-angle-right" id="right-arrow"></span
             ></a>
             <ul class="inner-submenu" id="inner-submenu-four">
-              <li>AIPL Research</li>
-              <li>AIPL R&D Team</li>
+              <a href="{% url 'articles' 'research-and-development' %}"><li>AIPL Research</li></a>
+              <a href="{% url 'articles' 'research-and-development' %}"><li>AIPL R&D Team</li></a>
             </ul>
           </li>
         </ul>
@@ -120,33 +120,14 @@
         <a href="#">Careers <span class="arrow fa fa-angle-down"></span></a>
         <ul class="submenu">
           <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
-          <li><a href="{% url 'maintenance' %}">Internships</a></li>
+          <li><a href="{% url 'internship' %}">Internships</a></li>
           <li><a href="{% url 'maintenance' %}">Developers</a></li>
           <li><a href="{% url 'maintenance' %}">Regional Partners</a></li>
           <li><a href="{% url 'maintenance' %}">Management Employees</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">Newsroom <span class="arrow fa fa-angle-down"></span></a>
-        <ul class="submenu">
-          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
-          <li><a href="{% url 'maintenance' %}">Press release</a></li>
-          <li><a href="{% url 'maintenance' %}">News alerts</a></li>
-          <li><a href="{% url 'maintenance' %}">Analyst recognition</a></li>
-          <li><a href="{% url 'maintenance' %}">Media kit</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Investors <span class="arrow fa fa-angle-down"></span></a>
-        <ul class="submenu">
-          <li id="active"><a href="{% url 'articles' 'overview' %}">Overview</a></li>
-          <li><a href="{% url 'maintenance' %}">Manage Commentary</a></li>
-          <li><a href="{% url 'maintenance' %}">Financials</a></li>
-          <li><a href="{% url 'maintenance' %}">News and Events</a></li>
-          <li><a href="{% url 'maintenance' %}">ESG</a></li>
-          <li><a href="{% url 'maintenance' %}">Resources</a></li>
-        </ul>
-      </li>
+      <li><a href="{% url 'maintenance' %}">Investors</a></li>
+      <li><a href="{% url 'maintenance' %}">Newsroom</a></li>
       <li><a href="{% url 'maintenance' %}">AIPL worldwide</a></li>
     </ul>
   </div>

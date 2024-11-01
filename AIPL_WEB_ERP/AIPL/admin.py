@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django import forms
 from .models import *
 # Register your models here.
 
@@ -39,19 +40,52 @@ class DocumentModelAdmin(admin.ModelAdmin):
     list_display = ["id","developer","job_role","points","rank"]
     ordering = ["rank"]
 
+# Custom form to restrict editing for non-superuser staff
+class ManageTaskAdminForm(forms.ModelForm):
+    class Meta:
+        model = ManageTask
+        fields = "__all__"
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Check if we are editing an existing task (obj is not None)
+        if self.instance and self.instance.pk:
+            # Disable fields for non-superuser staff when editing existing tasks
+            if not self.current_user.is_superuser:
+                disabled_fields = [
+                    'task_completion_status',
+                    'task_priority',
+                    'task_title',
+                    'task_detail',
+                    'task_sender',
+                    'receiver'
+                ]
+                for field in disabled_fields:
+                    self.fields[field].disabled = True
+                    self.fields[field].widget.attrs.update({
+                        'class': 'disabled-field',
+                        'title': 'This field cannot be modified due to your permission level.'
+                    })
+
 @admin.register(ManageTask)
 class TaskDetailsView(admin.ModelAdmin):
+    form = ManageTaskAdminForm
     list_display = [
-        "task_sender",             # Task sender
-        "task_title",         # Task title
-        "task_detail",        # Task details
-        "task_created_at",    # Task created date
-        "receiver",           # Task receiver (assigned to)
-        # "task_completion_status",  # Completion status of the task
-        "task_deadline",      # Task deadline
-        "task_priority",      # Priority of the task
-        "task_progress"       # Progress of the task
+        "task_sender",           # Task sender
+        "task_title",            # Task title
+        "task_detail",           # Task details
+        "task_created_at",       # Task created date
+        "receiver",              # Task receiver (assigned to)
+        "task_deadline",         # Task deadline
+        "task_priority",         # Priority of the task
+        "task_progress"          # Progress of the task
     ]
+
+    def get_form(self, request, obj=None, **kwargs):
+        # Attach the current user to the form instance
+        form = super().get_form(request, obj, **kwargs)
+        form.current_user = request.user
+        return form
 
 
 # Custom admin for TeamMember model

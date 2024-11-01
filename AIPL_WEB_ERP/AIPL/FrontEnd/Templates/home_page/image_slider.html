@@ -22,7 +22,7 @@
 <script>
     const slideContainer = document.querySelector('.slider');
     const sliderTitle = document.querySelector('.slider--title');
-    const sliderText = document.querySelector('.slider--text');
+    // const sliderText = document.querySelector('.slider--text');
     const sliderButton = document.querySelector('.slider--btn'); // Reference to button link
     const btnLeft = document.querySelector('.slider__btn-left');
     const btnRight = document.querySelector('.slider__btn-right');
@@ -31,20 +31,20 @@
       {
         src: '{% static "img/Hackathon.jpg" %}',
         title: 'AgratAsia Hack24 Hackathon',
-        text: 'Pre-registration is already started, hurry up!',
+        // text: 'Pre-registration is already started, hurry up!',
         buttonLink: '{% url "AgratAsiaHack24" %}' // Example link for the hackathon
       },
       {
         src: "https://media.istockphoto.com/id/1003265652/vector/internship-black-background.jpg?s=170667a&w=0&k=20&c=ojiZNZLMKI4rJHSxVGcEQCVmsCJPl2mXZkizpIcmZw8=",
         title: 'Paid Internship Opportunity 2k24',
-        text: 'Win a cash prize of up to 50K and PPO at Agratas Infotech',
+        // text: 'Win a cash prize of up to 50K and PPO at Agratas Infotech',
         buttonLink: '{% url "internship" %}' // Example link for internships
       },
       {
         src: 'https://thecyberpatch.com/content/images/size/w1000/2020/11/research-and-information-gathering.jpg',
         title: 'Research and Development',
-        text: 'Explore innovative research and cutting-edge development projects at Agratas Labs.',
-        buttonLink: '#' // Example link for R&D
+        // text: 'Explore innovative research and cutting-edge development projects at Agratas Labs.',
+        buttonLink: "{% url 'articles' 'research-and-development' %}" // Example link for R&D
       }
     ];
 
@@ -62,7 +62,7 @@
           rgba(68, 68, 68, 0.4)
         ), url(${sliderImages[slideCounter].src})`;
       sliderTitle.innerHTML = sliderImages[slideCounter].title;
-      sliderText.innerHTML = sliderImages[slideCounter].text;
+      // sliderText.innerHTML = sliderImages[slideCounter].text;
       sliderButton.href = sliderImages[slideCounter].buttonLink; // Set button link dynamically
     };
 
