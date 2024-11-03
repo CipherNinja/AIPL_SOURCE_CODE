@@ -596,3 +596,8 @@ def contact_agratas(request):
         email_message.send()
         
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
+
+def custom_404_view(request, exception):
+    return render(request, 'Error/404_Not_Found.html', status=404)

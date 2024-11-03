@@ -13,9 +13,293 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/styles_inter.css' %}">
 
     <style>
+        /* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.header {
+    background-color: #004085;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Form Section */
+.form-container {
+    background-color: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #004085;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Ensures the form wraps properly on smaller screens */
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex: 1;
+    margin-right: 10px;
+    min-width: 45%; /* Ensures each input field has a minimum width */
+}
+
+.input-group:last-child {
+    margin-right: 0;
+}
+
+/* Ensure the input fields fill the container properly */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's width */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+select:focus {
+    border-color: #004085;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 64, 133, 0.5);
+}
+
+.optional {
+    color: red;
+    font-weight: bold;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #004085;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.submit-btn i {
+    margin-right: 8px; /* Adds space between the icon and text */
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Blog Section */
+.blog-section {
+    background-color: #f1f1f1;
+    padding: 50px 0;
+}
+
+.blog-section h2 {
+    font-size: 28px;
+    color: #004085;
+}
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Adds more space between the items */
+    padding: 0 20px;
+}
+
+.experience-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 300px; /* Restrict the maximum width of each experience box */
+    margin: 0 auto; /* Centers the experience-item */
+}
+
+.experience-item img {
+    max-width: 100%;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    border-radius: 3%;
+    margin-bottom: 15px;
+}
+
+.intern-name {
+    color: #004085;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Perks Section */
+.perks-section {
+    padding: 40px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.perks-section h2 {
+    font-size: 28px;
+    color: #004085;
+    margin-bottom: 20px;
+}
+
+.perks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.perks-list li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ced4da;
+    color: #333;
+}
+
+.perks-list li strong {
+    color: #004085;
+}
+
+/* Image Background */
+.image-overlay {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Increase the height to show more of the image */
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.image-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image ratio and ensures it covers the entire container */
+    margin-top: 80px; /* Remove any top margin to show the image fully */
+}
+
+/* Footer and Navbar already handled by Django */
+
+
+/* "Know More About This Opportunity" Section */
+.know-more-section {
+    background-color: #f5f5f5;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.know-more-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.know-more-section h2 {
+    font-size: 28px;
+    color: #004085;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.know-more-content p {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #004085;
+    transition: color 0.3s ease;
+}
+
+.know-more-content ul li:last-child {
+    border-bottom: none;
+}
+
+.know-more-content ul li:hover {
+    color: #007bff;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
         .optional {
             color: red;
             font-weight: bold;

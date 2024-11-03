@@ -25,13 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*", "agratasinfotech.com"]
+ALLOWED_HOSTS = ["agratasinfotech.com","www.agratasinfotech.com"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,13 +71,22 @@ TEMPLATES = [
     },
 ]
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = "agratascommunity@gmail.com"
-# EMAIL_HOST_PASSWORD = "jycd wlgc wuis emdz"  # Use app password if 2FA is enabled
-# DEFAULT_FROM_EMAIL = "agratascommunity@gmail.com"  # Fix the setting name
+
+# # Ensure SecurityMiddleware is at the top of the MIDDLEWARE list
+MIDDLEWARE.insert(0, 'django.middleware.security.SecurityMiddleware')
+
+# # Security settings
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents browsers from MIME-sniffing files
+SECURE_BROWSER_XSS_FILTER = True    # Enables XSS filtering by the browser
+
+# # Enforce HTTPS
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# # Clickjacking protection
+X_FRAME_OPTIONS = 'DENY'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

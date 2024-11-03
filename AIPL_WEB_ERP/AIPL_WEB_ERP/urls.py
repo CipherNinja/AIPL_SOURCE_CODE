@@ -25,5 +25,7 @@ urlpatterns = [
     path("",include("AIPL.urls"))
 ]
 
+handler404 = 'AIPL.views.custom_404_view'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
