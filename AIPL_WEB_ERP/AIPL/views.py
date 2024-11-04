@@ -13,6 +13,9 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 import re
 from .models import *
+from django.db.models import Count
+from django.db.models.functions import TruncMonth
+
 # Create your views here.
 
 def home_page_view(request):
@@ -601,3 +604,13 @@ def contact_agratas(request):
 
 def custom_404_view(request, exception):
     return render(request, 'Error/404_Not_Found.html', status=404)
+
+def custom_500_view(request):
+    return render(request, 'Error/500.html', status=500)
+
+def custom_403_view(request, exception):
+    return render(request, 'Error/403.html', status=403)
+
+def custom_400_view(request, exception):
+    return render(request, 'Error/400_Bad_Request.html', status=400)
+

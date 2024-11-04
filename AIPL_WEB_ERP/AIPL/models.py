@@ -267,7 +267,7 @@ class ManageTask(models.Model):
 
     # Existing fields
     task_title = models.CharField(max_length=80)
-    task_detail = models.TextField(max_length=800)
+    task_detail = models.TextField(max_length=2000)
     task_created_at = models.DateTimeField(auto_now=True)
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_tasks_manage', default=1)
     task_completion_status = models.BooleanField(default=False)

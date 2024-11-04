@@ -18,6 +18,7 @@ from django.urls import path,include,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+from AIPL import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,10 @@ urlpatterns = [
 ]
 
 handler404 = 'AIPL.views.custom_404_view'
+handler500 = 'AIPL.views.custom_500_view'
+handler403 = 'AIPL.views.custom_403_view'
+handler400 = 'AIPL.views.custom_400_view'
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

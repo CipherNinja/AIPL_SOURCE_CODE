@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>400 - Bad Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5em;
+            margin-bottom: 0.3em;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ddd;
+            margin-bottom: 1em;
+        }
+
+        .rocket {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            animation: shake 1s infinite ease-in-out;
+        }
+
+        .rocket img {
+            width: 100%;
+            height: auto;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite;
+        }
+
+        /* Shake animation for the rocket */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Star twinkling animation */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>400 Bad Request</h1>
+        <p>Oops! Something went wrong with your request.</p>
+        <div class="rocket">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/search-result-not-found-2130355-1800920.png" alt="Shaking Rocket">
+        </div>
+        <p>Please check your input or try again later.</p>
+    </div>
+
+    <div class="stars"></div>
+
+    <script>
+        // Function to create stars in the background
+        function createStars() {
+            const starContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                starContainer.appendChild(star);
+            }
+        }
+
+        // Call the function to create stars
+        createStars();
+    </script>
+</body>
+</html>

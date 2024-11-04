@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',"agratasinfotech.com","www.agratasinfotech.com"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'agratasinfotech.com', 'www.agratasinfotech.com']
 
 # Application definition
 
@@ -79,7 +79,7 @@ MIDDLEWARE.insert(0, 'django.middleware.security.SecurityMiddleware')
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents browsers from MIME-sniffing files
 SECURE_BROWSER_XSS_FILTER = True    # Enables XSS filtering by the browser
 
-# # Enforce HTTPS
+# Enforce HTTPS
 SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -214,4 +214,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "AIPL Admin",
+    "welcome_sign": "Agratas Infotech Private Limited",
+    "site_header": "AIPL Admin",
+    
+}
+
+
 
