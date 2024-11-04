@@ -13,8 +13,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 import re
 from .models import *
-from django.db.models import Count
-from django.db.models.functions import TruncMonth
+
 
 # Create your views here.
 
