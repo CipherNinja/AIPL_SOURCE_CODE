@@ -22,5 +22,6 @@ urlpatterns = [
     path("maintenance/",views.maintenance_page_view,name="maintenance"),
     path("education/<str:page_name>/",views.education_page_controller,name="education"),
     path("contact-agratas/",views.contact_agratas,name="contact_agratas"),
+    path('administration/analytics/', views.analytics_view, name='analytics'),  # New analytics URL
     
 ]

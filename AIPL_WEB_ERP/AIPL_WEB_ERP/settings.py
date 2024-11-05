@@ -219,10 +219,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     "site_title": "AIPL Admin",
-    "welcome_sign": "Agratas Infotech Private Limited",
     "site_header": "AIPL Admin",
+    "welcome_sign": "Welcome to Agratas Infotech Private Limited",
+    "site_brand": "AIPL",
     
+    # Sidebar Custom Links
+    "custom_links": {
+        "AIPL": [  # App name here
+            {
+                "name": "Analytics",
+                "url": "analytics",  # URL name defined in urls.py
+                "icon": "fas fa-chart-line",
+                "permissions": ["AIPL.view_managetask"],  # Optional: restrict to staff with specific permissions
+            },
+        ]
+    },
+    
+    # Customize appearance
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Analytics", "url": "analytics", "icon": "fas fa-chart-line"},
+    ],
+
+    # Footer customizations
+    "copyright": "Agratas Infotech Private Limited © 2024",
 }
+
 
 
 
