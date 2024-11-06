@@ -617,13 +617,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 import pandas as pd
 from datetime import timedelta
 
-from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import render
-from django.utils import timezone
-import pandas as pd
-from .models import ManageTask
-from django.contrib.auth.models import User
-
 @staff_member_required
 def analytics_view(request):
     # Fetch all tasks with related user information
@@ -651,7 +644,7 @@ def analytics_view(request):
     df['task_deadline'] = pd.to_datetime(df['task_deadline'])
     
     # 1. Completion Rate
-    completion_rate = df['task_completion_status'].mean() * 100  # Calculate completion rate
+    completion_rate = df['task_completion_status'].mean() * 100
 
     # 2. Completion Efficiency by Priority
     df['completion_time'] = (df['task_deadline'] - df['task_created_at']).dt.days
@@ -666,7 +659,6 @@ def analytics_view(request):
     # 4. Task Volume by Priority and Status
     task_volume_raw = pd.crosstab(df['task_progress'], df['task_priority']).to_dict()
 
-    # Transforming data for Chart.js
     priorities = ['high', 'medium', 'low']
     statuses = ['not started', 'in progress', 'completed']
 
@@ -694,13 +686,15 @@ def analytics_view(request):
         avg_completion_time=('completion_time', 'mean')
     ).reset_index()
     
-    # Add absolute average completion time for display purposes
     user_performance_df['abs_avg_completion_time'] = user_performance_df['avg_completion_time'].abs()
     user_performance = user_performance_df.set_index('receiver__username').T.to_dict()
 
-    # 6. Completion Times for Line Chart
-    df['completion_time_relative'] = (df['task_created_at'] - df['task_deadline']).dt.days
-    completion_times = df[['task_created_at', 'completion_time_relative']].sort_values('task_created_at').to_dict(orient='records')
+    # 6. Completion Times for Line Chart (adjusted for positive=early and negative=late)
+    df['completion_time_relative'] = (df['task_deadline'] - df['task_created_at']).dt.days
+    completion_times = {
+        'labels': df['task_created_at'].dt.strftime('%Y-%m-%d').tolist(),
+        'data': df['completion_time_relative'].tolist()
+    }
 
     context = {
         'completion_rate': completion_rate,
