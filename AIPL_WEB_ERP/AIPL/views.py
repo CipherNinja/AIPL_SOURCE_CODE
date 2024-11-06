@@ -616,25 +616,34 @@ def custom_400_view(request, exception):
 from django.contrib.admin.views.decorators import staff_member_required
 import pandas as pd
 from datetime import timedelta
-from django.db.models import F
+
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render
+from django.utils import timezone
+import pandas as pd
+from .models import ManageTask
+from django.contrib.auth.models import User
 
 @staff_member_required
 def analytics_view(request):
-    # Fetch all tasks
-    tasks = ManageTask.objects.all().values(
+    # Fetch all tasks with related user information
+    tasks = ManageTask.objects.select_related('task_sender', 'receiver').values(
         'task_created_at', 'task_completion_status', 'task_deadline', 
-        'task_priority', 'task_progress', 'task_sender_id', 'receiver_id'
+        'task_priority', 'task_progress', 'task_sender__username', 
+        'receiver__username', 'receiver__first_name'
     )
     df = pd.DataFrame(tasks)
     
     # Handle empty DataFrame case
     if df.empty:
-        return render(request, 'admin/dashboard.html', {
+        return render(request, 'admin/analytics.html', {
             'completion_rate': 0,
-            'priority_efficiency': [],
+            'priority_efficiency': {},
             'overdue_tasks_count': 0,
-            'task_volume': [],
-            'user_performance': []
+            'overdue_tasks_details': [],
+            'task_volume': {},
+            'user_performance': {},
+            'completion_times': []
         })
 
     # Convert date fields to datetime
@@ -648,36 +657,59 @@ def analytics_view(request):
     df['completion_time'] = (df['task_deadline'] - df['task_created_at']).dt.days
     priority_efficiency = df[df['task_completion_status']].groupby('task_priority')['completion_time'].mean().to_dict()
 
-    # 3. Overdue Tasks Count
+    # 3. Overdue Tasks Count and Details
     now = timezone.now()
-    overdue_tasks_count = len(df[(df['task_completion_status'] == False) & (df['task_deadline'] < now)])
+    overdue_tasks_df = df[(df['task_completion_status'] == False) & (df['task_deadline'] < now)]
+    overdue_tasks_count = len(overdue_tasks_df)
+    overdue_tasks_details = overdue_tasks_df[['task_sender__username', 'receiver__username', 'task_priority', 'task_deadline', 'task_created_at']].to_dict(orient='records')
 
     # 4. Task Volume by Priority and Status
-    task_volume = pd.crosstab(df['task_priority'], df['task_progress']).to_dict()
+    task_volume_raw = pd.crosstab(df['task_progress'], df['task_priority']).to_dict()
 
-    # 5. User Performance with additional details
-    user_performance_df = df.groupby('receiver_id').agg(
+    # Transforming data for Chart.js
+    priorities = ['high', 'medium', 'low']
+    statuses = ['not started', 'in progress', 'completed']
+
+    task_volume_transformed = {
+        'labels': priorities,
+        'datasets': []
+    }
+
+    for status in statuses:
+        data = [task_volume_raw.get(status, {}).get(priority, 0) for priority in priorities]
+        task_volume_transformed['datasets'].append({
+            'label': status.capitalize(),
+            'data': data,
+            'backgroundColor': {
+                'not started': '#FFC107',
+                'in progress': '#03A9F4',
+                'completed': '#4CAF50'
+            }.get(status, '#000000')
+        })
+
+    # 5. User Performance with additional details, including absolute average completion time
+    user_performance_df = df.groupby(['receiver__username', 'receiver__first_name']).agg(
         total_tasks=('task_completion_status', 'count'),
         completed_tasks=('task_completion_status', 'sum'),
         avg_completion_time=('completion_time', 'mean')
     ).reset_index()
+    
+    # Add absolute average completion time for display purposes
+    user_performance_df['abs_avg_completion_time'] = user_performance_df['avg_completion_time'].abs()
+    user_performance = user_performance_df.set_index('receiver__username').T.to_dict()
 
-    # Add user information to performance DataFrame
-    user_data = User.objects.filter(id__in=user_performance_df['receiver_id']).values(
-        'id', 'username', 'first_name'
-    )
-    user_df = pd.DataFrame(user_data)
-    user_performance_df = user_performance_df.merge(user_df, left_on='receiver_id', right_on='id', how='left')
-
-    # Convert the DataFrame to dictionary format for template
-    user_performance = user_performance_df.set_index('id').T.to_dict()
+    # 6. Completion Times for Line Chart
+    df['completion_time_relative'] = (df['task_created_at'] - df['task_deadline']).dt.days
+    completion_times = df[['task_created_at', 'completion_time_relative']].sort_values('task_created_at').to_dict(orient='records')
 
     context = {
         'completion_rate': completion_rate,
         'priority_efficiency': priority_efficiency,
         'overdue_tasks_count': overdue_tasks_count,
-        'task_volume': task_volume,
-        'user_performance': user_performance
+        'overdue_tasks_details': overdue_tasks_details,
+        'task_volume': task_volume_transformed,
+        'user_performance': user_performance,
+        'completion_times': completion_times
     }
 
     return render(request, 'admin/analytics.html', context)
