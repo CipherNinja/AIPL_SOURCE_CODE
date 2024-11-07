@@ -81,10 +81,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents browsers from MIME-sniffing files
 SECURE_BROWSER_XSS_FILTER = True    # Enables XSS filtering by the browser
 
 # Enforce HTTPS
-# SECURE_SSL_REDIRECT = True
-# SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # # Clickjacking protection
 X_FRAME_OPTIONS = 'DENY'
