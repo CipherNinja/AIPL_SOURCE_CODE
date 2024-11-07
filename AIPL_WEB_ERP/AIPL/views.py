@@ -636,7 +636,8 @@ def analytics_view(request):
             'overdue_tasks_details': [],
             'task_volume': {},
             'user_performance': {},
-            'completion_times': []
+            'completion_times': [],
+            'user_task_counts': {}  # New data for task assignment vs. completion
         })
 
     # Convert date fields to datetime
@@ -696,6 +697,19 @@ def analytics_view(request):
         'data': df['completion_time_relative'].tolist()
     }
 
+    # 7. Tasks Assigned vs. Tasks Completed per User
+    task_counts = df.groupby('receiver__username').agg(
+        tasks_assigned=('task_completion_status', 'count'),
+        tasks_completed=('task_completion_status', 'sum')
+    ).reset_index()
+    
+    # Converting to dictionary for Chart.js
+    user_task_counts = {
+        'labels': task_counts['receiver__username'].tolist(),
+        'tasks_assigned': task_counts['tasks_assigned'].tolist(),
+        'tasks_completed': task_counts['tasks_completed'].tolist()
+    }
+
     context = {
         'completion_rate': completion_rate,
         'priority_efficiency': priority_efficiency,
@@ -703,10 +717,12 @@ def analytics_view(request):
         'overdue_tasks_details': overdue_tasks_details,
         'task_volume': task_volume_transformed,
         'user_performance': user_performance,
-        'completion_times': completion_times
+        'completion_times': completion_times,
+        'user_task_counts': user_task_counts  # New feature data
     }
 
     return render(request, 'admin/analytics.html', context)
+
 
 
 

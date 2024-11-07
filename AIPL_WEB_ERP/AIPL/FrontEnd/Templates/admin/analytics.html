@@ -162,6 +162,53 @@
             });
         </script>
     </div>
+    <!-- Tasks Assigned vs Tasks Completed Chart -->
+<div class="dashboard-section" style="width: 100%;">
+    <h3>Tasks Assigned vs Tasks Completed</h3>
+    <div class="chart-container">
+        <canvas id="userTaskCountsChart"></canvas>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const userTaskCounts = {{ user_task_counts|safe }};
+            const ctx = document.getElementById('userTaskCountsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: userTaskCounts.labels,
+                    datasets: [
+                        {
+                            label: 'Tasks Assigned',
+                            data: userTaskCounts.tasks_assigned,
+                            backgroundColor: '#3e95cd'
+                        },
+                        {
+                            label: 'Tasks Completed',
+                            data: userTaskCounts.tasks_completed,
+                            backgroundColor: '#8e5ea2'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Number of Tasks' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Users' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</div>
+
 
     <!-- User Performance Table -->
     <div class="dashboard-section" style="width: 100%;">
