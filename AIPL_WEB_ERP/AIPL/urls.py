@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib import admin
 from . import views
-
+from .views import SubscriberListView
 admin.site.site_header = "Agratas Infotech Private Limited"
 
 urlpatterns = [
@@ -23,5 +23,6 @@ urlpatterns = [
     path("education/<str:page_name>/",views.education_page_controller,name="education"),
     path("contact-agratas/",views.contact_agratas,name="contact_agratas"),
     path('administration/analytics/', views.analytics_view, name='analytics'),  # New analytics URL
+    path('api/subscribers/', SubscriberListView.as_view(), name='subscriber-list')
     
 ]

@@ -707,3 +707,16 @@ def analytics_view(request):
     }
 
     return render(request, 'admin/analytics.html', context)
+
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import subscribers
+from .serializers import SubscriberSerializer
+
+class SubscriberListView(APIView):
+    def get(self, request):
+        subscribers_data = subscribers.objects.all()
+        serializer = SubscriberSerializer(subscribers_data, many=True)
+        return Response(serializer.data)
