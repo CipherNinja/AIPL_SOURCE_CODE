@@ -121,86 +121,43 @@
         </div>
     </div>
 
-    <!-- Task Volume by Priority and Status -->
-    <!-- Line Chart for Completion Times -->
-    <div class="dashboard-section" style="width: 100%;">
-        <h3>Completion Times Over Task Creation Dates</h3>
-        <div class="chart-container">
-            <canvas id="completionTimeChart"></canvas>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const completionTimes = {{ completion_times|safe }};
-                const ctx = document.getElementById('completionTimeChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: completionTimes.labels,
-                        datasets: [{
-                            label: 'Completion Time Relative to Deadline (Days)',
-                            data: completionTimes.data,
-                            borderColor: '#FF5722',
-                            fill: false,
-                            tension: 0.1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'bottom' }
-                        },
-                        scales: {
-                            x: {
-                                title: { display: true, text: 'Task Creation Date' }
-                            },
-                            y: {
-                                title: { display: true, text: 'Days Early or Late' }
-                            }
-                        }
-                    }
-                });
-            });
-        </script>
-    </div>
-    <!-- Tasks Assigned vs Tasks Completed Chart -->
+    <!-- Completion Times Over Task Creation Dates -->
 <div class="dashboard-section" style="width: 100%;">
-    <h3>Tasks Assigned vs Tasks Completed</h3>
-    <div class="chart-container">
-        <canvas id="userTaskCountsChart"></canvas>
+    <h3>Completion Times Over Task Creation Dates</h3>
+    <div style="overflow-x: auto; border: 1px solid #ddd; padding: 10px;">
+        <canvas id="completionTimeChart" style="min-width: 800px;"></canvas> <!-- Set a minimum width for scrolling -->
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const userTaskCounts = {{ user_task_counts|safe }};
-            const ctx = document.getElementById('userTaskCountsChart').getContext('2d');
+            const completionTimes = {{ completion_times|safe }};
+            const ctx = document.getElementById('completionTimeChart').getContext('2d');
             new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
-                    labels: userTaskCounts.labels,
-                    datasets: [
-                        {
-                            label: 'Tasks Assigned',
-                            data: userTaskCounts.tasks_assigned,
-                            backgroundColor: '#3e95cd'
-                        },
-                        {
-                            label: 'Tasks Completed',
-                            data: userTaskCounts.tasks_completed,
-                            backgroundColor: '#8e5ea2'
-                        }
-                    ]
+                    labels: completionTimes.labels,
+                    datasets: [{
+                        label: 'Completion Time Relative to Deadline (Days)',
+                        data: completionTimes.data,
+                        borderColor: '#FF5722',
+                        fill: false,
+                        tension: 0.1
+                    }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,  // Disable aspect ratio to allow width adjustment
                     plugins: {
                         legend: { position: 'bottom' }
                     },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Number of Tasks' }
-                        },
                         x: {
-                            title: { display: true, text: 'Users' }
+                            title: { display: true, text: 'Task Creation Date' },
+                            ticks: {
+                                autoSkip: false  // Ensures all labels are visible
+                            }
+                        },
+                        y: {
+                            title: { display: true, text: 'Days Early or Late' }
                         }
                     }
                 }
@@ -208,6 +165,65 @@
         });
     </script>
 </div>
+
+
+
+    <!-- Tasks Assigned vs Tasks Completed Chart -->
+    <div class="dashboard-section" style="width: 100%;">
+        <h3>Tasks Assigned vs Tasks Completed</h3>
+        <div style="overflow-x: auto; border: 1px solid #ddd; padding: 10px;">
+            <canvas id="userTaskCountsChart" style="min-width: 800px;"></canvas> <!-- Set a minimum width for scrolling -->
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const userTaskCounts = {{ user_task_counts|safe }};
+                const labels = userTaskCounts.labels;
+                const tasksAssigned = userTaskCounts.tasks_assigned;
+                const tasksCompleted = userTaskCounts.tasks_completed;
+    
+                const ctxCounts = document.getElementById('userTaskCountsChart').getContext('2d');
+                new Chart(ctxCounts, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Tasks Assigned',
+                                data: tasksAssigned,
+                                backgroundColor: '#3e95cd'
+                            },
+                            {
+                                label: 'Tasks Completed',
+                                data: tasksCompleted,
+                                backgroundColor: '#8e5ea2'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Number of Tasks' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Users' },
+                                ticks: {
+                                    maxRotation: 0,
+                                    autoSkip: false // Ensures all labels are visible
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+    
 
 
     <!-- User Performance Table -->
