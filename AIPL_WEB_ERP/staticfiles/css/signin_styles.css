@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("../img/sign_in_background.png") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding-top: 10%; /* Adjust based on your design */
+    box-sizing: border-box;
+    height: 80vh; /* Adjust to control the overall height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: none;
+    padding: 2em;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%; /* Adjust maximum width as needed */
+    width: 100%;
+}
+
+.login-box h1 {
+    margin: 1em 0;
+    font-size: 2em;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.login-box p {
+    margin: 0.5em 0 1em;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-decoration: underline;
+    opacity: 0.6;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.login-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+    text-decoration: underline;
+    color: #000000;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-box button:hover {
+    background: #333;
+    color: #fff;
+}
+
+.login-box .login-others {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: #ffffff;
+    font-size: 1em;
+    text-decoration: underline;
+}
+
+.login-box .login-others::before,
+.login-box .login-others::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ffffff;
+    margin: 0 10px;
+    opacity: 0.6;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-login button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+}
+
+.social-login .social-icon {
+    margin-right: 10px;
+    height: 16px;
+    width: auto;
+}
+
+.social-login .google {
+    background: #000000;
+}
+
+.social-login .facebook {
+    background: #000000;
+}
+
+.social-login .twitter {
+    background: #000000;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .container {
+        height: 90vh;
+    }
+
+    .login-box h1 {
+        font-size: 1.8em;
+    }
+
+    .login-box p {
+        font-size: 1.1em;
+    }
+
+    .login-box input, .login-box button {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        height: 100vh;
+        padding-top: 5%;
+    }
+
+    .login-box {
+        padding: 1.5em;
+    }
+
+    .login-box h1 {
+        font-size: 1.6em;
+    }
+
+    .login-box p {
+        font-size: 1em;
+    }
+
+    .login-box input, .login-box button {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: 100vh;
+        padding-top: 3%;
+    }
+
+    .login-box {
+        padding: 1em;
+    }
+
+    .login-box h1 {
+        font-size: 1.4em;
+    }
+
+    .login-box p {
+        font-size: 0.9em;
+    }
+
+    .login-box input, .login-box button {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        height: 100vh;
+        padding-top: 2%;
+    }
+
+    .login-box {
+        padding: 0.5em;
+    }
+
+    .login-box h1 {
+        font-size: 1.2em;
+    }
+
+    .login-box p {
+        font-size: 0.8em;
+    }
+
+    .login-box input, .login-box button {
+        font-size: 0.7em;
+        padding: 8px;
+    }
+}
+
