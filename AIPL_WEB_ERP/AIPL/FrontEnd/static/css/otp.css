@@ -1,0 +1,168 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F2E6FF;
+    color: #5A3E99;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Wrapper to isolate content */
+/* Wrapper to isolate content */
+.wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 100px; /* Adjust this value to match your navbar height */
+}
+
+
+/* Container Styling */
+.container {
+    background-color: #A386E6;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on the container */
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading Styling */
+h1 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+h1:hover {
+    color: #E3D4FF;
+}
+
+p {
+    color: #E3D4FF;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+/* Input Field Styling */
+input[type="email"], .otp-inputs input {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #C6ABF6;
+    color: #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]:hover, .otp-inputs input:hover {
+    background-color: #E3D4FF;
+    border: 2px solid #8C68DF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+input[type="email"]:focus, .otp-inputs input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border: 2px solid #8C68DF;
+    box-shadow: 0 0 10px rgba(140, 104, 223, 0.4);
+    color: #5A3E99;
+    transform: scale(1.05);
+}
+
+/* Button Styling */
+button {
+    background-color: #5A3E99;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #8C68DF;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+.sign-in-link a, .resend-otp a {
+    display: block;
+    margin-top: 10px;
+    color: #5A3E99;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sign-in-link a:hover, .resend-otp a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* OTP Inputs */
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.otp-inputs input {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: #C6ABF6;
+    color: #5A3E99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive for mobile */
+@media (max-width: 400px) {
+    .container {
+        padding: 20px;
+        width: 100%;
+    }
+    nav {
+        width: 93vw;
+    }
+
+    .otp-inputs input {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}

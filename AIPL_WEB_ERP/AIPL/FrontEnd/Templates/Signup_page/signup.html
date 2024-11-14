@@ -6,6 +6,7 @@
     <title>Sign Up</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/signupstyles.css' %}">
+    <script src="{% static 'js/nav.js' %}" defer></script>
 </head>
 <body>
     {% include 'base/navbar.html' %}
@@ -13,17 +14,19 @@
         <div class="welcome-box">
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
-            <form action="{% url 'signup' %}" method="post">
+            <form action="#" method="post">
                 {% csrf_token %}
                 <input type="text" name="set_username" placeholder="Set Username" required>
                 <input type="email" name="set_email" placeholder="Email Address" required>
                 <input type="password" name="set_password" placeholder="Create Password" required>
                 <input type="password" name="cnf_password" placeholder="Confirm Password" required>
                 <button type="submit">Register</button>
-                <a href="{% url 'signin' %}"><p> Already have an account? </p></a>
+                <p> Already have an account? </p>
+                <!-- <button type="submit">Login</button> -->
             </form>
         </div>
     </div>
     <script src="{% static 'js/nav_configuration.js' %}"></script>
+    {% include "base/side_arrester.html" %}
 </body>
 </html>

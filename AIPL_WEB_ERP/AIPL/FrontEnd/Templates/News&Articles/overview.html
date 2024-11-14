@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech Private Limited</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+        section {
+            background-color: #222;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h2 {
+            color: #00c6ff;
+            font-size: 2em;
+            margin-top: 0;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        /* Specific list style for the expertise section */
+        .expertise-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .expertise-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .expertise-list li::before {
+            content: '•';
+            color: #00c6ff;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+    </style>
+    {% load static %}
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    <div class="container">
+        <section id="overview">
+            <h2>Agratas Infotech Private Limited</h2>
+            <p>Founded in November 25, 2020, Agratas Infotech is a premier product-based technology company headquartered in Ocean Plaza, Sector 18, Noida. We specialized to develop cutting edge software products tailored for Industries such as Healthcare, Finance Retails, etc. Our mission is to empower Businesses by enhancing and fostering operational efficiency and fostering digital transformation through innovative technology.</p>
+        </section>
+        <section id="mission">
+            <h2>Our Mission</h2>
+            <p>To empower by delivering innovative technology solutions that drive digital transformation and operational excellence.</p>
+        </section>
+        <section id="vision">
+            <h2>Our Vision</h2>
+            <p>To be a Global leader in technology innovation, consistantly delivering Soultions that exceeds our client's expectations and shape the future.</p>
+        </section>
+        <section id="expertise">
+            <h2>Our Expertise</h2>
+            <ul class="expertise-list">
+                <li>IoT Solutions</li>
+                <li>AI-powered Analytics</li>
+                <li>Cloud Integration</li>
+                <li>Cybersecurity</li>
+                <li>Digital Transformation Consulting</li>
+            </ul>
+        </section>
+    </div>
+    {% include 'base/footer.html' %}
+</body>
+</html>

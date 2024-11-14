@@ -1,0 +1,103 @@
+<!-- templates/task_assignment_email_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #004b8d;
+        padding: 20px;
+        text-align: center;
+        color: #ffffff;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+      .content {
+        padding: 30px;
+      }
+      .content p {
+        font-size: 16px;
+        color: #333333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .content a {
+        color: #004b8d;
+        text-decoration: none;
+      }
+      .task-details {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-left: 5px solid #004b8d;
+        margin-bottom: 20px;
+      }
+      .task-details p {
+        margin: 5px 0;
+        font-size: 15px;
+      }
+      .footer {
+        background-color: #f4f4f4;
+        padding: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #999999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Agratas Infotech Pvt. Ltd.</h1>
+      </div>
+
+      <!-- Main content -->
+      <div class="content">
+        <p>Dear <strong>{{ receiver.first_name }}</strong>,</p>
+        <p>You have been assigned a new task by <strong>{{ sender_name }}</strong>. Please find the task details below:</p>
+
+        <!-- Task Details -->
+        <div class="task-details">
+          <p><strong>Task Title:</strong> {{ task_title }}</p>
+          <p><strong>Description:</strong> {{ task_detail }}</p>
+          <p><strong>Deadline:</strong> {{ task_deadline|date:"F j, Y, g:i a" }}</p>
+          <p><strong>Priority:</strong> {{ task_priority }}</p>
+        </div>
+
+        <p>Kindly review the task and update the status as you progress. If you have any questions, feel free to reach out to <strong>{{ sender.first_name }} {{ sender.last_name }}</strong> directly or check the task dashboard for more details.</p>
+
+        <p>Thank you for your hard work!</p>
+
+        <p>Best regards,</p>
+        <p><strong>{{ sender_name }}</strong><br />
+            <strong>{{ sender_role }}</strong><br />
+            <a href="mailto:{{ sender_email }}">{{ sender_email }}</a>
+        </p>
+        <p><strong>The Task Management Team</strong><br />Agratas Infotech Pvt. Ltd.</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>© 2024 Agratas Infotech Pvt. Ltd. | All Rights Reserved<br /><a href="https://www.agratasinfotech.com">www.agratasinfotech.com</a></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -102,6 +102,8 @@ gap: .5rem;
 
 .user__image {
 border-radius: 50%;
+height: 30px;
+width: 33px;
 }
 
 .user__info > small {

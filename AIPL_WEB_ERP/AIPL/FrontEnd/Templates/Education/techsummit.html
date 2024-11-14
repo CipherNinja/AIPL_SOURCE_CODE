@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Tech Summit 2024</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Orbitron&display=swap');
+
+        :root {
+            --primary-color: #00bcd4;
+            --secondary-color: #ff1744;
+            --bg-color: #0b0c1a;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px var(--primary-color);
+            opacity: 0;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            opacity: 0;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            transform: translateY(50px);
+            opacity: 0;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        p, ul, ol {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+
+        .cta-button.pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            .content-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <div id="canvas-container"></div>
+    
+    <header>
+        <h1>Tech Summit 2024</h1>
+        <p class="subtitle">Experience the Future of Technology with Agratas Infotech</p>
+    </header>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>Global Thought Leadership</h2>
+            <p>Join industry leaders and tech enthusiasts in a gathering that will shape the future of technology. Discuss and explore groundbreaking innovations.</p>
+            <ul>
+                <li>Keynotes from tech visionaries</li>
+                <li>Panel discussions on AI, Blockchain, and more</li>
+                <li>Breakout sessions with hands-on demonstrations</li>
+                <li>Workshops with leading experts</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Cutting-Edge Exhibitions</h2>
+            <p>Discover the latest technology at our immersive exhibitions:</p>
+            <ul>
+                <li>AI-driven solutions for businesses</li>
+                <li>Blockchain applications for future economies</li>
+                <li>Next-gen IoT and 5G integrations</li>
+                <li>Quantum computing breakthroughs</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Networking Opportunities</h2>
+            <p>Build connections with some of the biggest names in tech:</p>
+            <ul>
+                <li>Exclusive networking sessions</li>
+                <li>Access to high-level executives and entrepreneurs</li>
+                <li>Opportunities to showcase your innovations</li>
+                <li>Collaboration platforms for future ventures</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Register for the Tech Summit 2024</h2>
+            <p>Don’t miss out on this opportunity to be a part of the future. Secure your spot today.</p>
+            <a href="#" class="cta-button pulse">Register Now</a>
+        </section>
+    </div>
+
+    <script>
+        // Three.js Animation for Tech Summit
+        let scene, camera, renderer, particles;
+
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+
+            for (let i = 0; i < 10000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                vertices.push(x, y, z);
+
+                const color = new THREE.Color();
+                color.setHSL(Math.random(), 1.0, 0.5);
+                colors.push(color.r, color.g, color.b);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 3.5,
+                vertexColors: true,
+                sizeAttenuation: true,
+            });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            camera.position.z = 900;
+        }
+
+        function animateThree() {
+            requestAnimationFrame(animateThree);
+            particles.rotation.x += 0.001;
+            particles.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // GSAP Animations for Tech Summit
+        function initGSAP() {
+            gsap.to("h1", {duration: 2, opacity: 1, y: -10, rotation: 360, ease: "back.out(1.7)"});
+            gsap.to(".subtitle", {duration: 1.8, opacity: 1, y: -10, ease: "power2.out", delay: 0.4});
+            gsap.to(".cta-button", {duration: 1.5, opacity: 1, y: -10, ease: "power2.out", delay: 0.8});
+
+            gsap.utils.toArray(".content-section").forEach((section, i) => {
+                gsap.to(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    duration: 1.4,
+                    opacity: 1,
+                    y: 0,
+                    scale: 1.05,
+                    ease: "power3.out",
+                    delay: i * 0.3,
+                });
+            });
+        }
+
+        // Init
+        window.addEventListener('load', () => {
+            initThree();
+            animateThree();
+            initGSAP();
+        });
+
+        window.addEventListener('resize', onWindowResize);
+    </script>
+    {% include "base/footer.html" %}
+</body>
+</html>

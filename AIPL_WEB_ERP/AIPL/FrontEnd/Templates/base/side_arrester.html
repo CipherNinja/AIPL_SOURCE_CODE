@@ -1,0 +1,35 @@
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/side_arrester.css' %}">
+
+<!-- Social Media Icons -->
+<div class="social-icons">
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/agratas-infotech-pvt-ltd/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+</div>
+
+<!-- Contact Icon with Text -->
+<a class="contact-icon" onclick="showContactForm()">
+  <i class="fas fa-envelope"></i> <span>Contact Us</span>
+</a>
+
+<!-- Contact Form Container -->
+<div class="contact-form-container" id="contactFormContainer">
+  <!-- Contact Form -->
+  <form class="contact-form" id="contactForm" method="post" action="{% url 'contact_agratas' %}">
+    {% csrf_token %}
+    <span class="close-icon" onclick="hideContactForm()"><i class="fas fa-times"></i></span> <!-- Close icon -->
+    <input type="text" placeholder="Full Name" name="full_name" required>
+    <input type="email" placeholder="Email Address" name="email_id" required>
+    <input type="tel" placeholder="Phone Number" name="phone_number" required>
+    <input type="text" name="sender_role" placeholder="Your Designation">
+    <input type="text" name="sender_email" placeholder="Your Business Email">
+    <input type="text" placeholder="Subject" name="subject" required>
+    <textarea placeholder="Message" name="message" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script src="{% static 'js/contact-us.js' %}"></script>

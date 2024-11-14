@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5em;
+            margin-bottom: 0.3em;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ddd;
+            margin-bottom: 1em;
+        }
+
+        .astronaut {
+            position: relative;
+            width: 150px; /* Increased width */
+            height: 150px; /* Increased height */
+            margin: 0 auto; /* Center the astronaut */
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .astronaut img {
+            width: 100%;
+            height: auto;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Star twinkling animation */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404 Not Found</h1>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+        <div class="astronaut">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/search-result-not-found-2130355-1800920.png" alt="Floating Astronaut">
+        </div>
+    </div>
+
+    <div class="stars"></div>
+
+    <script>
+        // Function to create stars in the background
+        function createStars() {
+            const starContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                starContainer.appendChild(star);
+            }
+        }
+
+        // Call the function to create stars
+        createStars();
+    </script>
+</body>
+</html>

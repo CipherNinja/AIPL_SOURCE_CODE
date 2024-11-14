@@ -1,0 +1,275 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .dashboard-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .dashboard-section {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 48%;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<div class="dashboard-container">
+
+    <!-- Completion Rate Chart -->
+    <div class="dashboard-section">
+        <h3>Completion Rate</h3>
+        <div class="chart-container">
+            <canvas id="completionRateChart"></canvas>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const completionRate = {{ completion_rate }};
+                const ctx = document.getElementById('completionRateChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Completed', 'Not Completed'],
+                        datasets: [{
+                            data: [completionRate, 100 - completionRate],
+                            backgroundColor: ['#4CAF50', '#FF0000']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Average Completion Time by Priority -->
+    <div class="dashboard-section">
+        <h3>Average Completion Time by Priority</h3>
+        <div class="chart-container">
+            <canvas id="completionEfficiencyChart"></canvas>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const priorityEfficiency = {{ priority_efficiency|safe }};
+                const labels = Object.keys(priorityEfficiency);
+                const data = Object.values(priorityEfficiency);
+                const ctx = document.getElementById('completionEfficiencyChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Average Completion Time (Days)',
+                            data: data,
+                            backgroundColor: '#FF9800'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: true, position: 'top' }
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Overdue Tasks Count with Details -->
+    <div class="dashboard-section" style="width: 100%;">
+        <h3>Overdue Tasks</h3>
+        <p>Total Overdue Tasks: <strong>{{ overdue_tasks_count }}</strong></p>
+        <div style="overflow-y: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 8px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background-color: #f1f1f1;">
+                    <tr>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Sender</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Receiver</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Priority</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Deadline</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Task Creation Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in overdue_tasks_details %}
+                    <tr>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_sender__username }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.receiver__username }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_priority }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_deadline }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Completion Times Over Task Creation Dates -->
+<div class="dashboard-section" style="width: 100%;">
+    <h3>Completion Times Over Task Creation Dates</h3>
+    <div style="overflow-x: auto; border: 1px solid #ddd; padding: 10px;">
+        <canvas id="completionTimeChart" style="min-width: 800px;"></canvas> <!-- Set a minimum width for scrolling -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const completionTimes = {{ completion_times|safe }};
+            const ctx = document.getElementById('completionTimeChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: completionTimes.labels,
+                    datasets: [{
+                        label: 'Completion Time Relative to Deadline (Days)',
+                        data: completionTimes.data,
+                        borderColor: '#FF5722',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,  // Disable aspect ratio to allow width adjustment
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Task Creation Date' },
+                            ticks: {
+                                autoSkip: false  // Ensures all labels are visible
+                            }
+                        },
+                        y: {
+                            title: { display: true, text: 'Days Early or Late' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</div>
+
+
+
+    <!-- Tasks Assigned vs Tasks Completed Chart -->
+    <div class="dashboard-section" style="width: 100%;">
+        <h3>Tasks Assigned vs Tasks Completed</h3>
+        <div style="overflow-x: auto; border: 1px solid #ddd; padding: 10px;">
+            <canvas id="userTaskCountsChart" style="min-width: 800px;"></canvas> <!-- Set a minimum width for scrolling -->
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const userTaskCounts = {{ user_task_counts|safe }};
+                const labels = userTaskCounts.labels;
+                const tasksAssigned = userTaskCounts.tasks_assigned;
+                const tasksCompleted = userTaskCounts.tasks_completed;
+    
+                const ctxCounts = document.getElementById('userTaskCountsChart').getContext('2d');
+                new Chart(ctxCounts, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Tasks Assigned',
+                                data: tasksAssigned,
+                                backgroundColor: '#3e95cd'
+                            },
+                            {
+                                label: 'Tasks Completed',
+                                data: tasksCompleted,
+                                backgroundColor: '#8e5ea2'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Number of Tasks' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Users' },
+                                ticks: {
+                                    maxRotation: 0,
+                                    autoSkip: false // Ensures all labels are visible
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+    
+
+
+    <!-- User Performance Table -->
+    <div class="dashboard-section" style="width: 100%;">
+        <h3>User Performance</h3>
+        <div style="overflow-y: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 8px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background-color: #f1f1f1;">
+                    <tr>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Username</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">First Name</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Total Tasks Assigned</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Completed Tasks</th>
+                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Average Completion Time (Days)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user_id, performance in user_performance.items %}
+                    <tr>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ user_id }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ performance.receiver__first_name }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ performance.total_tasks }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ performance.completed_tasks }}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                            {% if performance.avg_completion_time < 0 %}
+                                <span style="color: red;">
+                                    <i class="fas fa-arrow-down"></i>
+                                    {{ performance.abs_avg_completion_time }} days late
+                                </span>
+                            {% elif performance.avg_completion_time > 0 %}
+                                <span style="color: green;">
+                                    <i class="fas fa-arrow-up"></i>
+                                    {{ performance.abs_avg_completion_time }} days early
+                                </span>
+                            {% else %}
+                                <span style="color: gray;">
+                                    On time
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

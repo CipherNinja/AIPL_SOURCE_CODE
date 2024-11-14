@@ -6,6 +6,10 @@
     <title>Login Page</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/signin_styles.css' %}">
+
+    <script src="{% static 'js/nav.js' %}" defer></script>
+    <script src="{% static 'js/signin.js' %}" defer></script>
+
 </head>
 <body>
     {% include 'base/navbar.html' %}
@@ -13,6 +17,7 @@
         <div class="login-box">
             <h1>Welcome</h1>
             <p>We are glad to see you back with us</p>
+
             <form action="{% url 'signin' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username">
@@ -20,6 +25,8 @@
                 <button type="submit">Next</button>
             </form>
             <a class="goto-register" href="{% url 'signup' %}"><p class="login-others"><span>Register here</span></p></a>
+            <a class="goto-register" href="{% url 'forget_password' %}"><p class="login-others"><span>Forget Password?</span></p></a>
+
             <div class="social-login">
                 <button class="google"><img src="{% static 'img/google_logo.png' %}" alt="Google" class="social-icon">Login with Google</button>
                 <button class="facebook"><img src="{% static 'img/facebook_logo.png' %}" alt="Facebook" class="social-icon">Login with Facebook</button>
@@ -28,6 +35,7 @@
         </div>
     </div>
     <script src="{% static 'js/nav_configuration.js' %}"></script>
+    {% include "base/side_arrester.html" %}
 </body>
  
 </html>

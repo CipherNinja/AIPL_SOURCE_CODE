@@ -1,0 +1,79 @@
+
+/* Main Container for Flexbox Layout */
+.main-container {
+    flex: 1;  /* Take up remaining space between navbar and footer */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Flexbox for Sidebar and Content */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    overflow: hidden;  /* Ensure no scrolling for the entire wrapper */
+}
+
+/* Sidebar Styling */
+.refund-sidebar {
+    width: 20%;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;  /* Allow sidebar scrolling if needed */
+}
+
+.refund-sidebar h4 {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.refund-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.refund-sidebar li {
+    margin-bottom: 15px;
+}
+
+.refund-sidebar a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.85rem;
+}
+
+.refund-sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* Scrollable Content Section */
+.refund-content {
+    width: 80%;
+    margin-top: 100px;
+    padding: 20px;
+    border-left: 3px solid #000;
+    overflow-y: auto;  /* Scroll only the content section */
+}
+
+/* Fixed Navbar and Footer */
+header, footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    z-index: 1000;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+    text-align: center;
+}

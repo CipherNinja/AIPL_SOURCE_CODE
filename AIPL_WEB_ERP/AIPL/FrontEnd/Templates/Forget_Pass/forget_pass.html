@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{% static 'css/otp.css' %}">
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    <div class="wrapper">
+        <div id="forgot-password-page" class="container">
+            <h1>Forgot Password</h1>
+            <p>Please enter your email address to receive a new OTP</p>
+            <form method="POST" action="{% url 'forget_password' %}">
+                {% csrf_token %}
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
+            <div class="sign-in-link">
+                <p>Remember password? <a href="{% url 'signin' %}">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+    
+    {% include "base/footer.html" %}
+</body>
+</html>

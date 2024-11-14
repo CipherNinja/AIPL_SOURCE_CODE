@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* This will ensure that the message is vertically and horizontally centered */
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px); /* Adjusts the height to not interfere with header/footer */
+            padding-top: 80px;
+        }
+
+        .maintenance-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .maintenance-container img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .maintenance-container h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #d9534f;
+        }
+
+        .maintenance-container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .maintenance-container button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .maintenance-container button:hover {
+            background-color: #218838;
+        }
+
+        .maintenance-container .contact-info {
+            font-size: 14px;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .maintenance-container img {
+                width: 150px;
+            }
+
+            .maintenance-container h1 {
+                font-size: 24px;
+            }
+
+            .maintenance-container p {
+                font-size: 16px;
+            }
+
+            .maintenance-container button {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+
+    <!-- Wrapping container for centering content -->
+    <div class="wrapper">
+        <div class="maintenance-container">
+            <!-- Maintenance Icon -->
+            <img src="https://img.icons8.com/doodle/2x/maintenance.png" alt="Under Maintenance Icon">
+            <h1>Page Under Maintenance</h1>
+            <p>Sorry, the page you're trying to access is currently under maintenance. We're working hard to improve your experience and will be back online shortly.</p>
+            
+            <!-- Retry button with a JS alert message -->
+            <button id="retryButton">Try Again</button>
+
+            <p class="contact-info">If you need further assistance, please contact info@agratasinfotech.com</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('retryButton').addEventListener('click', function () {
+            alert('This page is still under maintenance. Please check back later.');
+        });
+    </script>
+
+    {% include 'base/footer.html' %}
+</body>
+</html>

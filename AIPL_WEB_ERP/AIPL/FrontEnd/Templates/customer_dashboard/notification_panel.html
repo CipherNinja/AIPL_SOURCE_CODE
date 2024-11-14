@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/notification_panel.css' %}">
+<div class="notification-panel" id="notificationPanel">
+    <h2>Meeting Responses</h2>
+    <ul id="responseList">
+    {% if notifications %}
+        {% for notification in notifications %}
+        <li>
+            {{ notification.sender.username }}: {{ notification.message }}
+            {% if notification.meeting_link %}
+                <div><a href="{{ notification.meeting_link }}">Meeting Link</a></div>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No notifications</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+</div>
+<script src="{% static 'js/notification_toggle.js' %}"></script>

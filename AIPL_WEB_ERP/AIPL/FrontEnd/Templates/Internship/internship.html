@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Internship Opportunities at Agratas Infotech - Apply Now!</title>
+    <meta name="description" content="Join Agratas Infotech for exciting internship opportunities! Get cool swag, placement assistance, and compete for prizes over ₹50,000. Apply now!">
+    
+    <!-- Include Google Fonts and Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.header {
+    background-color: #004085;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Form Section */
+.form-container {
+    background-color: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #004085;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Ensures the form wraps properly on smaller screens */
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex: 1;
+    margin-right: 10px;
+    min-width: 45%; /* Ensures each input field has a minimum width */
+}
+
+.input-group:last-child {
+    margin-right: 0;
+}
+
+/* Ensure the input fields fill the container properly */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's width */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+select:focus {
+    border-color: #004085;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 64, 133, 0.5);
+}
+
+.optional {
+    color: red;
+    font-weight: bold;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #004085;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.submit-btn i {
+    margin-right: 8px; /* Adds space between the icon and text */
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Blog Section */
+.blog-section {
+    background-color: #f1f1f1;
+    padding: 50px 0;
+}
+
+.blog-section h2 {
+    font-size: 28px;
+    color: #004085;
+}
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Adds more space between the items */
+    padding: 0 20px;
+}
+
+.experience-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 300px; /* Restrict the maximum width of each experience box */
+    margin: 0 auto; /* Centers the experience-item */
+}
+
+.experience-item img {
+    max-width: 100%;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    border-radius: 3%;
+    margin-bottom: 15px;
+}
+
+.intern-name {
+    color: #004085;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Perks Section */
+.perks-section {
+    padding: 40px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.perks-section h2 {
+    font-size: 28px;
+    color: #004085;
+    margin-bottom: 20px;
+}
+
+.perks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.perks-list li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ced4da;
+    color: #333;
+}
+
+.perks-list li strong {
+    color: #004085;
+}
+
+/* Image Background */
+.image-overlay {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Increase the height to show more of the image */
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.image-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image ratio and ensures it covers the entire container */
+    margin-top: 80px; /* Remove any top margin to show the image fully */
+}
+
+/* Footer and Navbar already handled by Django */
+
+
+/* "Know More About This Opportunity" Section */
+.know-more-section {
+    background-color: #f5f5f5;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.know-more-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.know-more-section h2 {
+    font-size: 28px;
+    color: #004085;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.know-more-content p {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.know-more-content ul li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #004085;
+    transition: color 0.3s ease;
+}
+
+.know-more-content ul li:last-child {
+    border-bottom: none;
+}
+
+.know-more-content ul li:hover {
+    color: #007bff;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        .optional {
+            color: red;
+            font-weight: bold;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+        .wrapper-content {
+            flex: 1;
+        }
+        nav {
+            left: 0;
+            z-index: 1000;
+        }
+        .intern-name {
+            text-align: right;
+            color: #00094B;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header Section -->
+        {% include 'base/navbar.html' %}
+        <script src="{% static 'js/nav_configuration.js' %}"></script>
+
+        <div class="wrapper-content">
+            <!-- Image Background Overlay -->
+            <div class="image-overlay">
+                <img src="{% static 'img/internspace.webp' %}" alt="Internship Opportunities at Agratas Infotech" class="internship-image">
+            </div>
+
+            <!-- Perks Section -->
+            <section class="perks-section">
+                <h2>Perks & Benefits</h2>
+                <ul class="perks-list">
+                    <li><strong>Free Access to GPT-4:</strong> Enjoy free access to GPT-4 for all your research and development needs.</li>
+                    <li><strong>INR 5000 per Task:</strong> Earn INR 5000 for every task you complete during your internship.</li>
+                    <li><strong>Research & Development Opportunities:</strong> Engage in cutting-edge R&D projects and get your name published in research papers and conferences.</li>
+                    <li><strong>Free Research Paper Publication:</strong> We cover all costs for publishing research papers for our interns.</li>
+                    <li><strong>Welcome Kit:</strong> Receive a cool welcome kit when you join our team.</li>
+                    <li><strong>Pre-Placement Offer (PPO):</strong> Stand a chance to secure a PPO based on your performance.</li>
+                    <li><strong>Exciting Surprises:</strong> Enjoy special surprises during your internship with us.</li>
+                </ul>
+            </section>
+
+            <!-- Blog Section with Intern Experiences -->
+            <section class="blog-section">
+                <h2>Experience of Previous Interns</h2>
+                <div class="experience-container">
+                    <div class="experience-item">
+                        <img src="{% static 'img/internship/abhishek-uiux.jpg' %}" alt="Intern 1">
+                        <p>"Working at Agratas Infotech was a transformative experience. The mentors were amazing, and I received invaluable learning opportunities."</p>
+                        <div class="intern-name">— Abhishek Khatana, UIUX Dev Intern</div>
+                    </div>
+                    <div class="experience-item">
+                        <img src="{% static 'img/internship/bhavishya.jpg' %}" alt="Intern 2">
+                        <p>"This internship gave me hands-on experience with real-world AI applications, and I got the chance to contribute to research papers."</p>
+                        <div class="intern-name">— Bhavishya Chaturvedi, Fullstack Dev Intern</div>
+                    </div>
+                    <div class="experience-item">
+                        <img src="{% static 'img/internship/prashant-intern.jpg' %}" alt="Intern 3">
+                        <p>"Working at Agratas Infotech was transformative, enhancing my skills in client engagement and team collaboration. The mentorship and learning opportunities were invaluable."</p>
+                        <div class="intern-name">— Prashant Jha, Frontend Dev Intern</div>
+                    </div>
+                    <div class="experience-item">
+                        <img src="{% static 'img/internship/vishal-soni.jpg' %}" alt="Intern 4">
+                        <p>"Working at Agratas Infotech was an empowering experience. The mentors provided exceptional guidance, and I gained invaluable insights into AI and ML, which significantly expanded my professional growth."</p>
+                        <div class="intern-name">— Vishal Soni, AI&ML Dev Intern</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Internship Registration Form -->
+            <h2 class="form-title">Internship Registration</h2>
+            <div class="form-container">
+                <form id="registrationForm" method="post" action="{% url 'internship' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="firstName"><i class="fas fa-user"></i> First Name: <span class="optional">*</span></label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Akshay" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="lastName"><i class="fas fa-user"></i> Last Name: <span class="optional">*</span></label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Kumar" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email ID: <span class="optional">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="yourmail@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone"><i class="fas fa-phone"></i> Phone Number: <span class="optional">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 9060504051" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="institute"><i class="fas fa-university"></i> Institute Name: <span class="optional">*</span></label>
+                            <input type="text" id="institute" name="institute" placeholder="ABCD College" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="course"><i class="fas fa-book"></i> Course: <span class="optional">*</span></label>
+                            <input type="text" id="course" name="course" placeholder="B.Tech/B.E./MBA/BBA/MCA/BCA etc" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="role"><i class="fas fa-briefcase"></i> Role: <span class="optional">*</span></label>
+                            <select id="role" name="role" required>
+                                <option value="">Select internship role</option>
+                                <!-- Development Roles -->
+                                <option value="Machine Learning Intern">Machine Learning with Python</option>
+                                <option value="Artificial Intelligence Intern">Artificial Intelligence and GenAI</option>
+                                <option value="Cyber Security Intern">Cyber Security Analyst</option>
+                                <option value="Full Stack Development Intern">Full Stack Web Development (MERN Stack)</option>
+                                <option value="Android Development Intern">Android Development</option>
+                                <option value="Data Analyst Intern">Data Science with Python</option>
+                                <option value="Cloud Computing Intern">Cloud Computing</option>
+                                <option value="IOS App Development Intern">iOS App Development</option>
+                                <option value="Dot Net Backend Development Intern">Backend with .Net</option>
+                                <option value="PHP Backend Development Intern">Backend with PHP</option>
+                                <option value="Database Admin Intern">Database Administrator</option>
+                                <option value="SDE with Java Trainee">SDE with Java</option>
+                                <option value="UIUX Development Intern">UI/UX Development</option>
+                                <!-- Non-Development Roles -->
+                                <option value="Digital Marketing Intern">Digital Marketing</option>
+                                <option value="Content Writer Intern">Content Writer</option>
+                                <option value="Finance Intern">Finance</option>
+                                <option value="Marketing Intern">Marketing</option>
+                                <option value="Business Development Analyst Intern">Business Development Analyst</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="branch"><i class="fas fa-code-branch"></i> Branch: <span class="optional">*</span></label>
+                            <select id="branch" name="branch" required>
+                                <option value="">Select Your Branch</option>
+                                <option value="cse">Computer Science</option>
+                                <option value="it">Information Technology</option>
+                                <option value="ece">Electronics and Communication Engineering</option>
+                                <option value="ee">Electrical Engineering</option>
+                                <option value="me">Mechanical Engineering</option>
+                                <option value="ce">Civil Engineering</option>
+                                <option value="mse">Materials Science and Engineering</option>
+                                <option value="env">Environmental Engineering</option>
+                                <option value="automobile">Automobile Engineering</option>
+                                <option value="hr">Human Resources</option>
+                                <option value="finance">Finance</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="business_admin">Business Administration</option>
+                                <option value="digital_marketing">Digital Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="linkedin"><i class="fab fa-linkedin"></i> LinkedIn Profile URL:</label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
+                        </div>
+                        <div class="input-group">
+                            <label for="github"><i class="fab fa-github"></i> Github Profile URL:</label>
+                            <input type="url" id="github" name="github" placeholder="Github URL">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="resume"><i class="fas fa-file"></i> Your Resume: <span class="optional">* PDF file under 1 MB</span></label>
+                            <input type="file" id="resume" name="resume" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="collegeId"><i class="fas fa-id-badge"></i> College ID: <span class="optional">*</span></label>
+                            <input type="text" id="collegeId" name="collegeId" placeholder="Any Valid College ID Number" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit</button>
+                </form>
+            </div>
+                <!-- "Know More About This Opportunity" Section -->
+<section class="know-more-section">
+    <h2>Know More About This Opportunity</h2>
+    <div class="know-more-content">
+        <p><strong>Unlock valuable opportunities including:</strong></p>
+        <ul>
+            <li>Office activities & client meetings</li>
+            <li>A chance to mentor, judge, or participate in our <strong>36-Hour Hackathon</strong> (Feb 2025)</li>
+            <li>Online dashboard access for task submissions, meetings, and teamwork</li>
+            <li>Onsite & offsite meetups for tech like iOS, AI, Web3, and more</li>
+            <li>Top 10 interns may join the <strong>Agratas Infotech Core Developer Team</strong></li>
+        </ul>
+        <p><strong>Enrollment Fee: INR 2200 (35 intakes only)</strong></p>
+    </div>
+</section>
+
+
+
+        </div>
+    </div>
+    </div>
+    {% include 'base/footer.html' %}
+</body>
+</html>

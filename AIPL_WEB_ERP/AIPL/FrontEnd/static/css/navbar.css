@@ -32,6 +32,9 @@ nav.scrolled {
 .logo img {
   height: 10vh;
   width: 15vw;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Option css */

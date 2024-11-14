@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Driving Impactful Innovation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1, h2, h3 {
+            color: #4dd0e1;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #4dd0e1, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(77,208,225,0.2);
+        }
+
+        .impact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .impact-stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4dd0e1;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #4dd0e1;
+            font-weight: 600;
+        }
+
+        .impact-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .impact-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '➤';
+            color: #4dd0e1;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 40px 0;
+            color: #4dd0e1;
+            padding: 20px;
+            background: rgba(77,208,225,0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+    <div class="container">
+        <h1>Driving Impactful Innovation</h1>
+
+        <p>At Agratas Infotech, we don't just create technology – we shape the future. Our impact resonates across industries, transforming businesses and improving lives through cutting-edge solutions and unwavering commitment to excellence.</p>
+
+        <div class="impact-grid">
+            <div class="impact-card">
+                <h3>Digital Transformation</h3>
+                <p class="impact-stat">Multiple</p>
+                <p>Businesses successfully transformed</p>
+                <ul class="impact-list">
+                    <li>Reduced operational costs significantly</li>
+                    <li>Increased productivity through AI-driven processes</li>
+                    <li>Enabled 24/7 customer service with advanced chatbots, enhancing satisfaction rates</li>
+                </ul>
+            </div>
+
+            <div class="impact-card">
+                <h3>Healthcare Revolution</h3>
+                <p class="impact-stat">Thousands</p>
+                <p>Lives positively impacted</p>
+                <ul class="impact-list">
+                    <li>Developed AI-powered diagnostic tools, improving accuracy</li>
+                    <li>Implemented IoT solutions in hospitals, reducing patient wait times</li>
+                    <li>Created telemedicine platforms, bringing healthcare to rural patients</li>
+                </ul>
+            </div>
+
+            <div class="impact-card">
+                <h3>Fintech Innovation</h3>
+                <p class="impact-stat">Billions</p>
+                <p>Transactions secured annually</p>
+                <ul class="impact-list">
+                    <li>Developed blockchain solutions, reducing fraud for major banks</li>
+                    <li>Created AI-driven credit scoring systems, increasing loan approvals</li>
+                    <li>Implemented real-time transaction monitoring, preventing fraudulent activities</li>
+                </ul>
+            </div>
+
+            <div class="impact-card">
+                <h3>Sustainable Tech</h3>
+                <p class="impact-stat">Major</p>
+                <p>Energy reduction for clients</p>
+                <ul class="impact-list">
+                    <li>Developed smart grid solutions, optimizing energy distribution</li>
+                    <li>Created AI-powered waste management systems, improving recycling rates</li>
+                    <li>Implemented IoT-based agricultural solutions, reducing water usage for farming clients</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="quote">"Our goal at Agratas Infotech is not just to be at the forefront of technology, but to ensure that our innovations create meaningful, positive change in the world. Every line of code we write, every solution we deploy, is a step towards a more efficient, sustainable, and inclusive future."</p>
+
+        <p>Through relentless innovation and a deep understanding of industry needs, Agratas Infotech continues to push the boundaries of what's possible. Our impact extends beyond mere numbers – we're reshaping industries, empowering businesses, and improving lives on a global scale. As we look to the future, we remain committed to harnessing the power of technology to solve the world's most pressing challenges, creating a lasting legacy of positive change.</p>
+    </div>
+    {% include 'base/footer.html' %}
+</body>
+</html>

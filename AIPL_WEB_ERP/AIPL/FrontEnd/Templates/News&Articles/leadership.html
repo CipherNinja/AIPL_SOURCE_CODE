@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Leadership That Drives Innovation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1, h2 {
+            color: #00e5ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        .leadership-section {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .leadership-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #00e5ff;
+            font-weight: 700;
+        }
+
+        .impact-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .impact-list li {
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '➤';
+            color: #00e5ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 40px 0;
+            color: #00e5ff;
+        }
+    </style>
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <div class="container">
+        <h1>Leadership That Drives Innovation</h1>
+
+        <div class="leadership-section">
+            <h2>Visionary Approach</h2>
+            <p>
+                At Agratas Infotech, leadership isn't just about titles—it's about <span class="highlight">vision, innovation, and empowerment</span>. Our leadership team comprises industry veterans and visionaries who are committed to pushing the boundaries of what's possible in technology.
+            </p>
+            <p>
+                With a combined experience of <span class="highlight">many years in cutting-edge tech</span>, our leaders have navigated the complexities of digital transformation across various sectors. This wealth of knowledge drives our strategic decisions and fuels our innovative solutions.
+            </p>
+        </div>
+
+        <div class="leadership-section">
+            <h2>Collaborative Ecosystem</h2>
+            <p>
+                We foster a <span class="highlight">culture of collaboration and creativity</span> that permeates every level of our organization. Our leadership approach is not top-down; instead, we believe in nurturing talent and ideas from all corners of our company.
+            </p>
+            <p>
+                This collaborative ecosystem has led to breakthrough innovations in IoT, AI, and cloud technologies, positioning Agratas Infotech as a <span class="highlight">trailblazer in the digital landscape</span>.
+            </p>
+        </div>
+
+        <div class="leadership-section">
+            <h2>Impact-Driven Leadership</h2>
+            <p>
+                Our leadership team is committed to creating tangible impact, both within our organization and for our clients. This commitment manifests in several key areas:
+            </p>
+            <ul class="impact-list">
+                <li><span class="highlight">Continuous Innovation:</span> Investing in of our resources for R&D to stay ahead of technological curves.</li>
+                <li><span class="highlight">Client Success:</span> Implementing a client-centric approach that has resulted in a high client retention rate.</li>
+                <li><span class="highlight">Talent Development:</span> Creating a robust mentorship program that fast-tracks the growth of emerging tech leaders.</li>
+                <li><span class="highlight">Sustainability:</span> Leading initiatives to reduce our carbon footprint and develop eco-friendly tech solutions.</li>
+            </ul>
+        </div>
+
+        <div class="leadership-section">
+            <h2>Future-Forward Vision</h2>
+            <p>
+                As we navigate the ever-evolving tech landscape, our leadership remains focused on the horizon. We're not just adapting to change—we're <span class="highlight">driving it</span>. Our strategic foresight has positioned Agratas Infotech at the forefront of emerging technologies like quantum computing, advanced AI, and next-gen cybersecurity.
+            </p>
+            <p>
+                This forward-thinking approach ensures that our clients are always steps ahead in their digital transformation journey, equipped with solutions that are not just current, but future-proof.
+            </p>
+        </div>
+
+        <p class="quote">
+            "At Agratas, we don't just lead a company—we lead an innovation revolution. Our goal is to empower every client, every employee, and every stakeholder to be architects of the digital future."
+        </p>
+    </div>
+    {% include 'base/footer.html' %}
+</body>
+</html>

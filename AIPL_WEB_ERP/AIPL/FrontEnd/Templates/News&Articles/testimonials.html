@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agratas Infotech - Client Testimonials</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #4dd0e1;
+            --secondary-color: #00bcd4;
+            --bg-color: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-color: #e0e0e0;
+            --card-shadow: rgba(77,208,225,0.2);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--card-bg), #2a2a2a);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--card-shadow);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .testimonial-source {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .star {
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .testimonial-footer .source {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .testimonial-footer .stars {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+    <div class="container">
+        <h1>Client Testimonials</h1>
+        <h2>Hear from those we've impacted</h2>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Agratas Infotech's AI-powered diagnostic tool has revolutionized our hospital's efficiency. We've seen significant improvement in early detection rates, ultimately saving more lives."</p>
+                <div class="testimonial-footer">
+                    <span class="source">Chief of Medicine, Major Metropolitan Hospital</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The blockchain solution implemented by Agratas has dramatically reduced fraud in our systems. Their team's expertise in fintech is unparalleled."</p>
+                <div class="testimonial-footer">
+                    <span class="source">CTO, Global Financial Services Company</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Thanks to Agratas' IoT-based agricultural solutions, we've significantly reduced our water usage while increasing crop yields. It's been a game-changer for our farm."</p>
+                <div class="testimonial-footer">
+                    <span class="source">Owner, Large-Scale Agricultural Operation</span>
+                    <span class="stars">★★★★☆</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The AI-driven credit scoring system from Agratas has allowed us to expand loan approvals without increasing risk. It's opened up new opportunities for us."</p>
+                <div class="testimonial-footer">
+                    <span class="source">VP of Risk Management, Innovative Lending Platform</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Agratas' smart grid solution has optimized our energy distribution, leading to a significant reduction in overall energy consumption. It's good for both us and the planet."</p>
+                <div class="testimonial-footer">
+                    <span class="source">Sustainability Director, Major Utilities Provider</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The telemedicine platform developed by Agratas has been a lifeline for our rural patients. We've seen a marked increase in regular check-ups and early interventions."</p>
+                <div class="testimonial-footer">
+                    <span class="source">Director, Rural Health Initiative Program</span>
+                    <span class="stars">★★★★☆</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'base/footer.html' %}
+</body>
+</html>

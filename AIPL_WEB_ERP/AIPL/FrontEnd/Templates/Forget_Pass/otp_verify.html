@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="{% static 'css/otp.css' %}">
+</head>
+<body>
+    {% include "base/navbar.html" %}
+    <script src="{% static 'js/nav_configuration.js' %}"></script>
+    <div class="wrapper">
+        <div id="otp-verification-page" class="container">
+            <h1>Verification</h1>
+            <p>We have sent an OTP to your email. Please enter the code below:</p>
+            <form method="POST" action="{% url 'forget_password' %}">
+                {% csrf_token %}
+                <div class="otp-inputs">
+                    <input type="text" name="otp1" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp2" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp3" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp4" maxlength="1" class="otp-input" required>
+                </div>
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
+            <div class="resend-otp">
+                <p>Didn’t receive the OTP? <a href="{% url 'forget_password' %}">Resend OTP</a></p>
+            </div>
+        </div>
+    </div>
+    
+    {% include "base/footer.html" %}
+</body>
+</html>
