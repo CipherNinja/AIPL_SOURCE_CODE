@@ -67,6 +67,7 @@ class ManageTaskAdminForm(forms.ModelForm):
                         'title': 'This field cannot be modified due to your permission level.'
                     })
 
+
 @admin.register(ManageTask)
 class TaskDetailsView(admin.ModelAdmin):
     form = ManageTaskAdminForm
@@ -79,6 +80,14 @@ class TaskDetailsView(admin.ModelAdmin):
         "task_deadline",         # Task deadline
         "task_priority",         # Priority of the task
         "task_progress"          # Progress of the task
+    ]
+
+    # Add filtering options
+    list_filter = [
+        "task_deadline",         # Filter by task deadline
+        "task_progress",         # Filter by task progress
+        "task_title",            # Filter by task title
+        "receiver"               # Filter by task receiver
     ]
 
     def get_form(self, request, obj=None, **kwargs):
