@@ -91,35 +91,116 @@
         </script>
     </div>
 
+    <style>
+        .dashboard-section {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.overdue-tasks-table {
+    overflow-y: auto;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.overdue-tasks-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.overdue-tasks-table th {
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    background-color: #f1f1f1;
+}
+
+.overdue-tasks-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.send-alert-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background: #ffc107;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-alert-button:hover {
+    background: #e0a800;
+}
+
+    </style>
     <!-- Overdue Tasks Count with Details -->
-    <div class="dashboard-section" style="width: 100%;">
+    <div class="dashboard-section" style="width: 100%; position: relative;">
         <h3>Overdue Tasks</h3>
+        <button class="send-alert-button" id="sendAlertButton">
+            <i class="fas fa-bell"></i> Send Alert
+        </button>
         <p>Total Overdue Tasks: <strong>{{ overdue_tasks_count }}</strong></p>
-        <div style="overflow-y: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 8px;">
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead style="background-color: #f1f1f1;">
+        <div class="overdue-tasks-table">
+            <table>
+                <thead>
                     <tr>
-                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Sender</th>
-                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Receiver</th>
-                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Priority</th>
-                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Deadline</th>
-                        <th style="padding: 8px; text-align: left; font-weight: bold; border-bottom: 1px solid #ddd;">Task Creation Date</th>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                        <th>Priority</th>
+                        <th>Deadline</th>
+                        <th>Task Creation Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for task in overdue_tasks_details %}
                     <tr>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_sender__username }}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.receiver__username }}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_priority }}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_deadline }}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ task.task_created_at }}</td>
+                        <td>{{ task.task_sender__username }}</td>
+                        <td>{{ task.receiver__username }}</td>
+                        <td>{{ task.task_priority }}</td>
+                        <td>{{ task.task_deadline }}</td>
+                        <td>{{ task.task_created_at }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+    
+<script>
+    document.getElementById('sendAlertButton').addEventListener('click', function () {
+    fetch("{% url 'send_alerts' %}", {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": "{{ csrf_token }}",
+            "Content-Type": "application/json"
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Alerts sent successfully!');
+        } else {
+            alert('Failed to send alerts.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while sending alerts.');
+    });
+});
+
+</script>
+
 
     <!-- Completion Times Over Task Creation Dates -->
 <div class="dashboard-section" style="width: 100%;">

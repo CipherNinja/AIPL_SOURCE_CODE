@@ -745,7 +745,15 @@ def analytics_view(request):
     return render(request, 'admin/analytics.html', context)
 
 
+def footer_links(request,page_name):
 
+    __PAGES__ = {
+        'aboutus': "AboutUs/aboutus.html",
+    }
+    __link__ = __PAGES__.get(page_name, "base/maintenance.html")
+    
+    # Ensure the correct template path
+    return render(request, __link__)
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -757,3 +765,57 @@ class SubscriberListView(APIView):
         subscribers_data = subscribers.objects.all()
         serializer = SubscriberSerializer(subscribers_data, many=True)
         return Response(serializer.data)
+    
+
+
+from django.http import JsonResponse
+from django.utils.timezone import now
+
+@staff_member_required
+def send_alerts(request):
+    if request.method == "POST":
+        # Fetch overdue tasks
+        overdue_tasks = ManageTask.objects.filter(
+            task_completion_status=False,
+            task_deadline__lt=now()
+        )
+
+        # Loop through overdue tasks and send email alerts
+        for task in overdue_tasks:
+            try:
+                # Prepare email context
+                email_context = {
+                    'receiver_name': task.receiver.first_name,
+                    'task_title': task.task_title,
+                    'task_detail': task.task_detail,
+                    'task_deadline': task.task_deadline.strftime('%Y-%m-%d %H:%M:%S'),
+                    'task_priority': task.task_priority.capitalize(),
+                    'task_sender': task.task_sender.username if task.task_sender else "Admin",
+                    'warning_message': (
+                        "Failing to complete this task will result in a loss of credit points and a lower rank. "
+                        "Lower-ranking developers may be replaced, while higher-ranking developers enjoy more perks "
+                        "and authority. Please act on this task immediately to avoid penalties."
+                    ),
+                }
+
+                # Render email template
+                html_content = render_to_string('Emails/overdue_task.html', email_context)
+
+                # Send email
+                email = EmailMultiAlternatives(
+                    subject=f"Overdue Task Alert: {task.task_title}",
+                    body="Your task is overdue. Please check your account for details.",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[task.receiver.email],
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+
+            except Exception as e:
+                print(f"Error sending email for task {task.task_title}: {e}")
+
+        # Return success response
+        return JsonResponse({"success": True})
+
+    # If request is not POST, return failure response
+    return JsonResponse({"success": False})

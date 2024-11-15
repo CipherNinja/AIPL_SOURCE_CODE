@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            line-height: 1.5;
+            color: #555;
+        }
+        .task-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .task-details h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .warning {
+            background: #ffe9e9;
+            color: #c00;
+            padding: 15px;
+            border: 1px solid #c00;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h1>Task Overdue Alert</h1>
+        <p>Dear {{ receiver_name }},</p>
+        <p>The following task assigned to you is overdue:</p>
+        <div class="task-details">
+            <h3>{{ task_title }}</h3>
+            <p><strong>Details:</strong> {{ task_detail }}</p>
+            <p><strong>Priority:</strong> {{ task_priority }}</p>
+            <p><strong>Deadline:</strong> {{ task_deadline }}</p>
+            <p><strong>Assigned By:</strong> {{ task_sender }}</p>
+        </div>
+        <div class="warning">
+            <strong>Important:</strong>
+            <p>{{ warning_message }}</p>
+        </div>
+        <p>Contact your team lead to update the status of this task. (if Completed)</p>
+        <a href="http://yourappurl.com/tasks" class="cta-button">View Task</a>
+        <p>Thank you,<br>The Admin Team</p>
+    </div>
+</body>
+</html>

@@ -23,6 +23,9 @@ urlpatterns = [
     path("education/<str:page_name>/",views.education_page_controller,name="education"),
     path("contact-agratas/",views.contact_agratas,name="contact_agratas"),
     path('administration/analytics/', views.analytics_view, name='analytics'),  # New analytics URL
-    path('api/subscribers/', SubscriberListView.as_view(), name='subscriber-list')
+    path('administration/analytics/send-alerts/', views.send_alerts, name='send_alerts'),
+    path('api/subscribers/', SubscriberListView.as_view(), name='subscriber-list'),
+    path("AIPL/<str:page_name>/",views.footer_links,name="f_connect"),
+    
     
 ]
