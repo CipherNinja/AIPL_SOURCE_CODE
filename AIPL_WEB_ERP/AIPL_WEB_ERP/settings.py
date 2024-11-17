@@ -14,6 +14,8 @@ from pathlib import Path
 import os.path  
 import sys
 
+import requests
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +33,46 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'agratasinfotech.com', 'www.agratasin
 
 # Application definition
 
+
+# SECURITY KEY VALIDATION
+SECURITY_KEY = config('SECURITY_KEY', default=None)
+
+if not SECURITY_KEY:
+    print("SECURITY_KEY is missing. Attempting to fetch from approval server...")
+    employee_id = input("Enter your Employee ID: ")
+    provided_key = input("Enter your Security Key: ")
+
+    try:
+        # Fetch the approved security key for the given employee ID
+        response = requests.get(f"https://supersecure.agratasinfotech.com/api/approve-key/{employee_id}/")
+
+        if response.status_code == 200:
+            approved_key = response.json().get("security_key")
+            if approved_key == provided_key:
+                print("Security Key validated successfully.")
+
+                # Save the validated key in the .env file for future use
+                with open('.env', 'a') as env_file:
+                    env_file.write(f"SECURITY_KEY={provided_key}\n")
+                    env_file.write(f"EMPLOYEE_ID={employee_id}\n")
+                SECURITY_KEY = provided_key
+            else:
+                print("Invalid Security Key. Please check your key and try again.")
+                sys.exit(1)
+        elif response.status_code == 403:
+            print("Your request has not been approved yet. Please contact the admin.")
+            sys.exit(1)
+        elif response.status_code == 404:
+            print("No request found for the given Employee ID. Please check the ID.")
+            sys.exit(1)
+        else:
+            print(f"Unexpected response: {response.json()}")
+            sys.exit(1)
+    except requests.ConnectionError as e:
+        print(f"Connection error: {e}. Unable to connect to the approval server. Exiting.")
+        sys.exit(1)
+
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -46,6 +88,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'AIPL_WEB_ERP.middleware.SecurityKeyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
