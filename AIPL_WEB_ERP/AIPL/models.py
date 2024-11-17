@@ -432,13 +432,16 @@ def validate_file_extension(value):
         raise ValidationError("Only PDF files are allowed")
     return value
 
+
+from django.utils.timezone import now
 class InternshipApplication(models.Model):
     # Basic Info
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)  # Enforces email uniqueness at the database level
     phone_number = models.CharField(max_length=15)
-    
+    date_applied = models.DateTimeField(default=now, help_text="The date and time when the application was submitted.")
+
     # Educational Info
     institute_name = models.CharField(max_length=200)
     course = models.CharField(max_length=200)

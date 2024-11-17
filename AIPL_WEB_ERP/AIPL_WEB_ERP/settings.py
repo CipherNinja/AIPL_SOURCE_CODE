@@ -14,8 +14,8 @@ from pathlib import Path
 import os.path  
 import sys
 
-import requests
-from decouple import config
+# import requests
+# from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,42 +35,42 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'agratasinfotech.com', 'www.agratasin
 
 
 # SECURITY KEY VALIDATION
-SECURITY_KEY = config('SECURITY_KEY', default=None)
+# SECURITY_KEY = config('SECURITY_KEY', default=None)
 
-if not SECURITY_KEY:
-    print("SECURITY_KEY is missing. Attempting to fetch from approval server...")
-    employee_id = input("Enter your Employee ID: ")
-    provided_key = input("Enter your Security Key: ")
+# if not SECURITY_KEY:
+#     print("SECURITY_KEY is missing. Attempting to fetch from approval server...")
+#     employee_id = input("Enter your Employee ID: ")
+#     provided_key = input("Enter your Security Key: ")
 
-    try:
-        # Fetch the approved security key for the given employee ID
-        response = requests.get(f"https://supersecure.agratasinfotech.com/api/approve-key/{employee_id}/")
+#     try:
+#         # Fetch the approved security key for the given employee ID
+#         response = requests.get(f"https://supersecure.agratasinfotech.com/api/approve-key/{employee_id}/")
 
-        if response.status_code == 200:
-            approved_key = response.json().get("security_key")
-            if approved_key == provided_key:
-                print("Security Key validated successfully.")
+#         if response.status_code == 200:
+#             approved_key = response.json().get("security_key")
+#             if approved_key == provided_key:
+#                 print("Security Key validated successfully.")
 
-                # Save the validated key in the .env file for future use
-                with open('.env', 'a') as env_file:
-                    env_file.write(f"SECURITY_KEY={provided_key}\n")
-                    env_file.write(f"EMPLOYEE_ID={employee_id}\n")
-                SECURITY_KEY = provided_key
-            else:
-                print("Invalid Security Key. Please check your key and try again.")
-                sys.exit(1)
-        elif response.status_code == 403:
-            print("Your request has not been approved yet. Please contact the admin.")
-            sys.exit(1)
-        elif response.status_code == 404:
-            print("No request found for the given Employee ID. Please check the ID.")
-            sys.exit(1)
-        else:
-            print(f"Unexpected response: {response.json()}")
-            sys.exit(1)
-    except requests.ConnectionError as e:
-        print(f"Connection error: {e}. Unable to connect to the approval server. Exiting.")
-        sys.exit(1)
+#                 # Save the validated key in the .env file for future use
+#                 with open('.env', 'a') as env_file:
+#                     env_file.write(f"SECURITY_KEY={provided_key}\n")
+#                     env_file.write(f"EMPLOYEE_ID={employee_id}\n")
+#                 SECURITY_KEY = provided_key
+#             else:
+#                 print("Invalid Security Key. Please check your key and try again.")
+#                 sys.exit(1)
+#         elif response.status_code == 403:
+#             print("Your request has not been approved yet. Please contact the admin.")
+#             sys.exit(1)
+#         elif response.status_code == 404:
+#             print("No request found for the given Employee ID. Please check the ID.")
+#             sys.exit(1)
+#         else:
+#             print(f"Unexpected response: {response.json()}")
+#             sys.exit(1)
+#     except requests.ConnectionError as e:
+#         print(f"Connection error: {e}. Unable to connect to the approval server. Exiting.")
+#         sys.exit(1)
 
 
 INSTALLED_APPS = [
@@ -88,7 +88,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'AIPL_WEB_ERP.middleware.SecurityKeyMiddleware',
+    # 'AIPL_WEB_ERP.middleware.SecurityKeyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,10 +124,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents browsers from MIME-sniffing files
 SECURE_BROWSER_XSS_FILTER = True    # Enables XSS filtering by the browser
 
 # Enforce HTTPS
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 year; adjust based on preference
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 # # Clickjacking protection
 X_FRAME_OPTIONS = 'DENY'

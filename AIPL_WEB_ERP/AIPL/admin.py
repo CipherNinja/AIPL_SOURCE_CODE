@@ -110,7 +110,7 @@ admin.site.register(TeamMember, TeamMemberAdmin)
 
 # Register the InternshipApplication model
 class InternshipApplicationAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'phone_number', 'role', 'branch', 'custom_resume')
+    list_display = ('first_name', 'last_name', 'email', 'phone_number','date_applied', 'role', 'branch', 'custom_resume')
     
     # Add filters for role and branch
     list_filter = ('role', 'branch')
