@@ -5,7 +5,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agratas Infotech</title>
-    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: black;
+  padding: 10px;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; 
+  padding: 40px; 
+  height: 90vh; 
+}
+
+.about-content {
+  width: 50%; 
+  padding-right: 20px; 
+}
+
+.about h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  
+}
+
+.about p {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 18px;
+
+}
+
+.mail-button {
+  padding: 10px 20px;
+  background-color: #001A80;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.about-image {
+  width: 50%; 
+  display: flex;
+  justify-content: center; 
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; 
+}
+
+
+@media (max-width: 768px) {
+  
+  .about {
+    flex-direction: column;
+    height: auto; 
+    padding: 20px;
+    
+   
+  }
+
+  .about-content,
+  .about-image {
+    width: 100%; /* Full width for smaller screens */
+    text-align: center;
+    
+    
+  }
+
+  .about-content {
+    padding-right: 0;
+    
+    
+  }
+}
+
+
+    </style>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -19,7 +119,7 @@
             <button class="mail-button">Send The Mail</button>
         </div>
         <div class="about-image">
-            <img src="{% static 'img/AboutUs/image2.jpeg' %}" alt="Illustration">
+            <img src="{% static 'img/image2.jpeg' %}" alt="Illustration">
         </div>
     </section>
 
