@@ -2,206 +2,95 @@ document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const option = document.querySelector(".option");
   const navbar = document.querySelector("nav");
-  let isNavGrey = false;
+  const submenus = document.querySelectorAll(".submenu");
+  const innerSubmenus = document.querySelectorAll(".inner-submenu");
 
-  console.log("Document loaded and script initialized.");
-
-  // Toggle hamburger and navigation options
-  if (hamburger && option && navbar) {
-    hamburger.addEventListener("click", () => {
-      console.log("Hamburger menu clicked");
-      hamburger.classList.toggle("active");
-      option.classList.toggle("active");
-
-      // Check if the hamburger menu is active to change the navbar and menu color
-      if (hamburger.classList.contains("active")) {
-        navbar.classList.add("scrolled");
-        option.classList.add("scrolled");
-        isNavGrey = true;
-        console.log("Navbar and menu color changed to grey when menu opened");
-      } else {
-        navbar.classList.remove("scrolled");
-        option.classList.remove("scrolled");
-        isNavGrey = false;
-        console.log("Navbar and menu color reset when menu closed");
-      }
+  // Close all submenus
+  function closeAllSubmenus() {
+    submenus.forEach((submenu) => {
+      submenu.classList.remove("show");
+      submenu.style.maxHeight = null;
+      const arrow = submenu.previousElementSibling.querySelector(".arrow");
+      if (arrow) arrow.classList.remove("down");
     });
-
-    window.addEventListener("scroll", function () {
-      const scrollableHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolledPercentage = (window.scrollY / scrollableHeight) * 100;
-
-      console.log(`Scrolled percentage: ${scrolledPercentage}`);
-
-      if (scrolledPercentage >= 1 && !isNavGrey) {
-        navbar.classList.add("scrolled");
-        option.classList.add("scrolled");
-        isNavGrey = true;
-        console.log("Navbar and menu color changed on scroll");
-      } else if (
-        scrolledPercentage < 1 &&
-        isNavGrey &&
-        !hamburger.classList.contains("active")
-      ) {
-        // Ensure the navbar and menu color reset only if the menu is not active
-        navbar.classList.remove("scrolled");
-        option.classList.remove("scrolled");
-        isNavGrey = false;
-        console.log("Navbar and menu color reset on scroll");
-      }
+    innerSubmenus.forEach((innerSubmenu) => {
+      innerSubmenu.style.display = "none";
     });
   }
 
-  // Handle clicks on main menu items to toggle submenus
-  document.querySelectorAll(".nav-links > li > a").forEach(function (item) {
-    item.addEventListener("click", function (event) {
-      event.preventDefault();
-      const parentLi = this.parentNode;
-      const thisSubmenu = parentLi.querySelector(".submenu");
-      navbar.classList.add("scrolled");
-      option.classList.add("scrolled");
+  // Toggle specific submenu
+  function toggleSubmenu(menuLink) {
+    const parentLi = menuLink.parentElement;
+    const submenu = parentLi.querySelector(".submenu");
 
-      // Close all other submenus
-      document.querySelectorAll(".submenu").forEach((submenu) => {
-        if (submenu !== thisSubmenu) {
-          submenu.classList.remove("show");
-          submenu.style.maxHeight = null;
-          submenu.style.opacity = 0;
-          const arrow = submenu.previousElementSibling.querySelector(".arrow");
-          if (arrow) arrow.classList.remove("down");
-        }
-      });
+    // Close all other submenus
+    submenus.forEach((otherSubmenu) => {
+      if (otherSubmenu !== submenu) {
+        otherSubmenu.classList.remove("show");
+        otherSubmenu.style.maxHeight = null;
+        const arrow = otherSubmenu.previousElementSibling.querySelector(".arrow");
+        if (arrow) arrow.classList.remove("down");
+      }
+    });
 
-      // Toggle the current submenu
-      const isSubmenuVisible = thisSubmenu.classList.toggle("show");
-      thisSubmenu.style.maxHeight = isSubmenuVisible
-        ? thisSubmenu.scrollHeight + "px"
-        : 0;
-      thisSubmenu.style.opacity = isSubmenuVisible ? 1 : 0;
-      const arrow = thisSubmenu.previousElementSibling.querySelector(".arrow");
+    // Toggle the current submenu
+    if (submenu) {
+      const isSubmenuVisible = submenu.classList.toggle("show");
+      submenu.style.maxHeight = isSubmenuVisible ? submenu.scrollHeight + "px" : null;
+      const arrow = menuLink.querySelector(".arrow");
       if (arrow) arrow.classList.toggle("down", isSubmenuVisible);
+    }
+  }
 
-      console.log(
-        `Submenu for '${this.textContent.trim()}' toggled: `,
-        isSubmenuVisible
-      );
+  // Event listener for menu links
+  document.querySelectorAll(".nav-links > li > a").forEach((menuLink) => {
+    menuLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      toggleSubmenu(this);
     });
   });
 
-  // Handle clicks on submenu items to toggle inner-submenus
-  document.querySelectorAll(".submenu > li").forEach(function (item) {
-    const innerSubmenu = item.querySelector(".inner-submenu");
+  // Handle clicks on inner submenus
+  document.querySelectorAll(".submenu > li").forEach((menuItem) => {
+    const innerSubmenu = menuItem.querySelector(".inner-submenu");
 
-    item.addEventListener("click", function (event) {
-      event.stopPropagation();
-
-      // Close all other inner submenus except this one
-      document.querySelectorAll(".inner-submenu").forEach(function (menu) {
-        if (menu !== innerSubmenu) {
-          menu.style.display = "none";
-        }
-      });
+    menuItem.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevent bubbling up to parent submenu
 
       // Toggle the display of this inner submenu
       if (innerSubmenu) {
         innerSubmenu.style.display =
-          innerSubmenu.style.display === "none" ? "block" : "none";
-        console.log(
-          `Inner-submenu for '${item.textContent.trim()}' toggled: `,
-          innerSubmenu.style.display
-        );
-
-        // Toggle the icon from + to - and vice versa
-        const icon = item.querySelector(".icon");
-        if (icon) {
-          icon.textContent = innerSubmenu.style.display === "block" ? "-" : "+";
-        }
+          innerSubmenu.style.display === "block" ? "none" : "block";
       }
     });
   });
 
-  // Initially hide all inner-submenus
-  document.querySelectorAll(".inner-submenu").forEach(function (menu) {
-    menu.style.display = "none";
-  });
-
-  // Close all menus when clicking outside of the navbar
+  // Close menus when clicking outside
   document.addEventListener("click", function (event) {
     if (!event.target.closest("nav")) {
-      closeAllMenus();
-      console.log("Clicked outside navbar, all menus closed.");
+      closeAllSubmenus();
     }
   });
 
-  function closeAllMenus() {
-    document
-      .querySelectorAll(".submenu, .inner-submenu")
-      .forEach(function (menu) {
-        menu.classList.remove("show");
-        menu.style.display = "none";
-        const arrow = menu.previousElementSibling.querySelector(".arrow");
-        if (arrow) arrow.classList.remove("down");
-      });
-    option.classList.remove("active");
-    navbar.classList.remove("scrolled");
-    hamburger.classList.remove("active");
-    isNavGrey = false;
-    console.log("All menus and submenu settings have been reset.");
-  }
+  // Hamburger menu toggle for mobile
+  if (hamburger && option) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      option.classList.toggle("active");
 
-  // Additional listeners for address bar interactions
-  const addressBarContainer = document.getElementById("address-bar-container");
-  const closeBtn = document.getElementById("close-btn");
-  const searchIcon = document.querySelector(".searchbar i");
-
-  searchIcon.addEventListener("click", () => {
-    addressBarContainer.style.display = "block";
-    closeAllMenus();
-    console.log("Search icon clicked, address bar displayed.");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    addressBarContainer.style.display = "none";
-    console.log("Close button clicked, address bar hidden.");
-  });
-
-  // Toggle hamburger icon based on screen width
-  function toggleMenuIcons() {
-    const menuItems = document.querySelectorAll(".nav-links > li");
-
-    menuItems.forEach((item) => {
-      const submenu = item.querySelector(".submenu");
-
-      if (submenu) {
-        submenu.style.padding =
-          window.innerWidth <= 768 ? "16px 20px 20px 20px" : "0% 50% 95% 50%";
-
-        // Check if inner-submenu icons exist and remove them if screen size is >= 768px
-        const innerSubmenuIcons = item.querySelectorAll(".icon");
-        if (window.innerWidth >= 768 && innerSubmenuIcons.length > 0) {
-          innerSubmenuIcons.forEach((icon) => {
-            icon.remove();
-          });
-        }
-
-        // Add inner-submenu icons if screen size is < 768px and icons don't already exist
-        if (window.innerWidth < 768 && innerSubmenuIcons.length === 0) {
-          // const icon = document.createElement("span");
-          // icon.classList.add("icon");
-          // icon.textContent = "+"; // Initial icon state
-          // item.appendChild(icon);
-        }
-
-        // Set initial arrow state for closed submenus
-        const arrow = item.querySelector(".arrow");
-        if (arrow && !submenu.classList.contains("show")) {
-          arrow.classList.remove("down");
-        }
+      // Close all submenus when the hamburger menu is toggled off
+      if (!hamburger.classList.contains("active")) {
+        closeAllSubmenus();
       }
     });
   }
 
-  toggleMenuIcons(); // Initial call to set icons based on initial screen width
-  window.addEventListener("resize", toggleMenuIcons); // Call on window resize
+  // Reset menus on window resize
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768) {
+      option.classList.remove("active");
+      hamburger.classList.remove("active");
+      closeAllSubmenus();
+    }
+  });
 });

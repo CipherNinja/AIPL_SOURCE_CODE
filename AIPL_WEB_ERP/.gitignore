@@ -17,6 +17,9 @@ venv/
 __pycache__/
 *.py[cod]
 
+# Specifically ignore __pycache__ in the AIPL directory
+AIPL/__pycache__/
+
 # Ignore environment variables
 .env
 

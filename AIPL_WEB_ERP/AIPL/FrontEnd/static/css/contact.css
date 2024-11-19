@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: black;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 150px;
+    height: 60px;
+  }
+  
+  .nav-links {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  .nav-links ul li {
+    margin: 0 50px;
+  }
+  
+  .nav-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .nav-links li a:hover {
+    
+    text-decoration: underline;
+  }
+  
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 50px;
+  }
+  
+  .icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+  
+  .search-box {
+    display: none;
+    position: absolute;
+    right: 90px;
+    /* background-color: white; */
+    /* background-color: black; */
+    border-radius: 19px;
+    padding: 10px;
+    background-color: #000080;
+    margin-right: 40px;
+    
+  }
+  
+  .search-box input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 10px;
+    width: 150px;
+    
+  }
+  
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+@media (max-width: 768px) 
+{
+    .nav-links ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        background-color: black;
+        /* background-color: yellow; */
+        width: 50%;
+        text-align: center;
+        border-radius: 15px;
+        
+    }
+  
+    .nav-links.show ul {
+        display: flex;
+    }
+  
+    .nav-links ul li {
+        margin: 20px 0;
+    }
+  
+   
+    .hamburger {
+        display: block;
+    }
+    
+    .search-box
+    {
+     margin-top: 80px; 
+  }
+ 
+      }
+
+   /* Contact Section */
+.contact-section {
+    height: 88vh;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
+    background-color: #E3E3E3;
+    justify-content: center;
+    gap: 3em;
+}
+
+.form-container {
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.input-group {
+    margin-bottom: 1em;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 0.75em;
+    border: none;
+    border-radius: 15px;
+    background-color: #F5F5F5;
+    font-size: 1.2em;
+    padding-left: 60px;
+}
+.input-group textarea{
+    height: 140px;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+/* add icon in input fields*/
+.input-group .fa-regular{
+    font-weight: 400;
+    font-size: 20px;
+    position: absolute;
+    padding: 15px;
+    min-width: 40px;
+    /*margin-left: 50px;
+    margin-right: 40px;*/
+    color: grey;
+    /* overflow: hidden; */
+}
+/*input fields*/
+
+/*.contact-inputs{
+    width: 400px;
+    height: 50px;
+    font-weight: 500;
+}*/
+button {
+    width: 100%;
+    padding: 0.75em;
+    border: none;
+    border-radius: 15px;
+    background-color: #000080;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000066;
+}
+
+.illustration {
+    /*padding-bottom: 100px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.illustration img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: none;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+      height: 100vh;
+        padding: 1em;
+        gap: 1em;
+        height: auto;
+        flex-direction: column;
+    }
+    .form-container {
+      margin-top: 20px ;
+      max-width: 600px;
+      width: 75%;
+      margin-left:65px;
+  }
+
+
+    h1 {
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        font-size: 1em;
+        padding-left: 40px;
+    }
+
+    .input-group .fa-regular {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1em;
+    }
+
+    .illustration img {
+      max-width: 500px;
+      width: 100%;
+      padding-bottom: 20px;
+      margin-top: -20px;
+      margin-left: -15px;
+    }
+
+    .input-group .fa-regular{
+      font-weight: 400;
+      font-size: 15px;
+      position: absolute;
+      padding: 15px;
+      min-width: 40px;
+      color: grey;
+      
+  }
+  .input-group textarea{
+    height: 140px;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+} 
+

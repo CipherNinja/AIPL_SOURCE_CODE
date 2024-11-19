@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+<!-- contact-section start -->
+    <section class="contact-section">
+        <div class="form-container">
+            <h1>Contact Us</h1>
+            <form id="contactForm">
+                <div class="input-group">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" placeholder="Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <textarea placeholder="Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="illustration">
+            <img src="{% static 'img/image2.jpeg' %}" alt="Contact Illustration">
+        </div>
+    </section>
+    <script src="{% static 'js/contactpage.js' %}"></script>
+    {% include 'base/footer.html' %}
+</body>
+</html>

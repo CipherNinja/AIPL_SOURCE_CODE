@@ -749,6 +749,7 @@ def footer_links(request,page_name):
 
     __PAGES__ = {
         'aboutus': "AboutUs/aboutus.html",
+        'contactus': "contactus/contactus.html",
     }
     __link__ = __PAGES__.get(page_name, "base/maintenance.html")
     

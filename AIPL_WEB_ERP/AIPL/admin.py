@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin import DateFieldListFilter
 from django import forms
 from .models import *
 # Register your models here.
@@ -110,13 +111,16 @@ admin.site.register(TeamMember, TeamMemberAdmin)
 
 # Register the InternshipApplication model
 class InternshipApplicationAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'phone_number','date_applied', 'role', 'branch', 'custom_resume')
+    list_display = ('first_name', 'last_name', 'email', 'phone_number', 'date_applied', 'role', 'branch', 'custom_resume')
     
-    # Add filters for role and branch
-    list_filter = ('role', 'branch')
+    # Add filters for role, branch, and date_applied
+    list_filter = (
+        'role', 
+        'branch', 
+        ('date_applied', DateFieldListFilter),  # Adds a calendar-based filter for date_applied
+    )
     
     # Optionally, set default ordering (for example, by role or branch)
     ordering = ('role', 'branch')  # This will order the applications by role first, then branch
 
 admin.site.register(InternshipApplication, InternshipApplicationAdmin)
-
