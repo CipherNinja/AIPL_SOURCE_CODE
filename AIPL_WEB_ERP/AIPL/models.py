@@ -398,6 +398,60 @@ def send_task_assignment_email(sender, instance, created, **kwargs):
             html_message=html_content
         )
 
+@receiver(pre_save, sender=ManageTask)
+def notify_task_updates(sender, instance, **kwargs):
+    try:
+        previous_instance = ManageTask.objects.get(pk=instance.pk)
+    except ManageTask.DoesNotExist:
+        # This is a new task, no update notification required
+        return
+
+    # Determine changes
+    updated_fields = []
+    if instance.task_deadline != previous_instance.task_deadline:
+        updated_fields.append(f"Deadline: {previous_instance.task_deadline} → {instance.task_deadline}")
+    if instance.task_priority != previous_instance.task_priority:
+        updated_fields.append(f"Priority: {previous_instance.task_priority} → {instance.task_priority}")
+    if instance.task_progress != previous_instance.task_progress:
+        updated_fields.append(f"Progress: {previous_instance.task_progress} → {instance.task_progress}")
+
+    if updated_fields:  # If any field is updated, send an email
+        recipient_email = instance.receiver.email
+
+        # Handle sender details
+        if instance.task_sender:
+            sender_name = f"{instance.task_sender.first_name} {instance.task_sender.last_name}"
+            sender_email = instance.task_sender.email
+            sender_role = getattr(instance.task_sender.developer_profile, 'job_role', 'N/A')
+        else:
+            sender_name = "No sender assigned"
+            sender_email = "N/A"
+            sender_role = "N/A"
+
+        # Prepare email content
+        html_content = render_to_string('Emails/task_details_updated_templates.html', {
+            'task_title': instance.task_title,
+            'task_detail': instance.task_detail,
+            'task_deadline': instance.task_deadline,
+            'task_priority': instance.task_priority,
+            'receiver': instance.receiver,
+            'sender_name': sender_name,
+            'sender_role': sender_role,
+            'sender_email': sender_email,
+            'updated_fields': updated_fields,  # New updates included in the email template
+        })
+        text_content = strip_tags(html_content)
+
+        # Send email
+        send_mail(
+            subject=f"Task Updated: {instance.task_title}",
+            message=text_content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[recipient_email],
+            html_message=html_content
+        )
+
+
 
 class Team(models.Model):
     team_name = models.CharField(max_length=100, unique=True)
