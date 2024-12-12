@@ -275,7 +275,7 @@ class ManageTask(models.Model):
     # New fields for task assignment
     task_deadline = models.DateTimeField(null=True, blank=True)
     task_priority = models.CharField(max_length=20, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], default='medium')
-    task_progress = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed')], default='not started')
+    task_progress = models.CharField(max_length=20, choices=[('not started', 'Not Started'), ('in progress', 'In Progress'), ('completed', 'Completed'), ('dismantel', 'Dismantel')], default='not started')
 
     def __str__(self):
         return f"Task: {self.task_title}, Assigned to: {self.receiver.username}"
@@ -404,6 +404,10 @@ def notify_task_updates(sender, instance, **kwargs):
         previous_instance = ManageTask.objects.get(pk=instance.pk)
     except ManageTask.DoesNotExist:
         # This is a new task, no update notification required
+        return
+
+    # Skip notifications for tasks marked as 'dismantel'
+    if instance.task_progress == 'dismantel':
         return
 
     # Determine changes

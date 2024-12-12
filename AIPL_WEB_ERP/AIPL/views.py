@@ -658,7 +658,7 @@ def analytics_view(request):
             'task_volume': {},
             'user_performance': {},
             'completion_times': [],
-            'user_task_counts': {}  # New data for task assignment vs. completion
+            'user_task_counts': {}
         })
 
     # Convert date fields to datetime
@@ -674,9 +674,27 @@ def analytics_view(request):
 
     # 3. Overdue Tasks Count and Details
     now = timezone.now()
-    overdue_tasks_df = df[(df['task_completion_status'] == False) & (df['task_deadline'] < now)]
-    overdue_tasks_count = len(overdue_tasks_df)
-    overdue_tasks_details = overdue_tasks_df[['task_sender__username', 'receiver__username', 'task_priority', 'task_deadline', 'task_created_at']].to_dict(orient='records')
+    overdue_tasks_df = df[
+        (df['task_completion_status'] == False) &
+        (df['task_deadline'] < now) &
+        (df['task_progress'] != 'dismantel')  # Exclude dismantel tasks from email consideration
+    ]
+
+    # Include dismantel tasks separately
+    dismantel_tasks_df = df[
+        (df['task_completion_status'] == False) &
+        (df['task_deadline'] < now) &
+        (df['task_progress'] == 'dismantel')  # Include dismantel tasks in overdue
+    ]
+
+    # Combine overdue tasks and dismantel tasks
+    all_overdue_tasks_df = pd.concat([overdue_tasks_df, dismantel_tasks_df])
+    overdue_tasks_count = len(all_overdue_tasks_df)
+
+    # Prepare details for rendering
+    overdue_tasks_details = all_overdue_tasks_df[
+        ['task_sender__username', 'receiver__username', 'task_priority', 'task_deadline', 'task_created_at']
+    ].to_dict(orient='records')
 
     # 4. Task Volume by Priority and Status
     task_volume_raw = pd.crosstab(df['task_progress'], df['task_priority']).to_dict()
@@ -711,7 +729,7 @@ def analytics_view(request):
     user_performance_df['abs_avg_completion_time'] = user_performance_df['avg_completion_time'].abs()
     user_performance = user_performance_df.set_index('receiver__username').T.to_dict()
 
-    # 6. Completion Times for Line Chart (adjusted for positive=early and negative=late)
+    # 6. Completion Times for Line Chart
     df['completion_time_relative'] = (df['task_deadline'] - df['task_created_at']).dt.days
     completion_times = {
         'labels': df['task_created_at'].dt.strftime('%Y-%m-%d').tolist(),
@@ -724,7 +742,6 @@ def analytics_view(request):
         tasks_completed=('task_completion_status', 'sum')
     ).reset_index()
     
-    # Converting to dictionary for Chart.js
     user_task_counts = {
         'labels': task_counts['receiver__username'].tolist(),
         'tasks_assigned': task_counts['tasks_assigned'].tolist(),
@@ -739,7 +756,7 @@ def analytics_view(request):
         'task_volume': task_volume_transformed,
         'user_performance': user_performance,
         'completion_times': completion_times,
-        'user_task_counts': user_task_counts  # New feature data
+        'user_task_counts': user_task_counts
     }
 
     return render(request, 'admin/analytics.html', context)
