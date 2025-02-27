@@ -263,6 +263,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.gniotgroup.edu.in",
     "http://gnioterp.com",
     "http://gniotgroup.edu.in",
+"http://localhost:8000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
