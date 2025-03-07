@@ -4,7 +4,12 @@ from .models import CampusConnect
 
 class CampusConnectAdmin(admin.ModelAdmin):
     list_display = (
-        'full_name', 
+        'full_name',
+        'gender',
+        'street',
+        'city',
+        'state',
+        'country',
         'phone_number', 
         'email', 
         'status',
@@ -17,7 +22,7 @@ class CampusConnectAdmin(admin.ModelAdmin):
     def call_button(self, obj):
         # Generate a button that links to a phone call
         return format_html(
-            '<a class="button" href="tel:{}" style="color: green; text-decoration: none; font-weight: bold;">📞 Call</a>',
+            '<a class="button" href="tel:{}" style="color: green; text-decoration: none; font-weight: bold;">📞</a>',
             obj.phone_number
         )
     call_button.short_description = "Call"
@@ -25,7 +30,7 @@ class CampusConnectAdmin(admin.ModelAdmin):
     def email_button(self, obj):
         # Generate a button that links to the email client
         return format_html(
-            '<a class="button" href="mailto:{}" style="color: blue; text-decoration: none; font-weight: bold;">✉️ Email</a>',
+            '<a class="button" href="mailto:{}" style="color: blue; text-decoration: none; font-weight: bold;">✉️</a>',
             obj.email
         )
     email_button.short_description = "Email"
@@ -33,7 +38,7 @@ class CampusConnectAdmin(admin.ModelAdmin):
     def whatsapp_button(self, obj):
         whatsapp_link = f"https://wa.me/{obj.phone_number}"
         return format_html(
-            '<a class="button" href="{}" target="_blank" style="color: green; text-decoration: none; font-weight: bold;">💬 WhatsApp</a>',
+            '<a class="button" href="{}" target="_blank" style="color: green; text-decoration: none; font-weight: bold;">💬</a>',
             whatsapp_link
         )
     whatsapp_button.short_description = "WhatsApp"
