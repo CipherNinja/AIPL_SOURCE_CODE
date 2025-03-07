@@ -24,8 +24,8 @@ class CampusConnect(models.Model):
     status = models.CharField(max_length=20, choices=LEAD_STATUS_CHOICES, default='new')
     remark = models.TextField(blank=True, null=True)
     class Meta:
-        verbose_name = "Campus Lite"
-        verbose_name_plural = "Campus Lite"
+        verbose_name = "Lead Capture"
+        verbose_name_plural = "Lead Capture"
 
     def __str__(self):
         return self.full_name
